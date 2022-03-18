@@ -2060,78 +2060,7 @@ module.exports = {
   \**************************************************************************************************************************************************************************************************************/
 /***/ (() => {
 
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: C:\\laravel\\sistemabentleybrasil\\resources\\js\\components\\Antenas.vue: Unexpected token, expected \",\" (145:12)\n\n\u001b[0m \u001b[90m 143 |\u001b[39m         \u001b[36mreturn\u001b[39m {\u001b[0m\n\u001b[0m \u001b[90m 144 |\u001b[39m url\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 145 |\u001b[39m             nomeAntena\u001b[33m:\u001b[39m \u001b[32m\"\"\u001b[39m\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m     |\u001b[39m             \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 146 |\u001b[39m             arquivoImagem\u001b[33m:\u001b[39m []\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 147 |\u001b[39m         }\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 148 |\u001b[39m     }\u001b[33m,\u001b[39m\u001b[0m\n    at instantiate (C:\\laravel\\sistemabentleybrasil\\node_modules\\@babel\\parser\\lib\\index.js:72:32)\n    at constructor (C:\\laravel\\sistemabentleybrasil\\node_modules\\@babel\\parser\\lib\\index.js:358:12)\n    at Parser.raise (C:\\laravel\\sistemabentleybrasil\\node_modules\\@babel\\parser\\lib\\index.js:3334:19)\n    at Parser.unexpected (C:\\laravel\\sistemabentleybrasil\\node_modules\\@babel\\parser\\lib\\index.js:3372:16)\n    at Parser.expect (C:\\laravel\\sistemabentleybrasil\\node_modules\\@babel\\parser\\lib\\index.js:4001:28)\n    at Parser.parseObjectLike (C:\\laravel\\sistemabentleybrasil\\node_modules\\@babel\\parser\\lib\\index.js:13509:14)\n    at Parser.parseExprAtom (C:\\laravel\\sistemabentleybrasil\\node_modules\\@babel\\parser\\lib\\index.js:12917:23)\n    at Parser.parseExprSubscripts (C:\\laravel\\sistemabentleybrasil\\node_modules\\@babel\\parser\\lib\\index.js:12567:23)\n    at Parser.parseUpdate (C:\\laravel\\sistemabentleybrasil\\node_modules\\@babel\\parser\\lib\\index.js:12546:21)\n    at Parser.parseMaybeUnary (C:\\laravel\\sistemabentleybrasil\\node_modules\\@babel\\parser\\lib\\index.js:12517:23)\n    at Parser.parseMaybeUnaryOrPrivate (C:\\laravel\\sistemabentleybrasil\\node_modules\\@babel\\parser\\lib\\index.js:12311:61)\n    at Parser.parseExprOps (C:\\laravel\\sistemabentleybrasil\\node_modules\\@babel\\parser\\lib\\index.js:12318:23)\n    at Parser.parseMaybeConditional (C:\\laravel\\sistemabentleybrasil\\node_modules\\@babel\\parser\\lib\\index.js:12288:23)\n    at Parser.parseMaybeAssign (C:\\laravel\\sistemabentleybrasil\\node_modules\\@babel\\parser\\lib\\index.js:12241:21)\n    at Parser.parseExpressionBase (C:\\laravel\\sistemabentleybrasil\\node_modules\\@babel\\parser\\lib\\index.js:12177:23)\n    at C:\\laravel\\sistemabentleybrasil\\node_modules\\@babel\\parser\\lib\\index.js:12171:39");
 
 /***/ }),
 
@@ -2388,6 +2317,58 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Modal.vue?vue&type=script&lang=js&":
+/*!************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Modal.vue?vue&type=script&lang=js& ***!
+  \************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  props: ["id", "titulo"]
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Table.vue?vue&type=script&lang=js&":
 /*!************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Table.vue?vue&type=script&lang=js& ***!
@@ -2467,6 +2448,7 @@ Vue.component('antenas-component', (__webpack_require__(/*! ./components/Antenas
 Vue.component('input-container-component', (__webpack_require__(/*! ./components/InputContainer.vue */ "./resources/js/components/InputContainer.vue")["default"]));
 Vue.component('table-component', (__webpack_require__(/*! ./components/Table.vue */ "./resources/js/components/Table.vue")["default"]));
 Vue.component('card-component', (__webpack_require__(/*! ./components/Card.vue */ "./resources/js/components/Card.vue")["default"]));
+Vue.component('modal-component', (__webpack_require__(/*! ./components/Modal.vue */ "./resources/js/components/Modal.vue")["default"]));
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -37844,9 +37826,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _Antenas_vue_vue_type_template_id_6906cd32___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Antenas.vue?vue&type=template&id=6906cd32& */ "./resources/js/components/Antenas.vue?vue&type=template&id=6906cd32&");
 /* harmony import */ var _Antenas_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Antenas.vue?vue&type=script&lang=js& */ "./resources/js/components/Antenas.vue?vue&type=script&lang=js&");
-/* harmony reexport (unknown) */ var __WEBPACK_REEXPORT_OBJECT__ = {};
-/* harmony reexport (unknown) */ for(const __WEBPACK_IMPORT_KEY__ in _Antenas_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(__WEBPACK_IMPORT_KEY__ !== "default") __WEBPACK_REEXPORT_OBJECT__[__WEBPACK_IMPORT_KEY__] = () => _Antenas_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[__WEBPACK_IMPORT_KEY__]
-/* harmony reexport (unknown) */ __webpack_require__.d(__webpack_exports__, __WEBPACK_REEXPORT_OBJECT__);
 /* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -38071,6 +38050,45 @@ component.options.__file = "resources/js/components/Login.vue"
 
 /***/ }),
 
+/***/ "./resources/js/components/Modal.vue":
+/*!*******************************************!*\
+  !*** ./resources/js/components/Modal.vue ***!
+  \*******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _Modal_vue_vue_type_template_id_53ab54d2___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Modal.vue?vue&type=template&id=53ab54d2& */ "./resources/js/components/Modal.vue?vue&type=template&id=53ab54d2&");
+/* harmony import */ var _Modal_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Modal.vue?vue&type=script&lang=js& */ "./resources/js/components/Modal.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+;
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _Modal_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _Modal_vue_vue_type_template_id_53ab54d2___WEBPACK_IMPORTED_MODULE_0__.render,
+  _Modal_vue_vue_type_template_id_53ab54d2___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/Modal.vue"
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
+
+/***/ }),
+
 /***/ "./resources/js/components/Table.vue":
 /*!*******************************************!*\
   !*** ./resources/js/components/Table.vue ***!
@@ -38122,11 +38140,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Antenas_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./Antenas.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Antenas.vue?vue&type=script&lang=js&");
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Antenas_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Antenas_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__);
-/* harmony reexport (unknown) */ var __WEBPACK_REEXPORT_OBJECT__ = {};
-/* harmony reexport (unknown) */ for(const __WEBPACK_IMPORT_KEY__ in _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Antenas_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== "default") __WEBPACK_REEXPORT_OBJECT__[__WEBPACK_IMPORT_KEY__] = () => _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Antenas_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__[__WEBPACK_IMPORT_KEY__]
-/* harmony reexport (unknown) */ __webpack_require__.d(__webpack_exports__, __WEBPACK_REEXPORT_OBJECT__);
- /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Antenas_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0___default())); 
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Antenas_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
@@ -38211,6 +38225,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Login_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./Login.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Login.vue?vue&type=script&lang=js&");
  /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Login_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/Modal.vue?vue&type=script&lang=js&":
+/*!********************************************************************!*\
+  !*** ./resources/js/components/Modal.vue?vue&type=script&lang=js& ***!
+  \********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Modal_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./Modal.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Modal.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Modal_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
@@ -38332,6 +38362,23 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/Modal.vue?vue&type=template&id=53ab54d2&":
+/*!**************************************************************************!*\
+  !*** ./resources/js/components/Modal.vue?vue&type=template&id=53ab54d2& ***!
+  \**************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Modal_vue_vue_type_template_id_53ab54d2___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Modal_vue_vue_type_template_id_53ab54d2___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */ });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Modal_vue_vue_type_template_id_53ab54d2___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./Modal.vue?vue&type=template&id=53ab54d2& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Modal.vue?vue&type=template&id=53ab54d2&");
+
+
+/***/ }),
+
 /***/ "./resources/js/components/Table.vue?vue&type=template&id=5bd01d73&":
 /*!**************************************************************************!*\
   !*** ./resources/js/components/Table.vue?vue&type=template&id=5bd01d73& ***!
@@ -38365,138 +38412,290 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container" }, [
-    _c("div", { staticClass: "row justify-content-center" }, [
-      _c(
-        "div",
-        { staticClass: "col-md-8" },
-        [
-          _c("card-component", {
-            attrs: { titulo: "Busca de marcas" },
-            scopedSlots: _vm._u([
-              {
-                key: "conteudo",
-                fn: function () {
-                  return [
-                    _c("div", { staticClass: "form-row" }, [
-                      _c(
-                        "div",
-                        { staticClass: "col mb-3" },
-                        [
-                          _c(
-                            "input-container-component",
-                            {
-                              attrs: {
-                                titulo: "ID",
-                                id: "inputId",
-                                "id-help": "idHelp",
-                                "texto-ajuda":
-                                  " Opcional. Informe o ID da antena",
-                              },
-                            },
-                            [
-                              _c("input", {
-                                staticClass: "form-control",
+  return _c(
+    "div",
+    { staticClass: "container" },
+    [
+      _c("div", { staticClass: "row justify-content-center" }, [
+        _c(
+          "div",
+          { staticClass: "col-md-8" },
+          [
+            _c("card-component", {
+              attrs: { titulo: "Busca de antenas" },
+              scopedSlots: _vm._u([
+                {
+                  key: "conteudo",
+                  fn: function () {
+                    return [
+                      _c("div", { staticClass: "form-row" }, [
+                        _c(
+                          "div",
+                          { staticClass: "col mb-3" },
+                          [
+                            _c(
+                              "input-container-component",
+                              {
                                 attrs: {
-                                  type: "number",
+                                  titulo: "ID",
                                   id: "inputId",
-                                  "aria-describedby": "idHelp",
-                                  placeholder: "ID",
+                                  "id-help": "idHelp",
+                                  "texto-ajuda":
+                                    " Opcional. Informe o ID da antena",
                                 },
-                              }),
-                            ]
-                          ),
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "div",
-                        { staticClass: "col mb-3" },
-                        [
-                          _c(
-                            "input-container-component",
-                            {
-                              attrs: {
-                                titulo: "Nome da marca",
-                                id: "inputNome",
-                                "id-help": "nomeHelp",
-                                "texto-ajuda":
-                                  " Opcional. Informe o nome da marca",
                               },
-                            },
-                            [
-                              _c("input", {
-                                staticClass: "form-control",
+                              [
+                                _c("input", {
+                                  staticClass: "form-control",
+                                  attrs: {
+                                    type: "number",
+                                    id: "inputId",
+                                    "aria-describedby": "idHelp",
+                                    placeholder: "ID",
+                                  },
+                                }),
+                              ]
+                            ),
+                          ],
+                          1
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "col mb-3" },
+                          [
+                            _c(
+                              "input-container-component",
+                              {
                                 attrs: {
-                                  type: "text",
+                                  titulo: "Nome da antena",
                                   id: "inputNome",
-                                  "aria-describedby": "nomeHelp",
-                                  placeholder: "Nome da antena",
+                                  "id-help": "nomeHelp",
+                                  "texto-ajuda":
+                                    " Opcional. Informe o nome da antena",
                                 },
-                              }),
-                            ]
+                              },
+                              [
+                                _c("input", {
+                                  staticClass: "form-control",
+                                  attrs: {
+                                    type: "text",
+                                    id: "inputNome",
+                                    "aria-describedby": "nomeHelp",
+                                    placeholder: "Nome da antena",
+                                  },
+                                }),
+                              ]
+                            ),
+                          ],
+                          1
+                        ),
+                      ]),
+                    ]
+                  },
+                  proxy: true,
+                },
+                {
+                  key: "rodape",
+                  fn: function () {
+                    return [
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-primary btn-sm float-right",
+                          attrs: { type: "Submit" },
+                        },
+                        [
+                          _vm._v(
+                            "\n                        Pesquisar\n                    "
                           ),
-                        ],
-                        1
+                        ]
                       ),
-                    ]),
-                  ]
+                    ]
+                  },
+                  proxy: true,
                 },
-                proxy: true,
-              },
-              {
-                key: "rodape",
-                fn: function () {
-                  return [
+              ]),
+            }),
+            _vm._v(" "),
+            _c("card-component", {
+              attrs: { titulo: "Relação de antenas" },
+              scopedSlots: _vm._u([
+                {
+                  key: "conteudo",
+                  fn: function () {
+                    return [_c("table-component")]
+                  },
+                  proxy: true,
+                },
+                {
+                  key: "rodape",
+                  fn: function () {
+                    return [
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-primary btn-sm float-right",
+                          attrs: {
+                            type: "button",
+                            "data-toggle": "modal",
+                            "data-target": "#modalAntena",
+                          },
+                        },
+                        [
+                          _vm._v(
+                            "\n                        Adicionar\n                    "
+                          ),
+                        ]
+                      ),
+                    ]
+                  },
+                  proxy: true,
+                },
+              ]),
+            }),
+          ],
+          1
+        ),
+      ]),
+      _vm._v(" "),
+      _c("modal-component", {
+        attrs: { id: "modalAntena", titulo: "Adicionar antena" },
+        scopedSlots: _vm._u([
+          {
+            key: "conteudo",
+            fn: function () {
+              return [
+                _c(
+                  "div",
+                  { staticClass: "form-group" },
+                  [
                     _c(
-                      "button",
+                      "input-container-component",
                       {
-                        staticClass: "btn btn-primary btn-sm float-right",
-                        attrs: { type: "Submit" },
+                        attrs: {
+                          titulo: "Nome da antena",
+                          id: "novaAntena",
+                          "id-help": "novaAntenaHelp",
+                          "texto-ajuda": " Informe o nome da antena",
+                        },
                       },
-                      [_vm._v("\n            Pesquisar\n          ")]
+                      [
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.nomeAntena,
+                              expression: "nomeAntena",
+                            },
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            type: "text",
+                            id: "novaAntena",
+                            "aria-describedby": "novaAntenaHelp",
+                            placeholder: "Nome da antena",
+                          },
+                          domProps: { value: _vm.nomeAntena },
+                          on: {
+                            input: function ($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.nomeAntena = $event.target.value
+                            },
+                          },
+                        }),
+                      ]
                     ),
-                  ]
-                },
-                proxy: true,
-              },
-            ]),
-          }),
-          _vm._v(" "),
-          _c("card-component", {
-            attrs: { titulo: "Relação de antenas" },
-            scopedSlots: _vm._u([
-              {
-                key: "conteudo",
-                fn: function () {
-                  return [_c("table-component")]
-                },
-                proxy: true,
-              },
-              {
-                key: "rodape",
-                fn: function () {
-                  return [
+                    _vm._v(
+                      "\n                " +
+                        _vm._s(_vm.nomeAntena) +
+                        "\n            "
+                    ),
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "form-group" },
+                  [
                     _c(
-                      "button",
+                      "input-container-component",
                       {
-                        staticClass: "btn btn-primary btn-sm float-right",
-                        attrs: { type: "button" },
+                        attrs: {
+                          titulo: "Imagem",
+                          id: "novaImagem",
+                          "id-help": "novaImagemHelp",
+                          "texto-ajuda": " Carregue uma imagem no formato PNG",
+                        },
                       },
-                      [_vm._v("\n            Adicionar\n          ")]
+                      [
+                        _c("input", {
+                          staticClass: "form-control-file",
+                          attrs: {
+                            type: "file",
+                            id: "novaImagem",
+                            "aria-describedby": "novaImagemHelp",
+                            placeholder: "Selecione uma imagem",
+                          },
+                          on: {
+                            change: function ($event) {
+                              return _vm.carregarImagem($event)
+                            },
+                          },
+                        }),
+                      ]
                     ),
-                  ]
-                },
-                proxy: true,
-              },
-            ]),
-          }),
-        ],
-        1
-      ),
-    ]),
-  ])
+                    _vm._v(
+                      "\n                " +
+                        _vm._s(_vm.arquivoImagem) +
+                        "\n            "
+                    ),
+                  ],
+                  1
+                ),
+              ]
+            },
+            proxy: true,
+          },
+          {
+            key: "rodape",
+            fn: function () {
+              return [
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-secondary",
+                    attrs: { type: "button", "data-dismiss": "modal" },
+                  },
+                  [_vm._v("\n                Fechar\n            ")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-primary",
+                    attrs: { type: "button" },
+                    on: {
+                      click: function ($event) {
+                        return _vm.salvar()
+                      },
+                    },
+                  },
+                  [_vm._v("\n                Salvar\n            ")]
+                ),
+              ]
+            },
+            proxy: true,
+          },
+        ]),
+      }),
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -38816,6 +39015,88 @@ var staticRenderFns = [
         ]),
       ]),
     ])
+  },
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Modal.vue?vue&type=template&id=53ab54d2&":
+/*!*****************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Modal.vue?vue&type=template&id=53ab54d2& ***!
+  \*****************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render),
+/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
+/* harmony export */ });
+var render = function () {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    {
+      staticClass: "modal fade",
+      attrs: {
+        id: _vm.id,
+        tabindex: "-1",
+        "aria-labelledby": "exampleModalLabel",
+        "aria-hidden": "true",
+      },
+    },
+    [
+      _c("div", { staticClass: "modal-dialog" }, [
+        _c("div", { staticClass: "modal-content" }, [
+          _c("div", { staticClass: "modal-header" }, [
+            _c(
+              "h5",
+              {
+                staticClass: "modal-title",
+                attrs: { id: "exampleModalLabel" },
+              },
+              [
+                _vm._v(
+                  "\n                    " +
+                    _vm._s(_vm.titulo) +
+                    "\n                "
+                ),
+              ]
+            ),
+            _vm._v(" "),
+            _vm._m(0),
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "modal-body" }, [_vm._t("conteudo")], 2),
+          _vm._v(" "),
+          _c("div", { staticClass: "modal-footer" }, [_vm._t("rodape")], 2),
+        ]),
+      ]),
+    ]
+  )
+}
+var staticRenderFns = [
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "button",
+      {
+        staticClass: "close",
+        attrs: {
+          type: "button",
+          "data-dismiss": "modal",
+          "aria-label": "Close",
+        },
+      },
+      [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+    )
   },
 ]
 render._withStripped = true
@@ -51062,7 +51343,7 @@ Vue.compile = compileToFunctions;
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"_from":"axios@^0.21","_id":"axios@0.21.4","_inBundle":false,"_integrity":"sha512-ut5vewkiu8jjGBdqpM44XxjuCjq9LAKeHVmoVfHVzy8eHgxxq8SbAVQNovDA8mVi05kP0Ea/n/UzcSHcTJQfNg==","_location":"/axios","_phantomChildren":{},"_requested":{"type":"range","registry":true,"raw":"axios@^0.21","name":"axios","escapedName":"axios","rawSpec":"^0.21","saveSpec":null,"fetchSpec":"^0.21"},"_requiredBy":["#DEV:/"],"_resolved":"https://registry.npmjs.org/axios/-/axios-0.21.4.tgz","_shasum":"c67b90dc0568e5c1cf2b0b858c43ba28e2eda575","_spec":"axios@^0.21","_where":"J:\\\\Laravel\\\\sistemabentleybrasil","author":{"name":"Matt Zabriskie"},"browser":{"./lib/adapters/http.js":"./lib/adapters/xhr.js"},"bugs":{"url":"https://github.com/axios/axios/issues"},"bundleDependencies":false,"bundlesize":[{"path":"./dist/axios.min.js","threshold":"5kB"}],"dependencies":{"follow-redirects":"^1.14.0"},"deprecated":false,"description":"Promise based HTTP client for the browser and node.js","devDependencies":{"coveralls":"^3.0.0","es6-promise":"^4.2.4","grunt":"^1.3.0","grunt-banner":"^0.6.0","grunt-cli":"^1.2.0","grunt-contrib-clean":"^1.1.0","grunt-contrib-watch":"^1.0.0","grunt-eslint":"^23.0.0","grunt-karma":"^4.0.0","grunt-mocha-test":"^0.13.3","grunt-ts":"^6.0.0-beta.19","grunt-webpack":"^4.0.2","istanbul-instrumenter-loader":"^1.0.0","jasmine-core":"^2.4.1","karma":"^6.3.2","karma-chrome-launcher":"^3.1.0","karma-firefox-launcher":"^2.1.0","karma-jasmine":"^1.1.1","karma-jasmine-ajax":"^0.1.13","karma-safari-launcher":"^1.0.0","karma-sauce-launcher":"^4.3.6","karma-sinon":"^1.0.5","karma-sourcemap-loader":"^0.3.8","karma-webpack":"^4.0.2","load-grunt-tasks":"^3.5.2","minimist":"^1.2.0","mocha":"^8.2.1","sinon":"^4.5.0","terser-webpack-plugin":"^4.2.3","typescript":"^4.0.5","url-search-params":"^0.10.0","webpack":"^4.44.2","webpack-dev-server":"^3.11.0"},"homepage":"https://axios-http.com","jsdelivr":"dist/axios.min.js","keywords":["xhr","http","ajax","promise","node"],"license":"MIT","main":"index.js","name":"axios","repository":{"type":"git","url":"git+https://github.com/axios/axios.git"},"scripts":{"build":"NODE_ENV=production grunt build","coveralls":"cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js","examples":"node ./examples/server.js","fix":"eslint --fix lib/**/*.js","postversion":"git push && git push --tags","preversion":"npm test","start":"node ./sandbox/server.js","test":"grunt test","version":"npm run build && grunt version && git add -A dist && git add CHANGELOG.md bower.json package.json"},"typings":"./index.d.ts","unpkg":"dist/axios.min.js","version":"0.21.4"}');
+module.exports = JSON.parse('{"_args":[["axios@0.21.4","C:\\\\laravel\\\\sistemabentleybrasil"]],"_development":true,"_from":"axios@0.21.4","_id":"axios@0.21.4","_inBundle":false,"_integrity":"sha512-ut5vewkiu8jjGBdqpM44XxjuCjq9LAKeHVmoVfHVzy8eHgxxq8SbAVQNovDA8mVi05kP0Ea/n/UzcSHcTJQfNg==","_location":"/axios","_phantomChildren":{},"_requested":{"type":"version","registry":true,"raw":"axios@0.21.4","name":"axios","escapedName":"axios","rawSpec":"0.21.4","saveSpec":null,"fetchSpec":"0.21.4"},"_requiredBy":["#DEV:/"],"_resolved":"https://registry.npmjs.org/axios/-/axios-0.21.4.tgz","_spec":"0.21.4","_where":"C:\\\\laravel\\\\sistemabentleybrasil","author":{"name":"Matt Zabriskie"},"browser":{"./lib/adapters/http.js":"./lib/adapters/xhr.js"},"bugs":{"url":"https://github.com/axios/axios/issues"},"bundlesize":[{"path":"./dist/axios.min.js","threshold":"5kB"}],"dependencies":{"follow-redirects":"^1.14.0"},"description":"Promise based HTTP client for the browser and node.js","devDependencies":{"coveralls":"^3.0.0","es6-promise":"^4.2.4","grunt":"^1.3.0","grunt-banner":"^0.6.0","grunt-cli":"^1.2.0","grunt-contrib-clean":"^1.1.0","grunt-contrib-watch":"^1.0.0","grunt-eslint":"^23.0.0","grunt-karma":"^4.0.0","grunt-mocha-test":"^0.13.3","grunt-ts":"^6.0.0-beta.19","grunt-webpack":"^4.0.2","istanbul-instrumenter-loader":"^1.0.0","jasmine-core":"^2.4.1","karma":"^6.3.2","karma-chrome-launcher":"^3.1.0","karma-firefox-launcher":"^2.1.0","karma-jasmine":"^1.1.1","karma-jasmine-ajax":"^0.1.13","karma-safari-launcher":"^1.0.0","karma-sauce-launcher":"^4.3.6","karma-sinon":"^1.0.5","karma-sourcemap-loader":"^0.3.8","karma-webpack":"^4.0.2","load-grunt-tasks":"^3.5.2","minimist":"^1.2.0","mocha":"^8.2.1","sinon":"^4.5.0","terser-webpack-plugin":"^4.2.3","typescript":"^4.0.5","url-search-params":"^0.10.0","webpack":"^4.44.2","webpack-dev-server":"^3.11.0"},"homepage":"https://axios-http.com","jsdelivr":"dist/axios.min.js","keywords":["xhr","http","ajax","promise","node"],"license":"MIT","main":"index.js","name":"axios","repository":{"type":"git","url":"git+https://github.com/axios/axios.git"},"scripts":{"build":"NODE_ENV=production grunt build","coveralls":"cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js","examples":"node ./examples/server.js","fix":"eslint --fix lib/**/*.js","postversion":"git push && git push --tags","preversion":"npm test","start":"node ./sandbox/server.js","test":"grunt test","version":"npm run build && grunt version && git add -A dist && git add CHANGELOG.md bower.json package.json"},"typings":"./index.d.ts","unpkg":"dist/axios.min.js","version":"0.21.4"}');
 
 /***/ })
 
