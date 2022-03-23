@@ -7,6 +7,15 @@ use Illuminate\Http\Request;
 
 class AntenaController extends Controller
 {
+    /* Construtor desta classe, para quando o objeto
+       (esta classe) for instanciada. Está usando a
+       sugestão de tipo (type-hinting), para injetar
+       a instância do respectivo model neste controller.
+        */
+    public function __construct(Antena $antena)
+    {
+        $this->aaantena = $antena;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +23,9 @@ class AntenaController extends Controller
      */
     public function index()
     {
-        return 'Chegamos até aqui (index)';
+        //$antenas = Antena::all();
+        $antena = $this->aaantena->all();
+        return $antena;
     }
 
     /**
@@ -36,21 +47,21 @@ class AntenaController extends Controller
     public function store(Request $request)
     {
         /* Modo massivo */
-        $antena = Antena::create($request->all());
+        //$antena = Antena::create($request->all());
+        $antena = $this->aaantena->create($request->all());
         return $antena;
-        //dd($antena);
-        //return 'Chegamos até aqui (store)';
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Antena  $antena
+     * @param Integer
      * @return \Illuminate\Http\Response
      */
-    public function show(Antena $antena)
+    public function show($id)
     {
-        //
+        $antena = $this->aaantena->find($id);
+        return $antena;
     }
 
     /**
@@ -68,22 +79,33 @@ class AntenaController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Antena  $antena
+     * @param Integer
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Antena $antena)
+    public function update(Request $request, $id)
     {
-        //
+        /*
+        print_r($request->all()); //Os dados atualizados.
+        echo '<hr>';
+        print_r($antena->getAttributes()); //Os dados antigos, antes do update
+        */
+
+        //$antena->update($request->all());
+        $antena = $this->aaantena->find($id);
+        $antena->update($request->all());
+        return $antena;
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Antena  $antena
+     * @param Integer
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Antena $antena)
+    public function destroy($id)
     {
-        //
+        $antena = $this->aaantena->find($id);
+        $antena->delete();
+        return ['msg' => 'A antena foi removida com sucesso!'];
     }
 }

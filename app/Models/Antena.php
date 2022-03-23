@@ -8,5 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Antena extends Model
 {
     use HasFactory;
+
+    /* Modo massivo */
     protected $fillable = ['nome', 'imagem'];
 }

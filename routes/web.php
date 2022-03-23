@@ -18,19 +18,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
 Auth::routes();
 
-
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
 
 /* Rota protegida com o middleware auth.
    Somente autenticada, por sessão */
 Route::get('/antenas', function () {
     return view('app.antenas');
 })->name('antenas')->middleware('auth');
-
 
 /* Definindo um grupo de rotas, através do método group(), para o middleware "auth", que é o
  * middlaware que verifica se o usuário está logado, se não estiver, direciona para o login.
@@ -84,4 +80,4 @@ Route::get('/antenas', function () {
     //Route::resource('contratos', 'ContratoController');
 
     //Route::resource('chamados', 'ChamadoController');
-//);
+//});
