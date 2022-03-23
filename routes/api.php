@@ -17,3 +17,10 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+/* Devemos retornam sempre para as requisições feitas para as rotas
+   API, um array associativo. Então será retornado como content-type,
+   na resposta desta requisição, Application-json */
+Route::get('/', function () {
+    return ['Chegamos até aqui' => 'SIM'];
+});

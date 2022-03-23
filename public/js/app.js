@@ -2058,9 +2058,181 @@ module.exports = {
 /*!**************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Antenas.vue?vue&type=script&lang=js& ***!
   \**************************************************************************************************************************************************************************************************************/
-/***/ (() => {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: C:\\laravel\\sistemabentleybrasil\\resources\\js\\components\\Antenas.vue: Unexpected token, expected \",\" (145:12)\n\n\u001b[0m \u001b[90m 143 |\u001b[39m         \u001b[36mreturn\u001b[39m {\u001b[0m\n\u001b[0m \u001b[90m 144 |\u001b[39m url\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 145 |\u001b[39m             nomeAntena\u001b[33m:\u001b[39m \u001b[32m\"\"\u001b[39m\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m     |\u001b[39m             \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 146 |\u001b[39m             arquivoImagem\u001b[33m:\u001b[39m []\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 147 |\u001b[39m         }\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 148 |\u001b[39m     }\u001b[33m,\u001b[39m\u001b[0m\n    at instantiate (C:\\laravel\\sistemabentleybrasil\\node_modules\\@babel\\parser\\lib\\index.js:72:32)\n    at constructor (C:\\laravel\\sistemabentleybrasil\\node_modules\\@babel\\parser\\lib\\index.js:358:12)\n    at Parser.raise (C:\\laravel\\sistemabentleybrasil\\node_modules\\@babel\\parser\\lib\\index.js:3334:19)\n    at Parser.unexpected (C:\\laravel\\sistemabentleybrasil\\node_modules\\@babel\\parser\\lib\\index.js:3372:16)\n    at Parser.expect (C:\\laravel\\sistemabentleybrasil\\node_modules\\@babel\\parser\\lib\\index.js:4001:28)\n    at Parser.parseObjectLike (C:\\laravel\\sistemabentleybrasil\\node_modules\\@babel\\parser\\lib\\index.js:13509:14)\n    at Parser.parseExprAtom (C:\\laravel\\sistemabentleybrasil\\node_modules\\@babel\\parser\\lib\\index.js:12917:23)\n    at Parser.parseExprSubscripts (C:\\laravel\\sistemabentleybrasil\\node_modules\\@babel\\parser\\lib\\index.js:12567:23)\n    at Parser.parseUpdate (C:\\laravel\\sistemabentleybrasil\\node_modules\\@babel\\parser\\lib\\index.js:12546:21)\n    at Parser.parseMaybeUnary (C:\\laravel\\sistemabentleybrasil\\node_modules\\@babel\\parser\\lib\\index.js:12517:23)\n    at Parser.parseMaybeUnaryOrPrivate (C:\\laravel\\sistemabentleybrasil\\node_modules\\@babel\\parser\\lib\\index.js:12311:61)\n    at Parser.parseExprOps (C:\\laravel\\sistemabentleybrasil\\node_modules\\@babel\\parser\\lib\\index.js:12318:23)\n    at Parser.parseMaybeConditional (C:\\laravel\\sistemabentleybrasil\\node_modules\\@babel\\parser\\lib\\index.js:12288:23)\n    at Parser.parseMaybeAssign (C:\\laravel\\sistemabentleybrasil\\node_modules\\@babel\\parser\\lib\\index.js:12241:21)\n    at Parser.parseExpressionBase (C:\\laravel\\sistemabentleybrasil\\node_modules\\@babel\\parser\\lib\\index.js:12177:23)\n    at C:\\laravel\\sistemabentleybrasil\\node_modules\\@babel\\parser\\lib\\index.js:12171:39");
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  data: function data() {
+    return {
+      urlBase: 'http://localhost:8000/antenas',
+      nomeAntena: "",
+      arquivoImagem: []
+    };
+  },
+  methods: {
+    carregarImagem: function carregarImagem(e) {
+      this.arquivoImagem = e.target.files;
+    },
+    salvar: function salvar() {
+      //console.log(this.nomeAntena, this.arquivoImagem[0])
+
+      /* Objeto formData: Instanciando um formulário para definir seus atributos */
+      var formData = new FormData();
+      /* Agora atribuindo valores ao formulário */
+
+      formData.append('nome', this.nomeAntena);
+      formData.append('imagem', this.arquivoImagem[0]);
+      var config = {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+          'Accept': 'application/json'
+        }
+      };
+      /* Axios: biblioteca javascript que já vem instalada quando iniciamos
+         projetos front-end no framework laravel */
+
+      /* Este método espera 03 parâmetros. */
+
+      axios.post(this.urlBase, formData, config)
+      /* Pegando a resposta */
+      .then(function (response) {
+        console.log(response);
+      })
+      /* Se houver êrro */
+      ["catch"](function (errors) {
+        console.log(errors);
+      });
+    }
+  }
+});
 
 /***/ }),
 
@@ -38505,11 +38677,7 @@ var render = function () {
                           staticClass: "btn btn-primary btn-sm float-right",
                           attrs: { type: "Submit" },
                         },
-                        [
-                          _vm._v(
-                            "\n                        Pesquisar\n                    "
-                          ),
-                        ]
+                        [_vm._v("Pesquisar")]
                       ),
                     ]
                   },
@@ -38542,11 +38710,7 @@ var render = function () {
                             "data-target": "#modalAntena",
                           },
                         },
-                        [
-                          _vm._v(
-                            "\n                        Adicionar\n                    "
-                          ),
-                        ]
+                        [_vm._v("Adicionar")]
                       ),
                     ]
                   },
@@ -38671,7 +38835,7 @@ var render = function () {
                     staticClass: "btn btn-secondary",
                     attrs: { type: "button", "data-dismiss": "modal" },
                   },
-                  [_vm._v("\n                Fechar\n            ")]
+                  [_vm._v("Fechar")]
                 ),
                 _vm._v(" "),
                 _c(
@@ -38685,7 +38849,7 @@ var render = function () {
                       },
                     },
                   },
-                  [_vm._v("\n                Salvar\n            ")]
+                  [_vm._v("Salvar")]
                 ),
               ]
             },
@@ -51343,7 +51507,7 @@ Vue.compile = compileToFunctions;
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"_args":[["axios@0.21.4","C:\\\\laravel\\\\sistemabentleybrasil"]],"_development":true,"_from":"axios@0.21.4","_id":"axios@0.21.4","_inBundle":false,"_integrity":"sha512-ut5vewkiu8jjGBdqpM44XxjuCjq9LAKeHVmoVfHVzy8eHgxxq8SbAVQNovDA8mVi05kP0Ea/n/UzcSHcTJQfNg==","_location":"/axios","_phantomChildren":{},"_requested":{"type":"version","registry":true,"raw":"axios@0.21.4","name":"axios","escapedName":"axios","rawSpec":"0.21.4","saveSpec":null,"fetchSpec":"0.21.4"},"_requiredBy":["#DEV:/"],"_resolved":"https://registry.npmjs.org/axios/-/axios-0.21.4.tgz","_spec":"0.21.4","_where":"C:\\\\laravel\\\\sistemabentleybrasil","author":{"name":"Matt Zabriskie"},"browser":{"./lib/adapters/http.js":"./lib/adapters/xhr.js"},"bugs":{"url":"https://github.com/axios/axios/issues"},"bundlesize":[{"path":"./dist/axios.min.js","threshold":"5kB"}],"dependencies":{"follow-redirects":"^1.14.0"},"description":"Promise based HTTP client for the browser and node.js","devDependencies":{"coveralls":"^3.0.0","es6-promise":"^4.2.4","grunt":"^1.3.0","grunt-banner":"^0.6.0","grunt-cli":"^1.2.0","grunt-contrib-clean":"^1.1.0","grunt-contrib-watch":"^1.0.0","grunt-eslint":"^23.0.0","grunt-karma":"^4.0.0","grunt-mocha-test":"^0.13.3","grunt-ts":"^6.0.0-beta.19","grunt-webpack":"^4.0.2","istanbul-instrumenter-loader":"^1.0.0","jasmine-core":"^2.4.1","karma":"^6.3.2","karma-chrome-launcher":"^3.1.0","karma-firefox-launcher":"^2.1.0","karma-jasmine":"^1.1.1","karma-jasmine-ajax":"^0.1.13","karma-safari-launcher":"^1.0.0","karma-sauce-launcher":"^4.3.6","karma-sinon":"^1.0.5","karma-sourcemap-loader":"^0.3.8","karma-webpack":"^4.0.2","load-grunt-tasks":"^3.5.2","minimist":"^1.2.0","mocha":"^8.2.1","sinon":"^4.5.0","terser-webpack-plugin":"^4.2.3","typescript":"^4.0.5","url-search-params":"^0.10.0","webpack":"^4.44.2","webpack-dev-server":"^3.11.0"},"homepage":"https://axios-http.com","jsdelivr":"dist/axios.min.js","keywords":["xhr","http","ajax","promise","node"],"license":"MIT","main":"index.js","name":"axios","repository":{"type":"git","url":"git+https://github.com/axios/axios.git"},"scripts":{"build":"NODE_ENV=production grunt build","coveralls":"cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js","examples":"node ./examples/server.js","fix":"eslint --fix lib/**/*.js","postversion":"git push && git push --tags","preversion":"npm test","start":"node ./sandbox/server.js","test":"grunt test","version":"npm run build && grunt version && git add -A dist && git add CHANGELOG.md bower.json package.json"},"typings":"./index.d.ts","unpkg":"dist/axios.min.js","version":"0.21.4"}');
+module.exports = JSON.parse('{"_args":[["axios@0.21.4","J:\\\\Laravel\\\\sistemabentleybrasil"]],"_development":true,"_from":"axios@0.21.4","_id":"axios@0.21.4","_inBundle":false,"_integrity":"sha512-ut5vewkiu8jjGBdqpM44XxjuCjq9LAKeHVmoVfHVzy8eHgxxq8SbAVQNovDA8mVi05kP0Ea/n/UzcSHcTJQfNg==","_location":"/axios","_phantomChildren":{},"_requested":{"type":"version","registry":true,"raw":"axios@0.21.4","name":"axios","escapedName":"axios","rawSpec":"0.21.4","saveSpec":null,"fetchSpec":"0.21.4"},"_requiredBy":["#DEV:/"],"_resolved":"https://registry.npmjs.org/axios/-/axios-0.21.4.tgz","_spec":"0.21.4","_where":"J:\\\\Laravel\\\\sistemabentleybrasil","author":{"name":"Matt Zabriskie"},"browser":{"./lib/adapters/http.js":"./lib/adapters/xhr.js"},"bugs":{"url":"https://github.com/axios/axios/issues"},"bundlesize":[{"path":"./dist/axios.min.js","threshold":"5kB"}],"dependencies":{"follow-redirects":"^1.14.0"},"description":"Promise based HTTP client for the browser and node.js","devDependencies":{"coveralls":"^3.0.0","es6-promise":"^4.2.4","grunt":"^1.3.0","grunt-banner":"^0.6.0","grunt-cli":"^1.2.0","grunt-contrib-clean":"^1.1.0","grunt-contrib-watch":"^1.0.0","grunt-eslint":"^23.0.0","grunt-karma":"^4.0.0","grunt-mocha-test":"^0.13.3","grunt-ts":"^6.0.0-beta.19","grunt-webpack":"^4.0.2","istanbul-instrumenter-loader":"^1.0.0","jasmine-core":"^2.4.1","karma":"^6.3.2","karma-chrome-launcher":"^3.1.0","karma-firefox-launcher":"^2.1.0","karma-jasmine":"^1.1.1","karma-jasmine-ajax":"^0.1.13","karma-safari-launcher":"^1.0.0","karma-sauce-launcher":"^4.3.6","karma-sinon":"^1.0.5","karma-sourcemap-loader":"^0.3.8","karma-webpack":"^4.0.2","load-grunt-tasks":"^3.5.2","minimist":"^1.2.0","mocha":"^8.2.1","sinon":"^4.5.0","terser-webpack-plugin":"^4.2.3","typescript":"^4.0.5","url-search-params":"^0.10.0","webpack":"^4.44.2","webpack-dev-server":"^3.11.0"},"homepage":"https://axios-http.com","jsdelivr":"dist/axios.min.js","keywords":["xhr","http","ajax","promise","node"],"license":"MIT","main":"index.js","name":"axios","repository":{"type":"git","url":"git+https://github.com/axios/axios.git"},"scripts":{"build":"NODE_ENV=production grunt build","coveralls":"cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js","examples":"node ./examples/server.js","fix":"eslint --fix lib/**/*.js","postversion":"git push && git push --tags","preversion":"npm test","start":"node ./sandbox/server.js","test":"grunt test","version":"npm run build && grunt version && git add -A dist && git add CHANGELOG.md bower.json package.json"},"typings":"./index.d.ts","unpkg":"dist/axios.min.js","version":"0.21.4"}');
 
 /***/ })
 

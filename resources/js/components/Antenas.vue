@@ -44,12 +44,7 @@
                     </template>
 
                     <template v-slot:rodape>
-                        <button
-                            type="Submit"
-                            class="btn btn-primary btn-sm float-right"
-                        >
-                            Pesquisar
-                        </button>
+                        <button type="Submit" class="btn btn-primary btn-sm float-right">Pesquisar</button>
                     </template>
                 </card-component>
                 <!-- Fim do card de busca -->
@@ -67,9 +62,7 @@
                             class="btn btn-primary btn-sm float-right"
                             data-toggle="modal"
                             data-target="#modalAntena"
-                        >
-                            Adicionar
-                        </button>
+                        >Adicionar</button>
                     </template>
                 </card-component>
                 <!-- Fim do card de listagem de antenas -->
@@ -121,17 +114,9 @@
             </template>
 
             <template v-slot:rodape>
-                <button
-                    type="button"
-                    class="btn btn-secondary"
-                    data-dismiss="modal"
-                >
-                    Fechar
-                </button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
                 <!-- Diretiva v-on(@) para evento "click(acionar)" -->
-                <button type="button" class="btn btn-primary" @click="salvar()">
-                    Salvar
-                </button>
+                <button type="button" class="btn btn-primary" @click="salvar()">Salvar</button>
             </template>
         </modal-component>
     </div>
@@ -141,22 +126,44 @@
 export default {
     data() {
         return {
-urlBase: 'http://localhost:8000/api/v1/antena',
+            urlBase: 'http://localhost:8000/antenas' ,
             nomeAntena: "",
-            arquivoImagem: [],
-        };
+            arquivoImagem: []
+        }
     },
     methods: {
         carregarImagem(e) {
-            this.arquivoImagem = e.target.files;
+            this.arquivoImagem = e.target.files
         },
         salvar() {
-            console.log(this.nomeAntena, this.arquivoImagem[0]);
+            //console.log(this.nomeAntena, this.arquivoImagem[0])
+
+            /* Objeto formData: Instanciando um formulário para definir seus atributos */
+            let formData = new FormData();
+            /* Agora atribuindo valores ao formulário */
+            formData.append('nome', this.nomeAntena)
+            formData.append('imagem', this.arquivoImagem[0])
+
+            let config = {
+                headers: {
+                    'Content-Type': 'multipart/form-data',
+                    'Accept': 'application/json'
+                }
+            }
+
             /* Axios: biblioteca javascript que já vem instalada quando iniciamos
                projetos front-end no framework laravel */
             /* Este método espera 03 parâmetros. */
-            axios.post(this.urlBase, <conteudo>, <config>)
-        },
-    },
-};
+            axios.post(this.urlBase, formData, config)
+                /* Pegando a resposta */
+                .then(response => {
+                    console.log(response)
+                })
+                /* Se houver êrro */
+                .catch(errors => {
+                    console.log(errors)
+                })
+        }
+    }
+}
 </script>
