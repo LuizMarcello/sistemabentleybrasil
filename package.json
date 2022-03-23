@@ -10,10 +10,13 @@
     "watch-poll": "mix watch -- --watch-options-poll=1000"
   },
   "dependencies": {
+    "@babel/core": "^7.17.8",
+    "@babel/preset-env": "^7.16.11",
     "core-js": "^3.6.5"
   },
   "devDependencies": {
     "@babel/preset-react": "^7.16.7",
+    "@vue/babel-preset-app": "^5.0.4",
     "@vue/cli-plugin-babel": "^4.5.16",
     "axios": "^0.21",
     "bootstrap": "^4.6.0",

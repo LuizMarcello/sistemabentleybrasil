@@ -37,7 +37,7 @@ Route::get('/antenas', function () {
  * Agora, todas as rotas dentro da função anômima, estão protegidas pela autenticação. */
 /* Declarando um único método de rota que vai criar todas as rotas que precisamos: */
 /* 1º parâmetro: O nome do recurso(no plural) e 2º parâmetro, o controler: */
-Route::middleware('auth')->group(function () {
+//Route::middleware('auth')->group(function () {
 
     //Route::resource('antenas', 'AntenaController');
 
@@ -84,4 +84,4 @@ Route::middleware('auth')->group(function () {
     //Route::resource('contratos', 'ContratoController');
 
     //Route::resource('chamados', 'ChamadoController');
-});
+//);

@@ -14,7 +14,7 @@ class AntenaController extends Controller
      */
     public function index()
     {
-        //
+        return 'Chegamos até aqui (index)';
     }
 
     /**
@@ -35,7 +35,11 @@ class AntenaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        /* Modo massivo */
+        $antena = Antena::create($request->all());
+        return $antena;
+        //dd($antena);
+        //return 'Chegamos até aqui (store)';
     }
 
     /**
