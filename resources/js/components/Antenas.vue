@@ -44,7 +44,12 @@
                     </template>
 
                     <template v-slot:rodape>
-                        <button type="Submit" class="btn btn-primary btn-sm float-right">Pesquisar</button>
+                        <button
+                            type="Submit"
+                            class="btn btn-primary btn-sm float-right"
+                        >
+                            Pesquisar
+                        </button>
                     </template>
                 </card-component>
                 <!-- Fim do card de busca -->
@@ -62,7 +67,9 @@
                             class="btn btn-primary btn-sm float-right"
                             data-toggle="modal"
                             data-target="#modalAntena"
-                        >Adicionar</button>
+                        >
+                            Adicionar
+                        </button>
                     </template>
                 </card-component>
                 <!-- Fim do card de listagem de antenas -->
@@ -114,9 +121,17 @@
             </template>
 
             <template v-slot:rodape>
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                <button
+                    type="button"
+                    class="btn btn-secondary"
+                    data-dismiss="modal"
+                >
+                    Fechar
+                </button>
                 <!-- Diretiva v-on(@) para evento "click(acionar)" -->
-                <button type="button" class="btn btn-primary" @click="salvar()">Salvar</button>
+                <button type="button" class="btn btn-primary" @click="salvar()">
+                    Salvar
+                </button>
             </template>
         </modal-component>
     </div>
@@ -124,6 +139,20 @@
 
 <script>
 export default {
+    /* Propriedades computadas */
+    computed: {
+        token() {
+            /* O método "find()"" retorna uma posição do array, somente se a mesma retornar "true",
+               ou seja, que comece com parâmetro do método "includes()"" */
+            let token = document.cookie.split(";").find((indice) => {
+                return indice.includes("token=");
+            });
+
+            console.log(token);
+
+            return "Teste";
+        },
+    },
     data() {
         return {
             urlBase: "http://localhost:8000/api/v1/antenas",
@@ -136,7 +165,7 @@ export default {
             this.arquivoImagem = e.target.files;
         },
         salvar() {
-            console.log(this.nomeAntena, this.arquivoImagem[0])
+            console.log(this.nomeAntena, this.arquivoImagem[0]);
 
             /* Objeto formData: Instanciando um formulário para definir seus atributos */
             let formData = new FormData();
@@ -150,9 +179,10 @@ export default {
                o formato " nome: valor " e devem ser separadas por vírgula. */
             let config = {
                 headers: {
-                    'Content-Type': "multipart/form-data",
-                    'Accept': "application/json"
-                }
+                    "Content-Type": "multipart/form-data",
+                    Accept: "application/json",
+                    Authorization: this.token,
+                },
             };
 
             /* Axios: biblioteca javascript que já vem instalada quando iniciamos
