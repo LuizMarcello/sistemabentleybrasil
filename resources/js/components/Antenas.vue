@@ -78,6 +78,18 @@
 
         <!-- Aqui é feito a instância do componente/modal "Modal.vue" -->
         <modal-component id="modalAntena" titulo="Adicionar antena">
+            <template v-slot:alertas>
+                <!-- v-if: renderização condicional -->
+                <alert-component
+                    tipo="success"
+                    v-if="transacaoStatus == 'adicionado'"
+                ></alert-component>
+                <alert-component
+                    tipo="danger"
+                    v-if="transacaoStatus == 'erro'"
+                ></alert-component>
+            </template>
+
             <template v-slot:conteudo>
                 <div class="form-group">
                     <input-container-component
@@ -148,9 +160,13 @@ export default {
                 return indice.includes("token=");
             });
 
-            console.log(token);
+            /* Pegando a posição "1" do array, que é somente o token atribuindo */
+            token = token.split("=")[1];
 
-            return "Teste";
+            /* Concatenando essa string com o próprio token em si */
+            token = "Bearer " + token;
+
+            return token;
         },
     },
     data() {
@@ -158,6 +174,7 @@ export default {
             urlBase: "http://localhost:8000/api/v1/antenas",
             nomeAntena: "",
             arquivoImagem: [],
+            transacaoStatus: "",
         };
     },
     methods: {
@@ -192,10 +209,12 @@ export default {
                 .post(this.urlBase, formData, config)
                 /* Pegando(recuperando) a resposta */
                 .then((response) => {
+                    this.transacaoStatus = "adicionado";
                     console.log(response);
                 })
                 /* Se houver êrro */
                 .catch((errors) => {
+                    this.transacaoStatus = "erro";
                     console.log(errors);
                 });
         },
