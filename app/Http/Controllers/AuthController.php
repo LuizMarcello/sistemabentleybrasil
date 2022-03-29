@@ -17,7 +17,7 @@ class AuthController extends Controller
         $token = auth('api')->attempt($credenciais);
 
         if ($token) { /* Usuário autenticado com sucesso. */
-            return response()->json(['token retornado' => $token]);
+            return response()->json(['token' => $token]);
         } else { /* êrro de usuário ou senha */
             return response()->json(['erro' => 'Usuário ou senha inválido!'], 403);
 
@@ -32,13 +32,22 @@ class AuthController extends Controller
 
     public function logout()
     {
-        return 'logout';
+        /* Para revogar/invalidar/colocar na blackList um token JWT,
+           é preciso ter um token ainda válido. */
+        /* Invalidando o token JWT */
+        auth('api')->logout();
+        return response()->json(['msg' => 'Logout realizado com sucesso!']);
     }
+
 
 
     public function refresh()
     {
-        return 'refresh';
+        /* Renovação do token JWT(autorização) */
+        /* Cliente tem que ter um token JWT(autorização) ainda válido */
+        $token = auth('api')->refresh();
+        /* Retornando um array */
+        return response()->json(['token' => $token]);
     }
 
 

@@ -126,7 +126,7 @@
 export default {
     data() {
         return {
-            urlBase: "http://localhost:8000/api/antenas",
+            urlBase: "http://localhost:8000/api/v1/antenas",
             nomeAntena: "",
             arquivoImagem: [],
         };

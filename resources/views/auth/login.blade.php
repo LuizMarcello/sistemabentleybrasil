@@ -4,6 +4,6 @@
 {{-- Aqui pode recuperar variáveis que são encaminhas dos controllers para as views --}}
 @section('content')
     {{-- Instância do componente "Login.vue" --}}
-    {{-- Enviando as "props" daqui, para o componente vue --}}
-    <login-component token_csrf="{{ @csrf_token() }}"></login-component>
+    {{-- Enviando as "props" daqui, para o componente Login.vue --}}
+    <login-component csrf_token="{{ @csrf_token() }}"></login-component>
 @endsection
