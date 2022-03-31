@@ -25,7 +25,7 @@ class AntenaController extends Controller
     {
         //$antenas = Antena::all();
         $antena = $this->aaantena->all();
-        return $antena;
+        return response()->json($antena, 200);
     }
 
     /**
@@ -49,7 +49,7 @@ class AntenaController extends Controller
         /* Modo massivo */
         //$antena = Antena::create($request->all());
         $antena = $this->aaantena->create($request->all());
-        return $antena;
+        return response()->json($antena, 201);
     }
 
     /**
@@ -61,6 +61,12 @@ class AntenaController extends Controller
     public function show($id)
     {
         $antena = $this->aaantena->find($id);
+        if ($antena === null) {
+            /* helper "response()" do laravel */
+            /* Através dele, podemos alterar os detalhes da resposta dada pelo laravel*/
+            /* Como 2º parâmetro do método "json()", podemos passar o status code http */
+            return response()->json(['erro' => 'Recurso não existe'], 404);
+        }
         return $antena;
     }
 
@@ -92,6 +98,13 @@ class AntenaController extends Controller
 
         //$antena->update($request->all());
         $antena = $this->aaantena->find($id);
+
+        if ($antena === null) {
+            /* helper "response()" do laravel */
+            /* Através dele, podemos alterar os detalhes da resposta dada pelo laravel*/
+            /* Como 2º parâmetro do método "json()", podemos passar o status code http */
+            return response()->json(['erro' => 'Impossível realizar a atualização. O recurso não existe.'], 404);
+        }
         $antena->update($request->all());
         return $antena;
     }
@@ -105,6 +118,13 @@ class AntenaController extends Controller
     public function destroy($id)
     {
         $antena = $this->aaantena->find($id);
+
+        if ($antena === null) {
+            /* helper "response()" do laravel */
+            /* Através dele, podemos alterar os detalhes da resposta dada pelo laravel*/
+            /* Como 2º parâmetro do método "json()", podemos passar o status code http */
+            return response()->json(['erro' => 'Impossível excluir. O registro não existe.'], 404);
+        }
         $antena->delete();
         return ['msg' => 'A antena foi removida com sucesso!'];
     }

@@ -44,12 +44,7 @@
                     </template>
 
                     <template v-slot:rodape>
-                        <button
-                            type="Submit"
-                            class="btn btn-primary btn-sm float-right"
-                        >
-                            Pesquisar
-                        </button>
+                        <button type="Submit" class="btn btn-primary btn-sm float-right">Pesquisar</button>
                     </template>
                 </card-component>
                 <!-- Fim do card de busca -->
@@ -67,9 +62,7 @@
                             class="btn btn-primary btn-sm float-right"
                             data-toggle="modal"
                             data-target="#modalAntena"
-                        >
-                            Adicionar
-                        </button>
+                        >Adicionar</button>
                     </template>
                 </card-component>
                 <!-- Fim do card de listagem de antenas -->
@@ -80,12 +73,11 @@
         <modal-component id="modalAntena" titulo="Adicionar antena">
             <template v-slot:alertas>
                 <!-- v-if: renderização condicional -->
-                <alert-component
-                    tipo="success"
-                    v-if="transacaoStatus == 'adicionado'"
-                ></alert-component>
+                <alert-component tipo="success" v-if="transacaoStatus == 'adicionado'"></alert-component>
                 <alert-component
                     tipo="danger"
+                    :detalhes="transacaoDetalhes"
+                    titulo="Erro ao tentar cadastrar a marca"
                     v-if="transacaoStatus == 'erro'"
                 ></alert-component>
             </template>
@@ -133,17 +125,9 @@
             </template>
 
             <template v-slot:rodape>
-                <button
-                    type="button"
-                    class="btn btn-secondary"
-                    data-dismiss="modal"
-                >
-                    Fechar
-                </button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
                 <!-- Diretiva v-on(@) para evento "click(acionar)" -->
-                <button type="button" class="btn btn-primary" @click="salvar()">
-                    Salvar
-                </button>
+                <button type="button" class="btn btn-primary" @click="salvar()">Salvar</button>
             </template>
         </modal-component>
     </div>
@@ -175,6 +159,7 @@ export default {
             nomeAntena: "",
             arquivoImagem: [],
             transacaoStatus: "",
+            transacaoDetalhes: []
         };
     },
     methods: {
@@ -215,7 +200,8 @@ export default {
                 /* Se houver êrro */
                 .catch((errors) => {
                     this.transacaoStatus = "erro";
-                    console.log(errors);
+                    this.transacaoDetalhes = errors.response
+                    //errors.response.data.message
                 });
         },
     },
