@@ -16,6 +16,7 @@ class AntenaController extends Controller
     {
         $this->aaantena = $antena;
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -40,6 +41,7 @@ class AntenaController extends Controller
 
     /**
      * Store a newly created resource in storage.
+     * Persistência dos dados
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -47,7 +49,12 @@ class AntenaController extends Controller
     public function store(Request $request)
     {
         /* Modo massivo */
-        //$antena = Antena::create($request->all());
+
+        //nome
+        //imagem
+
+        $request->validate($this->aaantena->rules(), $this->aaantena->feedback());
+
         $antena = $this->aaantena->create($request->all());
         return response()->json($antena, 201);
     }
@@ -67,7 +74,7 @@ class AntenaController extends Controller
             /* Como 2º parâmetro do método "json()", podemos passar o status code http */
             return response()->json(['erro' => 'Recurso não existe'], 404);
         }
-        return $antena;
+        return response()->json($antena, 200);
     }
 
     /**
@@ -81,6 +88,8 @@ class AntenaController extends Controller
         //
     }
 
+
+
     /**
      * Update the specified resource in storage.
      *
@@ -90,11 +99,8 @@ class AntenaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        /*
-        print_r($request->all()); //Os dados atualizados.
-        echo '<hr>';
-        print_r($antena->getAttributes()); //Os dados antigos, antes do update
-        */
+        //print_r($request->all());  //Os dados atualizados.
+        //print_r($antena->getAttributes());  //Os dados antigos, antes do update
 
         //$antena->update($request->all());
         $antena = $this->aaantena->find($id);
@@ -105,9 +111,13 @@ class AntenaController extends Controller
             /* Como 2º parâmetro do método "json()", podemos passar o status code http */
             return response()->json(['erro' => 'Impossível realizar a atualização. O recurso não existe.'], 404);
         }
+
+        $request->validate($antena->rules(), $antena->feedback());
         $antena->update($request->all());
-        return $antena;
+        return response()->json($antena, 200);
     }
+
+
 
     /**
      * Remove the specified resource from storage.
@@ -126,6 +136,6 @@ class AntenaController extends Controller
             return response()->json(['erro' => 'Impossível excluir. O registro não existe.'], 404);
         }
         $antena->delete();
-        return ['msg' => 'A antena foi removida com sucesso!'];
+        return response()->json(['msg' => 'A antena foi removida com sucesso!'], 200);
     }
 }
