@@ -103,6 +103,7 @@ class AntenaController extends Controller
         //print_r($antena->getAttributes());  //Os dados antigos, antes do update
 
         //$antena->update($request->all());
+        /* Variável $antena sendo instanciando como objeto do tipo "Antena" */
         $antena = $this->aaantena->find($id);
 
         if ($antena === null) {
@@ -112,7 +113,26 @@ class AntenaController extends Controller
             return response()->json(['erro' => 'Impossível realizar a atualização. O recurso não existe.'], 404);
         }
 
-        $request->validate($antena->rules(), $antena->feedback());
+        if ($request->method() === 'PATCH') {
+
+            $regrasDinamicas = array();
+
+            /* Percorrendo todas as regras(rules()) definidas no Model */
+            foreach ($antena->rules() as $input => $regra) {
+                //$teste .= 'Input: ' . $input . ' | Regra: ' . $regra . '<br>';
+
+                /* Coletar apenas as regras aplicáveis aos parâmetros parciais da requisição PATCH */
+                /* Método nativo do PHP que varre o array procurando a chave "$input" no mesmo */
+                if (array_key_exists($input, $request->all())) {
+                    $regrasDinamicas[$input] = $regra;
+                }
+            }
+            //dd($regrasDinamicas);
+            $request->validate($regrasDinamicas, $antena->feedback());
+        } else {
+            $request->validate($antena->rules(), $antena->feedback());
+        }
+
         $antena->update($request->all());
         return response()->json($antena, 200);
     }
