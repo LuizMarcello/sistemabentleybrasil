@@ -16,7 +16,7 @@ class Antena extends Model
     {
         return [
             'nome' => 'required|unique:antenas,nome, ' . $this->id . '|min:3',
-            'imagem' => 'required'
+            'imagem' => 'required|file|mimes:png,docx,xlsx,pdf,ppt,jpeg,mp3'
         ];
 
         /* A validação "unique" tem 3 parâmetros:
@@ -29,6 +29,7 @@ class Antena extends Model
     {
         return  [
             'required' => 'O campo :attribute é obrigatório',
+            'imagem.mimes' => 'Somente arquivos do tipo png,docx,xlsx,pdf,ppt,jpeg,mp3',
             'nome.unique' => 'O nome da antena já existe',
             'nome.min' => 'O nome deve ter pelo menos 3 caracteres'
         ];

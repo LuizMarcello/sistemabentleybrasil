@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Storage;
 use App\Models\Antena;
 use Illuminate\Http\Request;
 
@@ -50,12 +51,36 @@ class AntenaController extends Controller
     {
         /* Modo massivo */
 
-        //nome
-        //imagem
-
         $request->validate($this->aaantena->rules(), $this->aaantena->feedback());
 
-        $antena = $this->aaantena->create($request->all());
+        //dd($request->nome);
+        //ou
+        //dd($request->get('nome'));
+        //ou
+        //dd($request->input('nome'));
+
+        //dd($request->imagem);
+        //ou
+        //dd($request->file('imagem'));
+
+        $imagem = $request->file('imagem');
+        /* O método store() espera dois parâmetros */
+        //$image->store('path', 'disco');
+        $imagem_urn = $imagem->store('imagens', 'public');
+        //dd($imagem_urn);
+
+        //$antena = $this->aaantena->create($request->all());
+
+        $antena = $this->aaantena->create([
+            'nome' => $request->nome,
+            'imagem' => $imagem_urn
+        ]);
+
+        //ou:
+        //$antena->nome = $request->nome;
+        //$antena->imagem = $imagem_urn;
+        //$antena->save();
+
         return response()->json($antena, 201);
     }
 
@@ -106,6 +131,9 @@ class AntenaController extends Controller
         /* Variável $antena sendo instanciando como objeto do tipo "Antena" */
         $antena = $this->aaantena->find($id);
 
+        //dd($request->nome);
+        //dd($request->file('imagem'));
+
         if ($antena === null) {
             /* helper "response()" do laravel */
             /* Através dele, podemos alterar os detalhes da resposta dada pelo laravel*/
@@ -133,10 +161,26 @@ class AntenaController extends Controller
             $request->validate($antena->rules(), $antena->feedback());
         }
 
-        $antena->update($request->all());
+        /* Remove a imagem antiga caso uma nova imagem tenha sido enviado no request do update */
+        if ($request->file('imagem')) {
+            /* "Storage" é um façade do laravel */
+            /* Remove a imagem */
+            Storage::disk('public')->delete($antena->imagem);
+        }
+
+        $imagem = $request->file('imagem');
+        //dd($imagem);
+        /* O método store() espera dois parâmetros */
+        //$image->store('path', 'disco');
+        $imagem_urn = $imagem->store('imagens', 'public');
+        //dd($imagem_urn);
+
+        $antena->update([
+            'nome' => $request->nome,
+            'imagem' => $imagem_urn
+        ]);
         return response()->json($antena, 200);
     }
-
 
 
     /**
@@ -155,6 +199,12 @@ class AntenaController extends Controller
             /* Como 2º parâmetro do método "json()", podemos passar o status code http */
             return response()->json(['erro' => 'Impossível excluir. O registro não existe.'], 404);
         }
+
+        /* Remove a imagem*/
+        /* "Storage" é um façade do laravel */
+        Storage::disk('public')->delete($antena->imagem);
+
+        /* Remove então o registro */
         $antena->delete();
         return response()->json(['msg' => 'A antena foi removida com sucesso!'], 200);
     }
