@@ -66,14 +66,22 @@ class AntenaController extends Controller
         $imagem = $request->file('imagem');
         /* O método store() espera dois parâmetros */
         //$image->store('path', 'disco');
-        $imagem_urn = $imagem->store('imagens', 'public');
+        $imagem_urn = $imagem->store('imagens/antenas', 'public');
         //dd($imagem_urn);
 
         //$antena = $this->aaantena->create($request->all());
 
         $antena = $this->aaantena->create([
             'nome' => $request->nome,
-            'imagem' => $imagem_urn
+            'imagem' => $imagem_urn,
+            'banda' => $request->banda,
+            'datanota' => $request->datanota,
+            'marca' => $request->marca,
+            'modelo' => $request->modelo,
+            'notafiscal' => $request->notafiscal,
+            'situacao' => $request->situacao,
+            'diametro' => $request->diametro,
+            'observacao' => $request->observacao
         ]);
 
         //ou:
@@ -112,8 +120,6 @@ class AntenaController extends Controller
     {
         //
     }
-
-
 
     /**
      * Update the specified resource in storage.
@@ -172,15 +178,24 @@ class AntenaController extends Controller
         //dd($imagem);
         /* O método store() espera dois parâmetros */
         //$image->store('path', 'disco');
-        $imagem_urn = $imagem->store('imagens', 'public');
+        $imagem_urn = $imagem->store('imagens/antenas', 'public');
         //dd($imagem_urn);
 
         $antena->update([
             'nome' => $request->nome,
-            'imagem' => $imagem_urn
+            'imagem' => $imagem_urn,
+            'banda' => $request->banda,
+            'datanota' => $request->datanota,
+            'marca' => $request->marca,
+            'modelo' => $request->modelo,
+            'notafiscal' => $request->notafiscal,
+            'situacao' => $request->situacao,
+            'diametro' => $request->diametro,
+            'observacao' => $request->observacao
         ]);
         return response()->json($antena, 200);
     }
+
 
 
     /**

@@ -7,16 +7,31 @@ use Illuminate\Database\Eloquent\Model;
 
 class Antena extends Model
 {
+    //use SoftDeletes;
     use HasFactory;
 
+    /* Por questão de segurança, o "fillable" é para dizer quais são
+       os únicos campos que serão aceitos pelo model. O usuário poderia
+       tentar inspecionar e injetar algum campo a mais, lá no front. */
     /* Modo massivo */
-    protected $fillable = ['nome', 'imagem'];
+    protected $fillable = [
+        'nome', 'banda', 'datanota', 'marca', 'modelo', 'notafiscal',
+        'situacao', 'diametro', 'observacao', 'imagem'
+    ];
 
     public function rules()
     {
         return [
             'nome' => 'required|unique:antenas,nome, ' . $this->id . '|min:3',
-            'imagem' => 'required|file|mimes:png,docx,xlsx,pdf,ppt,jpeg,mp3'
+            'imagem' => 'required|file|mimes:png,docx,xlsx,pdf,ppt,jpeg,mp3',
+            'banda' => 'required',
+            'datanota' => 'required',
+            'marca' => 'required',
+            'modelo' => 'required',
+            'notafiscal' => 'required',
+            'situacao' => 'required',
+            'diametro' => 'required',
+            'observacao' => 'required'
         ];
 
         /* A validação "unique" tem 3 parâmetros:

@@ -45,7 +45,7 @@ Route::prefix('v1')->middleware('jwt.auth')->group(function () {
     //Route::apiresource('fontes', 'FonteController');
     //Route::apiresource('grooves', 'GrooveController');
     //Route::apiresource('instaladores', 'InstaladorController');
-    //Route::apiresource('roteadores', 'RoteadorController');
+    Route::apiresource('roteadores', 'RoteadorController');
     //Route::apiresource('modens', 'ModemController');
     //Route::apiresource('lnbs', 'LnbController');
     //Route::apiresource('ilnbs', 'IlnbController');
