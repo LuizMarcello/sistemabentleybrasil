@@ -54,17 +54,17 @@ class RoteadorController extends Controller
         $imagem_urn = $imagem->store('imagens/roteadores', 'public');
 
         $roteador = $this->rrroteador->create([
-            'nome' => $request->nome,
+            //'nome' => $request->nome,
             'imagem' => $imagem_urn,
-            'banda' => $request->banda,
+            //'banda' => $request->banda,
             'marca' => $request->marca,
-            'datanota' => $request->datanota,
-            'macaddress' => $request->macaddress,
-            'modelo' => $request->modelo,
-            'notafiscal' => $request->notafiscal,
-            'serial' => $request->serial,
-            'situacao' => $request->situacao,
-            'observacao' => $request->observacao
+            //'datanota' => $request->datanota,
+            //'macaddress' => $request->macaddress,
+            //'modelo' => $request->modelo,
+            //'notafiscal' => $request->notafiscal,
+            //'serial' => $request->serial,
+            //'situacao' => $request->situacao,
+            //'observacao' => $request->observacao
 
         ]);
 
@@ -141,16 +141,16 @@ class RoteadorController extends Controller
         $imagem_urn = $imagem->store('imagens/roteadores', 'public');
 
         $roteador->update([
-            'banda' => $request->banda,
+            //'banda' => $request->banda,
             'imagem' => $imagem_urn,
-            'datanota' => $request->datanota,
-            'macaddress' => $request->macaddress,
+            //'datanota' => $request->datanota,
+            //'macaddress' => $request->macaddress,
             'marca' => $request->marca,
-            'modelo' => $request->modelo,
-            'notafiscal' => $request->notafiscal,
-            'serial' => $request->serial,
-            'situacao' => $request->situacao,
-            'observacao' => $request->observacao
+            //'modelo' => $request->modelo,
+            //'notafiscal' => $request->notafiscal,
+            //'serial' => $request->serial,
+            //'situacao' => $request->situacao,
+            //'observacao' => $request->observacao
 
 
 

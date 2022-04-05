@@ -24,14 +24,14 @@ class Antena extends Model
         return [
             'nome' => 'required|unique:antenas,nome, ' . $this->id . '|min:3',
             'imagem' => 'required|file|mimes:png,docx,xlsx,pdf,ppt,jpeg,mp3',
-            'banda' => 'required',
-            'datanota' => 'required',
-            'marca' => 'required',
-            'modelo' => 'required',
-            'notafiscal' => 'required',
-            'situacao' => 'required',
-            'diametro' => 'required',
-            'observacao' => 'required'
+            //'banda' => 'required',
+            //'datanota' => 'required',
+            //'marca' => 'required',
+            //'modelo' => 'required',
+            //'notafiscal' => 'required',
+            //'situacao' => 'required',
+            //'diametro' => 'required',
+            //'observacao' => 'required'
         ];
 
         /* A validação "unique" tem 3 parâmetros:

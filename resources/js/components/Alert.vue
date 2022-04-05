@@ -1,24 +1,26 @@
 <template>
-    <div :class="estilo" role="alert">
-        {{ titulo }}
-        <hr />
-        {{ detalhes.data.message }}
-        <br />
-        <ul v-if="detalhes.data.errors">
-            <li v-for="e, key in detalhes.data.errors" :key="key">{{ e[0] }}</li>
-        </ul>
-    </div>
+  <div :class="estilo" role="alert">
+    {{ titulo }}
+    <hr />
+    <p>{{ detalhes.mensagem }}</p>
+    <!-- Imprimindo o valor somente se ele existir -->
+    <!-- Renderização condicional -->
+    <br />
+    <ul v-if="detalhes.dados">
+      <li v-for="(e, key) in detalhes.dados" :key="key">{{ e[0] }}</li>
+    </ul>
+  </div>
 </template>
 
 <script>
 export default {
-    props: ["tipo", 'titulo', 'detalhes'],
+  props: ["tipo", "titulo", "detalhes"],
 
-    /* Propriedades computadas */
-    computed: {
-        estilo() {
-            return "alert alert-" + this.tipo;
-        },
+  /* Propriedades computadas */
+  computed: {
+    estilo() {
+      return "alert alert-" + this.tipo;
     },
+  },
 };
 </script>

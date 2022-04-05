@@ -28,6 +28,12 @@ Route::get('/antenas', function () {
     return view('app.antenas');
 })->name('antenas')->middleware('auth');
 
+/* Rota protegida com o middleware auth.
+   Somente autenticada, por sessão */
+   Route::get('/roteadores', function () {
+    return view('app.roteadores');
+})->name('roteadores')->middleware('auth');
+
 /* Definindo um grupo de rotas, através do método group(), para o middleware "auth", que é o
  * middlaware que verifica se o usuário está logado, se não estiver, direciona para o login.
  * Agora, todas as rotas dentro da função anômima, estão protegidas pela autenticação. */

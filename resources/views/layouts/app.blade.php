@@ -50,9 +50,10 @@
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Instalações</a>
                                 <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="#">Roteadores</a>
+                                    {{-- <a class="dropdown-item" href="#">Roteadores</a> --}}
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" href="{{ route('antenas') }}">Antenas</a>
+                                    <a class="dropdown-item" href="{{ route('roteadores') }}">Roteadores</a>
                                     <a class="dropdown-item" href="#">Lnbs</a>
                                     <a class="dropdown-item" href="#">Ilnbs</a>
 
@@ -87,7 +88,7 @@
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
-                                                                                                                                     document.getElementById('logout-form').submit();">
+                                                                                                                                                             document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
 

@@ -22,15 +22,15 @@ class Roteador extends Model
     {
         return [
             'imagem' => 'required|file|mimes:png,docx,xlsx,pdf,ppt,jpeg,mp3',
-            'banda' => 'required',
-            'datanota' => 'required',
-            'macaddress' => 'required',
+            //'banda' => 'required',
+            //'datanota' => 'required',
+            //'macaddress' => 'required',
             'marca' => 'required',
-            'modelo' => 'required',
-            'notafiscal' => 'required',
-            'serial' => 'required',
-            'situacao' => 'required',
-            'observacao' => 'required'
+            //'modelo' => 'required',
+            //'notafiscal' => 'required',
+            //'serial' => 'required',
+            //'situacao' => 'required',
+            //'observacao' => 'required'
         ];
 
         /* A validação "unique" tem 3 parâmetros:

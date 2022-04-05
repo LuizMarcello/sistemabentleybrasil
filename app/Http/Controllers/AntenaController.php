@@ -74,14 +74,14 @@ class AntenaController extends Controller
         $antena = $this->aaantena->create([
             'nome' => $request->nome,
             'imagem' => $imagem_urn,
-            'banda' => $request->banda,
-            'datanota' => $request->datanota,
-            'marca' => $request->marca,
-            'modelo' => $request->modelo,
-            'notafiscal' => $request->notafiscal,
-            'situacao' => $request->situacao,
-            'diametro' => $request->diametro,
-            'observacao' => $request->observacao
+            //'banda' => $request->banda,
+            //'datanota' => $request->datanota,
+            //'marca' => $request->marca,
+            //'modelo' => $request->modelo,
+            //'notafiscal' => $request->notafiscal,
+            //'situacao' => $request->situacao,
+            //'diametro' => $request->diametro,
+            //'observacao' => $request->observacao
         ]);
 
         //ou:
@@ -184,14 +184,14 @@ class AntenaController extends Controller
         $antena->update([
             'nome' => $request->nome,
             'imagem' => $imagem_urn,
-            'banda' => $request->banda,
-            'datanota' => $request->datanota,
-            'marca' => $request->marca,
-            'modelo' => $request->modelo,
-            'notafiscal' => $request->notafiscal,
-            'situacao' => $request->situacao,
-            'diametro' => $request->diametro,
-            'observacao' => $request->observacao
+            //'banda' => $request->banda,
+            //'datanota' => $request->datanota,
+            //'marca' => $request->marca,
+            //'modelo' => $request->modelo,
+            //'notafiscal' => $request->notafiscal,
+            //'situacao' => $request->situacao,
+            //'diametro' => $request->diametro,
+            //'observacao' => $request->observacao
         ]);
         return response()->json($antena, 200);
     }
