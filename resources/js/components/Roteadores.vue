@@ -53,7 +53,10 @@
                 <card-component titulo="Relação de roteadores">
                     <template v-slot:conteudo>
                         <!-- Instanciando o componente Table.vue -->
-                        <table-component></table-component>
+                        <table-component
+                            :dados="roteadores"
+                            :titulos="['ID', 'Nome', 'Marca', 'Imagem']"
+                        ></table-component>
                     </template>
 
                     <template v-slot:rodape>
@@ -165,9 +168,38 @@ export default {
             arquivoImagem: [],
             transacaoStatus: "",
             transacaoDetalhes: [],
+            roteadores: []
         };
     },
     methods: {
+        carregarLista() {
+            /* Recebendo um "objeto literal":
+               Um objeto literal é composto por um par de chaves " { } ",
+               que envolve uma ou mais propriedades. Cada propriedade segue
+               o formato " nome: valor " e devem ser separadas por vírgula. */
+            let config = {
+                headers: {
+                    /* "Content-Type": "multipart/form-data", */
+                    Accept: "application/json",
+                    Authorization: this.token,
+                },
+            };
+
+            /* Axios: biblioteca javascript que já vem instalada quando iniciamos
+               projetos front-end no framework laravel.
+               Ela realiza as requisições baseando-se em promises,
+               o que nos ajuda a ter um código realmente assíncrono.
+               É um cliente http */
+            axios.get(this.urlBase, config)
+                .then(response => {
+                    this.roteadores = response.data
+                    console.log(this.roteadores)
+                })
+                .catch(errors => {
+                    console.log(errors)
+                })
+        },
+
         carregarImagem(e) {
             this.arquivoImagem = e.target.files;
         },
@@ -198,8 +230,7 @@ export default {
                       o que nos ajuda a ter um código realmente assíncrono.
                       É um cliente http */
             /* Este método (post()) espera 03 parâmetros: */
-            axios
-                .post(this.urlBase, formData, config)
+            axios.post(this.urlBase, formData, config)
                 /* Pegando(recuperando) a resposta */
                 .then((response) => {
                     this.transacaoStatus = "adicionado";
@@ -218,6 +249,10 @@ export default {
                     //errors.response.data.message
                 });
         },
+    },
+    /* Ciclo de vida "mounted()", quando o componente estiver totalmente montado */
+    mounted() {
+        this.carregarLista()
     },
 };
 </script>

@@ -53,7 +53,10 @@
                 <card-component titulo="Relação de antenas">
                     <template v-slot:conteudo>
                         <!-- Instanciando o componente Table.vue -->
-                        <table-component></table-component>
+                        <table-component
+                            :dados="antenas"
+                            :titulos="['ID', 'Nome', 'Marca', 'Imagem']"
+                        ></table-component>
                     </template>
 
                     <template v-slot:rodape>
@@ -115,7 +118,7 @@
                         id-help="novaImagemHelp"
                         texto-ajuda=" Carregue uma imagem no formato PNG"
                     >
-                        <!-- Diretiva v-on(@) para evento "change(altera   ção)" -->
+                        <!-- Diretiva v-on(@) para evento "change(alteração)" -->
                         <input
                             type="file"
                             class="form-control-file"
@@ -173,15 +176,27 @@ export default {
 
     methods: {
         carregarLista() {
+            /* Recebendo um "objeto literal":
+               Um objeto literal é composto por um par de chaves " { } ",
+               que envolve uma ou mais propriedades. Cada propriedade segue
+               o formato " nome: valor " e devem ser separadas por vírgula. */
+            let config = {
+                headers: {
+                    /* "Content-Type": "multipart/form-data", */
+                    Accept: "application/json",
+                    Authorization: this.token,
+                },
+            };
+
             /* Axios: biblioteca javascript que já vem instalada quando iniciamos
                projetos front-end no framework laravel.
                Ela realiza as requisições baseando-se em promises,
                o que nos ajuda a ter um código realmente assíncrono.
                É um cliente http */
-            axios.get(this.urlBase)
+            axios.get(this.urlBase, config)
                 .then(response => {
                     this.antenas = response.data
-                    console.log(this.antenas)
+                    //console.log(this.antenas)
                 })
                 .catch(errors => {
                     console.log(errors)
@@ -242,6 +257,5 @@ export default {
     mounted() {
         this.carregarLista()
     },
-
 };
 </script>

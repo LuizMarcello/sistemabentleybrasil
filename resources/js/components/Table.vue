@@ -1,37 +1,31 @@
 <template>
-    <table class="table table-hover">
-        <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">First</th>
-                <th scope="col">Last</th>
-                <th scope="col">Handle</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-            </tr>
-            <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-            </tr>
-            <tr>
-                <th scope="row">3</th>
-                <td colspan="2">Larry the Bird</td>
-                <td>@twitter</td>
-            </tr>
-        </tbody>
-    </table>
+    <div>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col" v-for="t, key in titulos" :key="key">{{ t }}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="a in dados" :key="a.id">
+                    <!-- Usando o double mustache -->
+                    <th scope="row">{{ a.id }}</th>
+                    <td>{{ a.nome }}</td>
+                    <td>{{ a.marca }}</td>
+                    <td>
+                        <img :src="'/storage/' + a.imagem" width="33" height="33" />
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <!--  {{ dados }} -->
+    </div>
 </template>
 
 <script>
-export default {};
+export default {
+    props: ['dados', 'titulos']
+};
 </script>
 
 <style>

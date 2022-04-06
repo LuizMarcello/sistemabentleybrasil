@@ -6,54 +6,54 @@ use Illuminate\Support\Facades\Storage;
 use App\Models\Roteador;
 use Illuminate\Http\Request;
 
-class RoteadorController extends Controller
-{
+class RoteadorController extends Controller {
     /* Construtor desta classe, para quando o objeto
-       (esta classe) for instanciada. Está usando a
-       sugestão de tipo (type-hinting), para injetar
-       a instância do respectivo model neste controller.
+    ( esta classe ) for instanciada. Está usando a
+    sugestão de tipo ( type-hinting ), para injetar
+    a instância do respectivo model neste controller.
     */
-    public function __construct(Roteador $roteador)
-    {
+
+    public function __construct( Roteador $roteador ) {
         $this->rrroteador = $roteador;
     }
 
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        return response()->json($this->rrroteador->all(), 200);
+    * Display a listing of the resource.
+    *
+    * @return \Illuminate\Http\Response
+    */
+
+    public function index() {
+        return response()->json( $this->rrroteador->all(), 200 );
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
+    * Show the form for creating a new resource.
+    *
+    * @return \Illuminate\Http\Response
+    */
+
+    public function create() {
         //
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
+    * Store a newly created resource in storage.
+    *
+    * @param  \Illuminate\Http\Request  $request
+    * @return \Illuminate\Http\Response
+    */
+
+    public function store( Request $request ) {
         /* Modo massivo */
-        $request->validate($this->rrroteador->rules());
 
-        $imagem = $request->file('imagem');
+        $request->validate( $this->rrroteador->rules(), $this->rrroteador->feedback() );
 
-        $imagem_urn = $imagem->store('imagens/roteadores', 'public');
+        $imagem = $request->file( 'imagem' );
 
-        $roteador = $this->rrroteador->create([
+        $imagem_urn = $imagem->store( 'imagens/roteadores', 'public' );
+
+        $roteador = $this->rrroteador->create( [
             //'nome' => $request->nome,
             'imagem' => $imagem_urn,
             //'banda' => $request->banda,
@@ -66,81 +66,79 @@ class RoteadorController extends Controller
             //'situacao' => $request->situacao,
             //'observacao' => $request->observacao
 
-        ]);
+        ] );
 
-        return response()->json($roteador, 201);
+        return response()->json( $roteador, 201 );
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Roteador  $roteador
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        $roteador = $this->rrroteador->find($id);
-        if ($roteador === null) {
-            return response()->json(['erro' => 'Recurso não existe'], 404);
+    * Display the specified resource.
+    *
+    * @param  \App\Models\Roteador  $roteador
+    * @return \Illuminate\Http\Response
+    */
+
+    public function show( $id ) {
+        $roteador = $this->rrroteador->find( $id );
+        if ( $roteador === null ) {
+            return response()->json( [ 'erro' => 'Recurso não existe' ], 404 );
         }
-        return response()->json($roteador, 200);
+        return response()->json( $roteador, 200 );
     }
 
-
-
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Roteador  $roteador
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Roteador $roteador)
-    {
+    * Show the form for editing the specified resource.
+    *
+    * @param  \App\Models\Roteador  $roteador
+    * @return \Illuminate\Http\Response
+    */
+
+    public function edit( Roteador $roteador ) {
         //
     }
 
     /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request $request
-     * @param  \App\Models\Roteador $roteador
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        $roteador = $this->rrroteador->find($id);
+    * Update the specified resource in storage.
+    *
+    * @param  \Illuminate\Http\Request $request
+    * @param  \App\Models\Roteador $roteador
+    * @return \Illuminate\Http\Response
+    */
 
-        if ($roteador === null) {
+    public function update( Request $request, $id ) {
+        $roteador = $this->rrroteador->find( $id );
 
-            return response()->json(['erro' => 'Impossível realizar a atualização. O recurso não existe.'], 404);
+        if ( $roteador === null ) {
+
+            return response()->json( [ 'erro' => 'Impossível realizar a atualização. O recurso não existe.' ], 404 );
         }
 
-        if ($request->method() === 'PATCH') {
+        if ( $request->method() === 'PATCH' ) {
 
             $regrasDinamicas = array();
 
-            foreach ($roteador->rules() as $input => $regra) {
+            foreach ( $roteador->rules() as $input => $regra ) {
 
-                if (array_key_exists($input, $request->all())) {
-                    $regrasDinamicas[$input] = $regra;
+                if ( array_key_exists( $input, $request->all() ) ) {
+                    $regrasDinamicas[ $input ] = $regra;
                 }
             }
 
-            $request->validate($regrasDinamicas, $roteador->feedback());
+            $request->validate( $regrasDinamicas, $roteador->feedback() );
         } else {
-            $request->validate($roteador->rules(), $roteador->feedback());
+            $request->validate( $roteador->rules(), $roteador->feedback() );
         }
 
-        if ($request->file('imagem')) {
+        if ( $request->file( 'imagem' ) ) {
 
-            Storage::disk('public')->delete($roteador->imagem);
+            Storage::disk( 'public' )->delete( $roteador->imagem );
         }
 
-        $imagem = $request->file('imagem');
+        $imagem = $request->file( 'imagem' );
 
-        $imagem_urn = $imagem->store('imagens/roteadores', 'public');
-
-        $roteador->update([
+        $imagem_urn = $imagem->store( 'imagens/roteadores', 'public' );
+       
+        $roteador->update( [
             //'banda' => $request->banda,
             'imagem' => $imagem_urn,
             //'datanota' => $request->datanota,
@@ -152,31 +150,27 @@ class RoteadorController extends Controller
             //'situacao' => $request->situacao,
             //'observacao' => $request->observacao
 
-
-
-        ]);
-        return response()->json($roteador, 200);
+        ] );
+        return response()->json( $roteador, 200 );
     }
 
-
-
     /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Roteador  $roteador
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        $roteador = $this->rrroteador->find($id);
+    * Remove the specified resource from storage.
+    *
+    * @param  \App\Models\Roteador  $roteador
+    * @return \Illuminate\Http\Response
+    */
 
-        if ($roteador === null) {
-            return response()->json(['erro' => 'Impossível excluir. O registro não existe.'], 404);
+    public function destroy( $id ) {
+        $roteador = $this->rrroteador->find( $id );
+
+        if ( $roteador === null ) {
+            return response()->json( [ 'erro' => 'Impossível excluir. O registro não existe.' ], 404 );
         }
 
-        Storage::disk('public')->delete($roteador->imagem);
+        Storage::disk( 'public' )->delete( $roteador->imagem );
 
         $roteador->delete();
-        return response()->json(['msg' => 'O roteador foi removido com sucesso!'], 200);
+        return response()->json( [ 'msg' => 'O roteador foi removido com sucesso!' ], 200 );
     }
 }
