@@ -23,7 +23,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
    API, um array associativo. Então será retornado na resposta desta
    requisição, content-type do tipo "Application-json". */
 Route::get('/', function () {
-    return ['Chegamos até aqui' => 'SIM'];
+          return ['Chegamos até aqui' => 'SIM'];
 });
 
 /* Rotas protegidas: */

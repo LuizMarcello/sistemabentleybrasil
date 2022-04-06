@@ -25,12 +25,12 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 /* Rota protegida com o middleware auth.
    Somente autenticada, por sessão */
 Route::get('/antenas', function () {
-    return view('app.antenas');
+         return view('app.antenas');
 })->name('antenas')->middleware('auth');
 
 /* Rota protegida com o middleware auth.
    Somente autenticada, por sessão */
-   Route::get('/roteadores', function () {
+      Route::get('/roteadores', function () {
     return view('app.roteadores');
 })->name('roteadores')->middleware('auth');
 

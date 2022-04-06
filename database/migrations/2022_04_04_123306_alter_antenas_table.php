@@ -15,7 +15,7 @@ class AlterAntenasTable extends Migration
     {
         Schema::table('antenas', function (Blueprint $table) {
             $table->string('banda', 4);
-            $table->date('datanota', 12);
+            $table->string('datanota', 12);
             $table->string('marca', 30);
             $table->string('modelo', 30);
             $table->string('notafiscal', 15);
