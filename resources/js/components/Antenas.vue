@@ -58,10 +58,11 @@
             <table-component
               :dados="antenas"
               :titulos="{
-                id: { titulo: 'Id', tipo: 'text' },
-                nome: { titulo: 'Nome', tipo: 'text' },
+                id: { titulo: 'Id', tipo: 'texto' },
+                nome: { titulo: 'Nome', tipo: 'texto' },
                 imagem: { titulo: 'Imagem', tipo: 'imagem' },
-                created_at: { titulo: 'Data de criação', tipo: 'data' },
+                created_at: { titulo: 'Criação', tipo: 'data' },
+                //updated_at: { titulo: 'Data da atualização', tipo: 'data' },
               }"
             ></table-component>
           </template>
@@ -208,12 +209,15 @@ export default {
         .get(this.urlBase, config)
         .then((response) => {
           this.antenas = response.data;
-          //console.log(this.antenas)
+
+          console.log(this.antenas)
         })
         .catch((errors) => {
           console.log(errors);
         });
     },
+
+
 
     carregarImagem(e) {
       this.arquivoImagem = e.target.files;

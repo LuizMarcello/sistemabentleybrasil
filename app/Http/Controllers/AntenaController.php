@@ -133,12 +133,8 @@ class AntenaController extends Controller {
         //print_r( $antena->getAttributes() );
         //Os dados antigos, antes do update
 
-        //$antena->update( $request->all() );
         /* Variável $antena sendo instanciando como objeto do tipo 'Antena' */
         $antena = $this->aaantena->find( $id );
-
-        //dd( $request->nome );
-        //dd( $request->file( 'imagem' ) );
 
         if ( $antena === null ) {
             /* helper 'response()' do laravel */
@@ -147,13 +143,13 @@ class AntenaController extends Controller {
             return response()->json( [ 'erro' => 'Impossível realizar a atualização. O recurso não existe.' ], 404 );
         }
 
+        /* Método 'PATH' permite o envio parcial de parâmetros */
         if ( $request->method() === 'PATCH' ) {
 
             $regrasDinamicas = array();
 
             /* Percorrendo todas as regras( rules() ) definidas no Model */
             foreach ( $antena->rules() as $input => $regra ) {
-                //$teste .= 'Input: ' . $input . ' | Regra: ' . $regra . '<br>';
 
                 /* Coletar apenas as regras aplicáveis aos parâmetros parciais da requisição PATCH */
                 /* Método nativo do PHP que varre o array procurando a chave "$input" no mesmo */
@@ -161,7 +157,7 @@ class AntenaController extends Controller {
                     $regrasDinamicas[ $input ] = $regra;
                 }
             }
-            //dd( $regrasDinamicas );
+
             $request->validate( $regrasDinamicas, $antena->feedback() );
         } else {
             $request->validate( $antena->rules(), $antena->feedback() );
@@ -175,11 +171,10 @@ class AntenaController extends Controller {
         }
 
         $imagem = $request->file( 'imagem' );
-        //dd( $imagem );
+
         /* O método store() espera dois parâmetros */
         //$image->store( 'path', 'disco' );
         $imagem_urn = $imagem->store( 'imagens/antenas', 'public' );
-        //dd( $imagem_urn );
 
         $antena->update( [
             'nome' => $request->nome,

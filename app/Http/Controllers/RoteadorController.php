@@ -106,19 +106,32 @@ class RoteadorController extends Controller {
     */
 
     public function update( Request $request, $id ) {
+        //print_r( $request->all() );
+        //Os dados atualizados.
+        //print_r( $antena->getAttributes() );
+        //Os dados antigos, antes do update
+
+        /* Variável $antena sendo instanciando como objeto do tipo 'Antena' */
         $roteador = $this->rrroteador->find( $id );
 
         if ( $roteador === null ) {
+            /* helper 'response()' do laravel */
+            /* Através dele, podemos alterar os detalhes da resposta dada pelo laravel*/
+            /* Como 2º parâmetro do método 'json()', podemos passar o status code http */
 
             return response()->json( [ 'erro' => 'Impossível realizar a atualização. O recurso não existe.' ], 404 );
         }
 
+        /* Método 'PATH' permite o envio parcial de parâmetros */
         if ( $request->method() === 'PATCH' ) {
 
             $regrasDinamicas = array();
 
+            /* Percorrendo todas as regras( rules() ) definidas no Model */
             foreach ( $roteador->rules() as $input => $regra ) {
 
+                /* Coletar apenas as regras aplicáveis aos parâmetros parciais da requisição PATCH */
+                /* Método nativo do PHP que varre o array procurando a chave "$input" no mesmo */
                 if ( array_key_exists( $input, $request->all() ) ) {
                     $regrasDinamicas[ $input ] = $regra;
                 }
@@ -129,15 +142,19 @@ class RoteadorController extends Controller {
             $request->validate( $roteador->rules(), $roteador->feedback() );
         }
 
+        /* Remove a imagem antiga caso uma nova imagem tenha sido enviado no request do update */
         if ( $request->file( 'imagem' ) ) {
-
+            /* 'Storage' é um façade do laravel */
+            /* Remove a imagem */
             Storage::disk( 'public' )->delete( $roteador->imagem );
         }
 
         $imagem = $request->file( 'imagem' );
 
+        /* O método store() espera dois parâmetros */
+        //$image->store( 'path', 'disco' );
         $imagem_urn = $imagem->store( 'imagens/roteadores', 'public' );
-       
+
         $roteador->update( [
             //'banda' => $request->banda,
             'imagem' => $imagem_urn,

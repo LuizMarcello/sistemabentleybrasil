@@ -60,10 +60,12 @@
             <table-component
               :dados="roteadores"
               :titulos="{
-                id: { titulo: 'Id', tipo: 'text' },
-                nome: { titulo: 'Nome', tipo: 'text' },
+                id: { titulo: 'Id', tipo: 'texto' },
+               //nome: { titulo: 'Nome', tipo: 'text' },
+                marca: { titulo: 'Marca', tipo: 'texto' },
                 imagem: { titulo: 'Imagem', tipo: 'imagem' },
-                created_at: { titulo: 'Data de criação', tipo: 'data' },
+                created_at: { titulo: 'Criação', tipo: 'data' },
+                //updated_at: { titulo: 'Data da atualização', tipo: 'data' },
               }"
             ></table-component>
 
@@ -209,12 +211,15 @@ export default {
         .get(this.urlBase, config)
         .then((response) => {
           this.roteadores = response.data;
+
           console.log(this.roteadores);
         })
         .catch((errors) => {
           console.log(errors);
         });
     },
+
+
 
     carregarImagem(e) {
       this.arquivoImagem = e.target.files;
