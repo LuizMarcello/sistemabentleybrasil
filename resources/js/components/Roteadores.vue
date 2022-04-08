@@ -54,6 +54,8 @@
         <!-- Inicio do card de listagem de roteadores -->
         <card-component titulo="Relação de roteadores">
           <template v-slot:conteudo>
+
+
             <!-- Instanciando o componente Table.vue -->
             <table-component
               :dados="roteadores"
@@ -64,6 +66,8 @@
                 created_at: { titulo: 'Data de criação', tipo: 'data' },
               }"
             ></table-component>
+
+
           </template>
 
           <template v-slot:rodape>
