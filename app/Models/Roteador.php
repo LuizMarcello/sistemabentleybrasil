@@ -15,7 +15,7 @@ class Roteador extends Model
     /* Modo massivo */
     protected $fillable = [
         'banda', 'datanota', 'macaddress', 'marca', 'modelo', 'notafiscal',
-        'serial', 'situacao', 'observacao', 'imagem'
+        'serial', 'situacao', 'observacao', 'imagem', 'antena_id'
     ];
 
     public function rules()
@@ -30,7 +30,8 @@ class Roteador extends Model
             //'notafiscal' => 'required',
             //'serial' => 'required',
             //'situacao' => 'required',
-            //'observacao' => 'required'
+            //'observacao' => 'required',
+            //'antena_id' => 'required'
         ];
 
         /* A validação "unique" tem 3 parâmetros:
