@@ -27,18 +27,40 @@ class RoteadorController extends Controller {
         $roteadores = array();
 
         /* Verificando se um determinado parâmetro existe/está definido no request */
+        if ( $request->has( 'atributos_antena' ) ) {
+            $atributos_antena = $request->atributos_antena;
+            $roteadores = $this->rrroteador->with( 'antena:id,'.$atributos_antena );
+        } else {
+            $roteadores = $this->rrroteador->with( 'antena' );
+        }
+
+        /* Verificando se um determinado parâmetro existe/está definido no request */
+        if ( $request->has( 'filtro' ) ) {
+
+            $filtros = explode( ';', $request->filtro );
+
+            foreach ( $filtros as $key => $condicao ) {
+                $c =  explode( ':',  $condicao );
+                $roteadores = $roteadores->where( $c[ 0 ], $c[ 1 ], $c[ 2 ] );
+            }
+
+        }
+
+        /* Verificando se um determinado parâmetro existe/está definido no request */
         if ( $request->has( 'atributos' ) ) {
             $atributos = $request->atributos;
+
+            //dd( $atributos_antena );
             /* selectRaw() sabe lidar com: 'id,marca,imagem'( uma string só ) com
             'id', 'marca', 'imagem'( três strings separadas por virgula ) */
-            $roteadores = $this->rrroteador->selectRaw( $atributos )->with( 'antena' )->get();
+            $roteadores = $roteadores->selectRaw( $atributos )->get();
             /* all() -> criando um obj de consulta + get() = collection */
             /* get() -> modificar a consulta -> collection */
-            //dd( $request->atributos );
+
             //
         } else {
             /* with(): Relacionamento com 'antenas' */
-            $roteadores = $this->rrroteador->with( 'antena' )->get();
+            $roteadores = $roteadores->get();
         }
         return response()->json( $roteadores, 200 );
     }
