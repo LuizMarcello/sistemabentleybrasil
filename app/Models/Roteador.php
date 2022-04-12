@@ -39,6 +39,15 @@ class Roteador extends Model
             3) id do registro que será desconsiderado na pesquisa */
     }
 
+    /* Relacionamentos:
+       Antena = Marca
+       Roteador = Modelo */
+    public function antena() {
+        /* Um roteador pertence a uma antena */
+        return $this->belongsTo('App\Models\Antena');
+
+    }
+
     public function feedback()
     {
         return  [

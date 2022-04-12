@@ -40,6 +40,15 @@ class Antena extends Model
            3) id do registro que será desconsiderado na pesquisa */
     }
 
+    /* Relacionamentos:
+       Antena = Marca
+       Roteador = Modelo */
+    public function roteadores()
+    {
+        /* Uma antena possui vários roteadores */
+        return $this->hasMany('App\Models\Roteador');
+    }
+
     public function feedback()
     {
         return  [
