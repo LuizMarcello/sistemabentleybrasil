@@ -6,92 +6,93 @@ use Illuminate\Support\Facades\Storage;
 use App\Models\Roteador;
 use Illuminate\Http\Request;
 
-class RoteadorController extends Controller {
+class RoteadorController extends Controller
+{
     /* Construtor desta classe, para quando o objeto
     ( esta classe ) for instanciada. Está usando a
     sugestão de tipo ( type-hinting ), para injetar
     a instância do respectivo model neste controller.
     */
 
-    public function __construct( Roteador $roteador ) {
+    public function __construct(Roteador $roteador)
+    {
         $this->rrroteador = $roteador;
     }
 
     /**
-    * Display a listing of the resource.
-    *
-    * @return \Illuminate\Http\Response
-    */
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
 
-    public function index( Request $request ) {
+    public function index(Request $request)
+    {
         $roteadores = array();
 
         /* Verificando se um determinado parâmetro existe/está definido no request */
-        if ( $request->has( 'atributos_antena' ) ) {
+        if ($request->has('atributos_antena')) {
             $atributos_antena = $request->atributos_antena;
-            $roteadores = $this->rrroteador->with( 'antena:id,'.$atributos_antena );
+            $roteadores = $this->rrroteador->with('antena:id,' . $atributos_antena);
         } else {
-            $roteadores = $this->rrroteador->with( 'antena' );
+            $roteadores = $this->rrroteador->with('antena');
         }
 
+
         /* Verificando se um determinado parâmetro existe/está definido no request */
-        if ( $request->has( 'filtro' ) ) {
-
-            $filtros = explode( ';', $request->filtro );
-
-            foreach ( $filtros as $key => $condicao ) {
-                $c =  explode( ':',  $condicao );
-                $roteadores = $roteadores->where( $c[ 0 ], $c[ 1 ], $c[ 2 ] );
+        if ($request->has('filtro')) {
+            $filtros = explode(';', $request->filtro);
+            foreach ($filtros as $key => $condicao) {
+                $c =  explode(':',  $condicao);
+                $roteadores = $roteadores->where($c[0], $c[1], $c[2]);
             }
-
         }
 
         /* Verificando se um determinado parâmetro existe/está definido no request */
-        if ( $request->has( 'atributos' ) ) {
+        if ($request->has('atributos')) {
             $atributos = $request->atributos;
-
-            //dd( $atributos_antena );
             /* selectRaw() sabe lidar com: 'id,marca,imagem'( uma string só ) com
             'id', 'marca', 'imagem'( três strings separadas por virgula ) */
-            $roteadores = $roteadores->selectRaw( $atributos )->get();
+            $roteadores = $roteadores->selectRaw($atributos)->get();
             /* all() -> criando um obj de consulta + get() = collection */
             /* get() -> modificar a consulta -> collection */
-
-            //
         } else {
             /* with(): Relacionamento com 'antenas' */
             $roteadores = $roteadores->get();
         }
-        return response()->json( $roteadores, 200 );
+        
+        return response()->json($roteadores, 200);
     }
 
-    /**
-    * Show the form for creating a new resource.
-    *
-    * @return \Illuminate\Http\Response
-    */
 
-    public function create() {
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+
+    public function create()
+    {
         //
     }
 
     /**
-    * Store a newly created resource in storage.
-    *
-    * @param  \Illuminate\Http\Request  $request
-    * @return \Illuminate\Http\Response
-    */
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
 
-    public function store( Request $request ) {
+    public function store(Request $request)
+    {
         /* Modo massivo */
 
-        $request->validate( $this->rrroteador->rules(), $this->rrroteador->feedback() );
+        $request->validate($this->rrroteador->rules(), $this->rrroteador->feedback());
 
-        $imagem = $request->file( 'imagem' );
+        $imagem = $request->file('imagem');
 
-        $imagem_urn = $imagem->store( 'imagens/roteadores', 'public' );
+        $imagem_urn = $imagem->store('imagens/roteadores', 'public');
 
-        $roteador = $this->rrroteador->create( [
+        $roteador = $this->rrroteador->create([
             //'nome' => $request->nome,
             'imagem' => $imagem_urn,
             //'banda' => $request->banda,
@@ -105,101 +106,104 @@ class RoteadorController extends Controller {
             //'situacao' => $request->situacao,
             //'observacao' => $request->observacao
 
-        ] );
+        ]);
 
-        return response()->json( $roteador, 201 );
+        return response()->json($roteador, 201);
     }
 
     /**
-    * Display the specified resource.
-    *
-    * @param  \App\Models\Roteador  $roteador
-    * @return \Illuminate\Http\Response
-    */
+     * Display the specified resource.
+     *
+     * @param  \App\Models\Roteador  $roteador
+     * @return \Illuminate\Http\Response
+     */
 
-    public function show( $id ) {
+    public function show($id)
+    {
         /* Pesquisando um 'roteador' e adicionando seu relacionamento com 'antena'
         O 'with()' é usado para informações de relacionamentos */
-        $roteador = $this->rrroteador->with( 'antena' )->find( $id );
-        if ( $roteador === null ) {
+        $roteador = $this->rrroteador->with('antena')->find($id);
+        if ($roteador === null) {
             /* helper 'response()' do laravel */
             /* Através dele, podemos alterar os detalhes da resposta dada pelo laravel*/
             /* Como 2º parâmetro do método 'json()', podemos passar o status code http */
-            return response()->json( [ 'erro' => 'Recurso não existe' ], 404 );
+            return response()->json(['erro' => 'Recurso não existe'], 404);
         }
-        return response()->json( $roteador, 200 );
+        return response()->json($roteador, 200);
     }
 
     /**
-    * Show the form for editing the specified resource.
-    *
-    * @param  \App\Models\Roteador  $roteador
-    * @return \Illuminate\Http\Response
-    */
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Models\Roteador  $roteador
+     * @return \Illuminate\Http\Response
+     */
 
-    public function edit( Roteador $roteador ) {
+    public function edit(Roteador $roteador)
+    {
         //
     }
 
     /**
-    * Update the specified resource in storage.
-    *
-    * @param  \Illuminate\Http\Request $request
-    * @param  \App\Models\Roteador $roteador
-    * @return \Illuminate\Http\Response
-    */
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request $request
+     * @param  \App\Models\Roteador $roteador
+     * @return \Illuminate\Http\Response
+     */
 
-    public function update( Request $request, $id ) {
+    public function update(Request $request, $id)
+    {
         //print_r( $request->all() );
         //Os dados atualizados.
         //print_r( $antena->getAttributes() );
         //Os dados antigos, antes do update
 
         /* Variável $antena sendo instanciando como objeto do tipo 'Antena' */
-        $roteador = $this->rrroteador->find( $id );
+        $roteador = $this->rrroteador->find($id);
 
-        if ( $roteador === null ) {
+        if ($roteador === null) {
             /* helper 'response()' do laravel */
             /* Através dele, podemos alterar os detalhes da resposta dada pelo laravel*/
             /* Como 2º parâmetro do método 'json()', podemos passar o status code http */
 
-            return response()->json( [ 'erro' => 'Impossível realizar a atualização. O recurso não existe.' ], 404 );
+            return response()->json(['erro' => 'Impossível realizar a atualização. O recurso não existe.'], 404);
         }
 
         /* Método 'PATH' permite o envio parcial de parâmetros */
-        if ( $request->method() === 'PATCH' ) {
+        if ($request->method() === 'PATCH') {
 
             $regrasDinamicas = array();
 
             /* Percorrendo todas as regras( rules() ) definidas no Model */
-            foreach ( $roteador->rules() as $input => $regra ) {
+            foreach ($roteador->rules() as $input => $regra) {
 
                 /* Coletar apenas as regras aplicáveis aos parâmetros parciais da requisição PATCH */
                 /* Método nativo do PHP que varre o array procurando a chave "$input" no mesmo */
-                if ( array_key_exists( $input, $request->all() ) ) {
-                    $regrasDinamicas[ $input ] = $regra;
+                if (array_key_exists($input, $request->all())) {
+                    $regrasDinamicas[$input] = $regra;
                 }
             }
 
-            $request->validate( $regrasDinamicas, $roteador->feedback() );
+            $request->validate($regrasDinamicas, $roteador->feedback());
         } else {
-            $request->validate( $roteador->rules(), $roteador->feedback() );
+            $request->validate($roteador->rules(), $roteador->feedback());
         }
 
         /* Remove a imagem antiga caso uma nova imagem tenha sido enviado no request do update */
-        if ( $request->file( 'imagem' ) ) {
+        if ($request->file('imagem')) {
             /* 'Storage' é um façade do laravel */
             /* Remove a imagem */
-            Storage::disk( 'public' )->delete( $roteador->imagem );
+            Storage::disk('public')->delete($roteador->imagem);
         }
 
-        $imagem = $request->file( 'imagem' );
+        $imagem = $request->file('imagem');
 
         /* O método store() espera dois parâmetros */
         //$image->store( 'path', 'disco' );
-        $imagem_urn = $imagem->store( 'imagens/roteadores', 'public' );
+        $imagem_urn = $imagem->store('imagens/roteadores', 'public');
 
-        $roteador->fill( $request->all() );
+        $roteador->fill($request->all());
         $roteador->imagem = $imagem_urn;
         $roteador->save();
 
@@ -219,26 +223,27 @@ class RoteadorController extends Controller {
         /* ] );
         */
 
-        return response()->json( $roteador, 200 );
+        return response()->json($roteador, 200);
     }
 
     /**
-    * Remove the specified resource from storage.
-    *
-    * @param  \App\Models\Roteador  $roteador
-    * @return \Illuminate\Http\Response
-    */
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Models\Roteador  $roteador
+     * @return \Illuminate\Http\Response
+     */
 
-    public function destroy( $id ) {
-        $roteador = $this->rrroteador->find( $id );
+    public function destroy($id)
+    {
+        $roteador = $this->rrroteador->find($id);
 
-        if ( $roteador === null ) {
-            return response()->json( [ 'erro' => 'Impossível excluir. O registro não existe.' ], 404 );
+        if ($roteador === null) {
+            return response()->json(['erro' => 'Impossível excluir. O registro não existe.'], 404);
         }
 
-        Storage::disk( 'public' )->delete( $roteador->imagem );
+        Storage::disk('public')->delete($roteador->imagem);
 
         $roteador->delete();
-        return response()->json( [ 'msg' => 'O roteador foi removido com sucesso!' ], 200 );
+        return response()->json(['msg' => 'O roteador foi removido com sucesso!'], 200);
     }
 }
