@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Roteador;
 use Illuminate\Http\Request;
+use App\Repositories\RoteadorRepository;
 
 class RoteadorController extends Controller
 {
@@ -27,43 +28,31 @@ class RoteadorController extends Controller
 
     public function index(Request $request)
     {
-        $roteadores = array();
+        $roteadorRepository = new RoteadorRepository($this->rrroteador);
 
         /* Verificando se um determinado parâmetro existe/está definido no request */
         if ($request->has('atributos_antena')) {
-            $atributos_antena = $request->atributos_antena;
-            $roteadores = $this->rrroteador->with('antena:id,' . $atributos_antena);
+            $atributos_antena = 'antena:id,' . $request->atributos_antena;
+            $roteadorRepository->selectAtributosRegistrosRelacionados($atributos_antena);
         } else {
-            $roteadores = $this->rrroteador->with('antena');
+            $roteadorRepository->selectAtributosRegistrosRelacionados('antena');
         }
-
 
         /* Verificando se um determinado parâmetro existe/está definido no request */
         if ($request->has('filtro')) {
-            $filtros = explode(';', $request->filtro);
-            foreach ($filtros as $key => $condicao) {
-                $c =  explode(':',  $condicao);
-                $roteadores = $roteadores->where($c[0], $c[1], $c[2]);
-            }
+            $roteadorRepository->filtro($request->filtro);
         }
 
         /* Verificando se um determinado parâmetro existe/está definido no request */
         if ($request->has('atributos')) {
-            $atributos = $request->atributos;
-            /* selectRaw() sabe lidar com: 'id,marca,imagem'( uma string só ) com
-            'id', 'marca', 'imagem'( três strings separadas por virgula ) */
-            $roteadores = $roteadores->selectRaw($atributos)->get();
-            /* all() -> criando um obj de consulta + get() = collection */
-            /* get() -> modificar a consulta -> collection */
-        } else {
-            /* with(): Relacionamento com 'antenas' */
-            $roteadores = $roteadores->get();
+            $roteadorRepository->selectAtributos($request->atributos);
         }
-        
-        return response()->json($roteadores, 200);
+
+        return response()->json($roteadorRepository->getResultado(), 200);
     }
 
 
+    
     /**
      * Show the form for creating a new resource.
      *
