@@ -10,6 +10,20 @@ class Antena extends Model
     //use SoftDeletes;
     use HasFactory;
 
+    /**
+     * The database table used by the model.
+     *
+     * @var string
+     */
+    protected $table = 'antenas';
+
+    /**
+     * The database primary key value.
+     *
+     * @var string
+     */
+    protected $primaryKey = 'id';
+
     /* Por questão de segurança, o "fillable" é para dizer quais são
        os únicos campos que serão aceitos pelo model. O usuário poderia
        tentar inspecionar e injetar algum campo a mais, lá no front. */

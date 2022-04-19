@@ -44,14 +44,14 @@ Route::prefix('v1')->middleware('jwt.auth')->group(function () {
     //Route::apiresource('empresas', 'EmpresaController');
     //Route::apiresource('fontes', 'FonteController');
     //Route::apiresource('grooves', 'GrooveController');
-    //Route::apiresource('instaladores', 'InstaladorController');
+    Route::apiresource('instaladores', 'InstaladorController');
     Route::apiresource('roteadores', 'RoteadorController');
     //Route::apiresource('modens', 'ModemController');
     //Route::apiresource('lnbs', 'LnbController');
     //Route::apiresource('ilnbs', 'IlnbController');
     //Route::apiresource('historicos', 'HistoricoController');
     //Route::apiresource('planos', 'PlanoController');
-    //Route::apiresource('clientes', 'ClienteController');
+    Route::apiresource('clientes', 'ClienteController');
     //Route::apiresource('distribuidores', 'DistribuidorController');
     //Route::apiresource('migracoes', 'MigracaoController');
     /* Route::apiresource('users', 'UsersController'); */
@@ -62,6 +62,7 @@ Route::prefix('v1')->middleware('jwt.auth')->group(function () {
     //Route::apiresource('modelocontratos', 'ModelocontratoController');
     //Route::apiresource('contratos', 'ContratoController');
     //Route::apiresource('chamados', 'ChamadoController');
+    Route::apiresource('instalacoes', 'InstalacaoController');
 });
 
 /* Rotas públicas: */

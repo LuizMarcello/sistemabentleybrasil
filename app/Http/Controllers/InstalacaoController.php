@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Storage;
-use App\Models\Antena;
+use App\Models\Instalacao;
 use Illuminate\Http\Request;
+use App\Repositories\InstalacaoRepository;
+
 use App\Repositories\AntenaRepository;
 
-class AntenaController extends Controller
+class InstalacaoController extends Controller
 {
     /* Construtor desta classe, para quando o objeto
     ( esta classe ) for instanciada. Está usando a
@@ -15,9 +17,9 @@ class AntenaController extends Controller
     a instância do respectivo model neste controller.
     */
 
-    public function __construct(Antena $antena)
+    public function __construct(Instalacao $instalacao)
     {
-        $this->aaantena = $antena;
+        $this->iiinstalacao = $instalacao;
     }
 
     /**
@@ -25,32 +27,22 @@ class AntenaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-
     public function index(Request $request)
     {
-        $antenaRepository = new AntenaRepository($this->aaantena);
-
-        /* Verificando se um determinado parâmetro existe/está definido no request */
-        if ($request->has('atributos_roteadores')) {
-            $atributos_roteadores = 'roteadores:id,' . $request->atributos_roteadores;
-            $antenaRepository->selectAtributosRegistrosRelacionados($atributos_roteadores);
-        } else {
-            $antenaRepository->selectAtributosRegistrosRelacionados('roteadores');
-        }
-
+        $instalacaoRepository = new InstalacaoRepository($this->iiinstalacao);
+       
         /* Verificando se um determinado parâmetro existe/está definido no request */
         if ($request->has('filtro')) {
-            $antenaRepository->filtro($request->filtro);
+            $instalacaoRepository->filtro($request->filtro);
         }
 
         /* Verificando se um determinado parâmetro existe/está definido no request */
         if ($request->has('atributos')) {
-            $antenaRepository->selectAtributos($request->atributos);
+            $instalacaoRepository->selectAtributos($request->atributos);
         }
 
-        return response()->json($antenaRepository->getResultado(), 200);
+        return response()->json($instalacaoRepository->getResultado(), 200);
     }
-
 
 
     /**
@@ -58,7 +50,6 @@ class AntenaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-
     public function create()
     {
         //
@@ -66,87 +57,76 @@ class AntenaController extends Controller
 
     /**
      * Store a newly created resource in storage.
-     * Persistência dos dados
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-
     public function store(Request $request)
     {
         /* Modo massivo */
 
-        $request->validate($this->aaantena->rules(), $this->aaantena->feedback());
-
-        //dd( $request->nome );
-        //ou
-        //dd( $request->get( 'nome' ) );
-        //ou
-        //dd( $request->input( 'nome' ) );
-
-        //dd( $request->imagem );
-        //ou
-        //dd( $request->file( 'imagem' ) );
+        $request->validate($this->iiinstalacao->rules(), $this->iiinstalacao->feedback());
 
         $imagem = $request->file('imagem');
         /* O método store() espera dois parâmetros */
         //$image->store( 'path', 'disco' );
-        $imagem_urn = $imagem->store('imagens/antenas', 'public');
-        //dd( $imagem_urn );
+        $imagem_urn = $imagem->store('imagens/instalacoes', 'public');
 
-        //$antena = $this->aaantena->create( $request->all() );
-
-        $antena = $this->aaantena->create([
-            'nome' => $request->nome,
+        $instalacao = $this->iiinstalacao->create([
             'imagem' => $imagem_urn,
-            //'banda' => $request->banda,
-            //'datanota' => $request->datanota,
-            //'marca' => $request->marca,
-            //'modelo' => $request->modelo,
-            //'notafiscal' => $request->notafiscal,
-            //'situacao' => $request->situacao,
-            //'diametro' => $request->diametro,
-            //'observacao' => $request->observacao
+            'cliente_id' => $request->cliente_id,
+            'rua' => $request->rua,
+            'numero' =>  $request->numero,
+            'bairro' => $request->bairro,
+            'cidade' => $request->cidade,
+            'estado' => $request->estado,
+            'celular' => $request->celular,
+            'telefone' => $request->telefone,
+            'status' => $request->status,
+            'banda' => $request->banda,
+            'instalador_id' => $request->instalador_id,
+            'distribuidor_id' => $request->distribuidor_id,
+            'plano_id' => $request->plano_id,
+            'dataInstalacao' => $request->dataInstalacao,
+            'observacao' => $request->observacao,
+            'notaFiscal' => $request->notaFiscal,
+            'dataDaNota' => $request->dataDaNota,
         ]);
 
-        //ou:
-        //$antena->nome = $request->nome;
-        //$antena->imagem = $imagem_urn;
-        //$antena->save();
-
-        return response()->json($antena, 201);
+        return response()->json($instalacao, 201);
     }
+
 
     /**
      * Display the specified resource.
      *
-     * @param Integer
+     * @param  \App\Models\Instalacao  $instalacao
      * @return \Illuminate\Http\Response
      */
-
     public function show($id)
     {
-        /* Procurando uma antena, e junto do seu retôrno, todos os registros
+        /* Procurando uma instalacao, e junto do seu retôrno, todos os registros
         relacionados de roteradores
         O 'with()' é usado para informações de relacionamentos */
-        $antena = $this->aaantena->with('roteadores')->find($id);
-        if ($antena === null) {
+        /*  $antena = $this->aaantena->with('roteadores')->find($id); */
+        $instalacao = $this->iiinstalacao->find($id);
+        if ($instalacao === null) {
             /* helper 'response()' do laravel */
             /* Através dele, podemos alterar os detalhes da resposta dada pelo laravel*/
             /* Como 2º parâmetro do método 'json()', podemos passar o status code http */
             return response()->json(['erro' => 'Recurso não existe'], 404);
         }
-        return response()->json($antena, 200);
+        return response()->json($instalacao, 200);
     }
+
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Antena  $antena
+     * @param  \App\Models\Instalacao  $instalacao
      * @return \Illuminate\Http\Response
      */
-
-    public function edit(Antena $antena)
+    public function edit(Instalacao $instalacao)
     {
         //
     }
@@ -155,21 +135,15 @@ class AntenaController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param Integer
+     * @param  \App\Models\Instalacao  $instalacao
      * @return \Illuminate\Http\Response
      */
-
     public function update(Request $request, $id)
     {
-        //print_r( $request->all() );
-        //Os dados atualizados.
-        //print_r( $antena->getAttributes() );
-        //Os dados antigos, antes do update
-
         /* Variável $antena sendo instanciando como objeto do tipo 'Antena' */
-        $antena = $this->aaantena->find($id);
+        $instalacao = $this->iiinstalacao->find($id);
 
-        if ($antena === null) {
+        if ($instalacao === null) {
             /* helper 'response()' do laravel */
             /* Através dele, podemos alterar os detalhes da resposta dada pelo laravel*/
             /* Como 2º parâmetro do método 'json()', podemos passar o status code http */
@@ -182,7 +156,7 @@ class AntenaController extends Controller
             $regrasDinamicas = array();
 
             /* Percorrendo todas as regras( rules() ) definidas no Model */
-            foreach ($antena->rules() as $input => $regra) {
+            foreach ($instalacao->rules() as $input => $regra) {
 
                 /* Coletar apenas as regras aplicáveis aos parâmetros parciais da requisição PATCH */
                 /* Método nativo do PHP que varre o array procurando a chave "$input" no mesmo */
@@ -191,63 +165,48 @@ class AntenaController extends Controller
                 }
             }
 
-            $request->validate($regrasDinamicas, $antena->feedback());
+            $request->validate($regrasDinamicas, $instalacao->feedback());
         } else {
-            $request->validate($antena->rules(), $antena->feedback());
+            $request->validate($instalacao->rules(), $instalacao->feedback());
         }
 
         /* Remove a imagem antiga caso uma nova imagem tenha sido enviado no request do update */
         if ($request->file('imagem')) {
             /* 'Storage' é um façade do laravel */
             /* Remove a imagem */
-            Storage::disk('public')->delete($antena->imagem);
+            Storage::disk('public')->delete($instalacao->imagem);
         }
 
         $imagem = $request->file('imagem');
 
         /* O método store() espera dois parâmetros */
         //$image->store( 'path', 'disco' );
-        $imagem_urn = $imagem->store('imagens/antenas', 'public');
+        $imagem_urn = $imagem->store('imagens/instalacoes', 'public');
 
         /* Quando o update for PATCH, não atualizando todos os atributos, para não dar êrros,
         preenchendo o objeto $antena com todos os dados do request. Os atributos que não
         estiverem sendo alterados, serão repetidos dos dados anteriores, trazidos do banco
         de dados. */
-        $antena->fill($request->all());
-        $antena->imagem = $imagem_urn;
+        $instalacao->fill($request->all());
+        $instalacao->imagem = $imagem_urn;
         //dd( $antena->getAttributes() );
-        $antena->save();
+        $instalacao->save();
 
-        /*
-        $antena->update( [
-            'nome' => $request->nome,
-            'imagem' => $imagem_urn, */
-        //'banda' => $request->banda,
-        //'datanota' => $request->datanota,
-        //'marca' => $request->marca,
-        //'modelo' => $request->modelo,
-        //'notafiscal' => $request->notafiscal,
-        //'situacao' => $request->situacao,
-        //'diametro' => $request->diametro,
-        //'observacao' => $request->observacao
-        /* ] );
-            */
-
-        return response()->json($antena, 200);
+        return response()->json($instalacao, 200);
     }
+
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param Integer
+     * @param  \App\Models\Instalacao  $instalacao
      * @return \Illuminate\Http\Response
      */
-
     public function destroy($id)
     {
-        $antena = $this->aaantena->find($id);
+        $instalacao = $this->iiinstalacao->find($id);
 
-        if ($antena === null) {
+        if ($instalacao === null) {
             /* helper 'response()' do laravel */
             /* Através dele, podemos alterar os detalhes da resposta dada pelo laravel*/
             /* Como 2º parâmetro do método 'json()', podemos passar o status code http */
@@ -256,10 +215,10 @@ class AntenaController extends Controller
 
         /* Remove a imagem*/
         /* 'Storage' é um façade do laravel */
-        Storage::disk('public')->delete($antena->imagem);
+        Storage::disk('public')->delete($instalacao->imagem);
 
         /* Remove então o registro */
-        $antena->delete();
-        return response()->json(['msg' => 'A antena foi removida com sucesso!'], 200);
+        $instalacao->delete();
+        return response()->json(['msg' => 'A instalacao foi removida com sucesso!'], 200);
     }
 }

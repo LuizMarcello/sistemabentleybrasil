@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Cliente extends Model
+class Instalacao extends Model
 {
     use HasFactory;
 
@@ -14,7 +14,7 @@ class Cliente extends Model
      *
      * @var string
      */
-    protected $table = 'clientes';
+    protected $table = 'instalacaos';
 
     /**
      * The database primary key value.
@@ -28,33 +28,34 @@ class Cliente extends Model
        tentar inspecionar e injetar algum campo a mais, lá no front. */
     /* Modo massivo */
     protected $fillable = [
-        'nome_razaosocial', 'cpf', 'ie_rg', 'nome_contato',
-        'celular', 'telefone', 'email', 'chave', 'dataadesao', 'observacao',
-        'cep', 'rua', 'numero', 'bairro', 'cidade', 'estado', 'situacao', 'imagem'
+        'cliente_id',  'cep', 'rua', 'numero', 'bairro', 'cidade', 'estado', 'celular', 'telefone',
+        'status', 'banda', 'instalador_id', 'distribuidor_id', 'plano_id', 'dataInstalacao',
+        'observacao', 'imagem', 'notaFiscal', 'dataDaNota'
     ];
 
     public function rules()
     {
         return [
             //'imagem' => 'required|file|mimes:png,docx,xlsx,pdf,ppt,jpeg,mp3',
-            //'nome_razaosocial' => 'required',
-            //'cpf' => 'required',
-            //'ie_rg' => 'required',
-            //'nome_contato' => 'required',
-            //'celular' => 'required',
-            //'telefone' => 'required',
-            //'email' => 'required',
-            //'chave' => 'required',
-            //'dataadesao' => 'required',
-            //'observacao' => 'required',
-            //'cep' => 'required',
+            //'cliente_id' => 'required',
+            //'cliente_id' => 'required',
             //'rua' => 'required',
             //'numero' => 'required',
             //'bairro' => 'required',
             //'cidade' => 'required',
             //'estado' => 'required',
-            //'situacao' => 'required'
-
+            //'celular' => 'required',
+            //'telefone' => 'required',
+            //'status' => 'required'
+            //'banda' => 'required'
+            //'instalador_id' => 'required'
+            //'distribuidor_id' => 'required'
+            //'plano_id' => 'required'
+            //'dataInstalacao' => 'required'
+            //'observacao' => 'required'
+            //'imagem' => 'required'
+            //'notaFiscal' => 'required'
+            //'dataDaNota' => 'required'
         ];
 
         /* A validação "unique" tem 3 parâmetros:
@@ -63,14 +64,26 @@ class Cliente extends Model
             3) id do registro que será desconsiderado na pesquisa */
     }
 
-    /* Relacionamentos:
-       Antena = Marca
-       Roteador = Modelo */
-    /* public function antena()
-    { */
-    /* Um roteador pertence a uma antena */
-    /*  return $this->belongsTo('App\Models\Antena');
-    } */
+    /* Relacionamento: */
+    public function cliente()
+    {
+        /* Uma instalação possui um unico cliente */
+        return $this->belongsTo('App\Models\Cliente');
+    }
+
+    /* Relacionamento: */
+    public function instalador()
+    {
+        /* Uma instalação possui um unico instalador */
+        return $this->belongsTo('App\Models\Instalador');
+    }
+
+    /* Relacionamento: */
+    public function distribuidor()
+    {
+        /* Uma instalação possui um unico distribuidor */
+        return $this->belongsTo('App\Models\Distribuidor');
+    }
 
     public function feedback()
     {
