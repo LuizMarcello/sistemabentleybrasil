@@ -38,7 +38,6 @@ class Instalacao extends Model
         return [
             //'imagem' => 'required|file|mimes:png,docx,xlsx,pdf,ppt,jpeg,mp3',
             //'cliente_id' => 'required',
-            //'cliente_id' => 'required',
             //'rua' => 'required',
             //'numero' => 'required',
             //'bairro' => 'required',
@@ -83,6 +82,13 @@ class Instalacao extends Model
     {
         /* Uma instalação possui um unico distribuidor */
         return $this->belongsTo('App\Models\Distribuidor');
+    }
+
+    /* Relacionamento: */
+    public function plano()
+    {
+        /* Uma instalação possui um unico distribuidor */
+        return $this->belongsTo('App\Models\Plano');
     }
 
     public function feedback()

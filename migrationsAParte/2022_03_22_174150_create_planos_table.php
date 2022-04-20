@@ -15,6 +15,18 @@ class CreatePlanosTable extends Migration
     {
         Schema::create('planos', function (Blueprint $table) {
             $table->id();
+            $table->char('banda');
+            $table->string('cir');
+            $table->string('equipamento');
+            $table->string('nome');
+            $table->string('valor');
+            $table->string('valordecusto');
+            $table->string('valormensal');
+            $table->string('velocmaxdown');
+            $table->string('velocmaxup');
+            $table->string('velocmindown');
+            $table->string('velocminup');
+            $table->string('observacao');
             $table->timestamps();
         });
     }

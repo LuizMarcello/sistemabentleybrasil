@@ -50,7 +50,7 @@ Route::prefix('v1')->middleware('jwt.auth')->group(function () {
     //Route::apiresource('lnbs', 'LnbController');
     //Route::apiresource('ilnbs', 'IlnbController');
     //Route::apiresource('historicos', 'HistoricoController');
-    //Route::apiresource('planos', 'PlanoController');
+    Route::apiresource('planos', 'PlanoController');
     Route::apiresource('clientes', 'ClienteController');
     //Route::apiresource('distribuidores', 'DistribuidorController');
     //Route::apiresource('migracoes', 'MigracaoController');

@@ -29,8 +29,8 @@ class Instalador extends Model
        tentar inspecionar e injetar algum campo a mais, lá no front. */
     /* Modo massivo */
     protected $fillable = [
-        'nome', 'cpf', 'rg', 'celular', 'telefone', 'email', 'cep', 'bairro', 'cidade', 'estado',
-        'observacao', 'situacao', 'rua', 'numero', 'dataNascimento', 'imagem'
+        'nome', 'cpf', 'rg', 'celular', 'telefone', 'email', 'cep', 'bairro', 'cidade',
+        'estado', 'observacao', 'situacao', 'rua', 'numero', 'dataNascimento', 'imagem'
     ];
 
     public function rules()
