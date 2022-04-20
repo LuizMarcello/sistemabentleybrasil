@@ -30,6 +30,10 @@ Vue.component('card-component', require('./components/Card.vue').default);
 Vue.component('modal-component', require('./components/Modal.vue').default);
 Vue.component('alert-component', require('./components/Alert.vue').default);
 Vue.component('roteadores-component', require('./components/Roteadores.vue').default);
+Vue.component('clientes-component', require('./components/Clientes.vue').default);
+Vue.component('instalacoes-component', require('./components/Instalacoes.vue').default);
+Vue.component('planos-component', require('./components/Planos.vue').default);
+Vue.component('instaladores-component', require('./components/Instaladores.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

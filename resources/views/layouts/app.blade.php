@@ -54,8 +54,11 @@
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" href="{{ route('antenas') }}">Antenas</a>
                                     <a class="dropdown-item" href="{{ route('roteadores') }}">Roteadores</a>
-                                    <a class="dropdown-item" href="#">Lnbs</a>
-                                    <a class="dropdown-item" href="#">Ilnbs</a>
+                                    <a class="dropdown-item" href="{{ route('instaladores') }}">Instaladores</a>
+                                    <a class="dropdown-item" href="{{ route('planos') }}">Planos</a>
+                                    <a class="dropdown-item" href="{{ route('clientes') }}">Clientes</a>
+                                    <a class="dropdown-item" href="{{ route('instalacoes') }}">Instalações</a>
+
 
                                 </div>
                             </li>
@@ -88,7 +91,7 @@
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
-                                                                                                                                                             document.getElementById('logout-form').submit();">
+                                                                                                                                                                 document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
 

@@ -34,6 +34,30 @@ Route::get('/antenas', function () {
     return view('app.roteadores');
 })->name('roteadores')->middleware('auth');
 
+/* Rota protegida com o middleware auth.
+   Somente autenticada, por sessão */
+      Route::get('/clientes', function () {
+    return view('app.clientes');
+})->name('clientes')->middleware('auth');
+
+/* Rota protegida com o middleware auth.
+   Somente autenticada, por sessão */
+      Route::get('/instalacoes', function () {
+    return view('app.instalacoes');
+})->name('instalacoes')->middleware('auth');
+
+/* Rota protegida com o middleware auth.
+   Somente autenticada, por sessão */
+      Route::get('/instaladores', function () {
+    return view('app.instaladores');
+})->name('instaladores')->middleware('auth');
+
+/* Rota protegida com o middleware auth.
+   Somente autenticada, por sessão */
+      Route::get('/planos', function () {
+    return view('app.planos');
+})->name('planos')->middleware('auth');
+
 /* Definindo um grupo de rotas, através do método group(), para o middleware "auth", que é o
  * middlaware que verifica se o usuário está logado, se não estiver, direciona para o login.
  * Agora, todas as rotas dentro da função anômima, estão protegidas pela autenticação. */
