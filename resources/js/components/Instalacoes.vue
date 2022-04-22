@@ -4,7 +4,7 @@
     <div class="row justify-content-center">
       <div class="col-md-8">
         <!--Inicio do card de busca  -->
-        <card-component titulo="Busca de antenas">
+        <card-component titulo="Busca de instalação">
           <template v-slot:conteudo>
             <div class="form-row">
               <div class="col mb-3">
@@ -12,7 +12,7 @@
                   titulo="ID"
                   id="inputId"
                   id-help="idHelp"
-                  texto-ajuda=" Opcional. Informe o ID da antena"
+                  texto-ajuda=" Opcional. Informe o ID da instalação"
                 >
                   <input
                     type="number"
@@ -26,17 +26,17 @@
 
               <div class="col mb-3">
                 <input-container-component
-                  titulo="Nome da antena"
+                  titulo="Nome da instalação"
                   id="inputNome"
                   id-help="nomeHelp"
-                  texto-ajuda=" Opcional. Informe o nome da antena"
+                  texto-ajuda=" Opcional. Informe o nome da instalacao"
                 >
                   <input
                     type="text"
                     class="form-control"
                     id="inputNome"
                     aria-describedby="nomeHelp"
-                    placeholder="Nome da antena"
+                    placeholder="Nome da instalação"
                   />
                 </input-container-component>
               </div>
@@ -51,17 +51,33 @@
         </card-component>
         <!-- Fim do card de busca -->
 
-        <!-- Inicio do card de listagem de antenas -->
-        <card-component titulo="Relação de antenas">
+        <!-- Inicio do card de listagem de instalacões -->
+        <card-component titulo="Relação de instalacões">
           <template v-slot:conteudo>
             <!-- Instanciando o componente Table.vue -->
             <table-component
-              :dados="antenas"
+              :dados="instalacaos"
               :titulos="{
-                id: { titulo: 'Id', tipo: 'texto' },
-                nome: { titulo: 'Nome', tipo: 'texto' },
+                //id: { titulo: 'Id', tipo: 'texto' },
                 imagem: { titulo: 'Imagem', tipo: 'imagem' },
-                created_at: { titulo: 'Criação', tipo: 'data' },
+                //cliente_id: { titulo: 'Cliente', tipo: 'texto' },
+                //rua: { titulo: 'Rua', tipo: 'texto' },
+                //numero: { titulo: 'Número', tipo: 'texto' },
+                //bairro: { titulo: 'Bairro', tipo: 'texto' },
+                cidade: { titulo: 'Cidade', tipo: 'texto' },
+                estado: { titulo: 'Estado', tipo: 'texto' },
+                //celular: { titulo: 'Celular', tipo: 'texto' },
+                //telefone: { titulo: 'Telefone', tipo: 'texto' },
+                //status: { titulo: 'Status', tipo: 'texto' },
+                banda: { titulo: 'Banda', tipo: 'texto' },
+                //instalador_id: { titulo: 'Instalador', tipo: 'texto' },
+                //distribuidor_id: { titulo: 'Distribuidor', tipo: 'texto' },
+                plano_id: { titulo: 'Plano', tipo: 'texto' },
+                //dataInstalacao: { titulo: 'Data da instalação', tipo: 'texto' },
+                //observacao: { titulo: 'Observação', tipo: 'texto' },
+                //notaFiscal: { titulo: 'Nota fiscal', tipo: 'texto' },
+                //dataDaNota: { titulo: 'Data da nota', tipo: 'texto' },
+                //created_at: { titulo: 'Criação', tipo: 'data' },
                 //updated_at: { titulo: 'Data da atualização', tipo: 'data' },
               }"
             ></table-component>
@@ -72,18 +88,18 @@
               type="button"
               class="btn btn-primary btn-sm float-right"
               data-toggle="modal"
-              data-target="#modalAntena"
+              data-target="#modalInstalacao"
             >
               Adicionar
             </button>
           </template>
         </card-component>
-        <!-- Fim do card de listagem de antenas -->
+        <!-- Fim do card de listagem de instalações -->
       </div>
     </div>
 
     <!-- Aqui é feito a instância do componente/modal "Modal.vue" -->
-    <modal-component id="modalAntena" titulo="Adicionar antena">
+    <modal-component id="modalInstalacao" titulo="Adicionar instalação">
       <template v-slot:alertas>
         <!-- v-if: renderização condicional -->
         <alert-component
@@ -95,7 +111,7 @@
         <alert-component
           tipo="danger"
           :detalhes="transacaoDetalhes"
-          titulo="Erro ao tentar cadastrar a antena"
+          titulo="Erro ao tentar cadastrar a instalacao"
           v-if="transacaoStatus == 'erro'"
         ></alert-component>
       </template>
@@ -103,22 +119,334 @@
       <template v-slot:conteudo>
         <div class="form-group">
           <input-container-component
-            titulo="Nome da antena"
-            id="novaAntena"
-            id-help="novaAntenaHelp"
-            texto-ajuda=" Informe o nome da antena"
+            titulo=""
+            id="Instalacao"
+            id-help="InstalacaoHelp"
+            texto-ajuda=""
           >
             <!-- v-model: sincroniza com two-way-data binding -->
             <input
               type="text"
               class="form-control"
-              id="novaAntena"
-              aria-describedby="novaAntenaHelp"
-              placeholder="Nome da antena"
-              v-model="nomeAntena"
+              id="Instalacao"
+              aria-describedby="instalacaoHelp"
+              placeholder="Nome da instalação"
+              v-model="instalacao"
             />
           </input-container-component>
-          {{ nomeAntena }}
+        </div>
+
+        <div class="form-group">
+          <input-container-component
+            titulo=""
+            id="cliente_id"
+            id-help="cliente_idHelp"
+            texto-ajuda=""
+          >
+            <!-- v-model: sincroniza com two-way-data binding -->
+            <input
+              type="text"
+              class="form-control"
+              id="cliente_id"
+              aria-describedby="cliente_idHelp"
+              placeholder="Cliente"
+              v-model="cliente_id"
+            />
+          </input-container-component>
+        </div>
+
+        <div class="form-group">
+          <input-container-component titulo="" id="rua" id-help="ruaHelp" texto-ajuda="">
+            <!-- v-model: sincroniza com two-way-data binding -->
+            <input
+              type="text"
+              class="form-control"
+              id="rua"
+              aria-describedby="ruaHelp"
+              placeholder="Rua"
+              v-model="rua"
+            />
+          </input-container-component>
+        </div>
+
+        <div class="form-group">
+          <input-container-component
+            titulo=""
+            id="numero"
+            id-help="numeroHelp"
+            texto-ajuda=""
+          >
+            <!-- v-model: sincroniza com two-way-data binding -->
+            <input
+              type="text"
+              class="form-control"
+              id="numero"
+              aria-describedby="numeroHelp"
+              placeholder="Número"
+              v-model="numero"
+            />
+          </input-container-component>
+        </div>
+
+        <div class="form-group">
+          <input-container-component
+            titulo=""
+            id="bairro"
+            id-help="bairroHelp"
+            texto-ajuda=""
+          >
+            <!-- v-model: sincroniza com two-way-data binding -->
+            <input
+              type="text"
+              class="form-control"
+              id="bairro"
+              aria-describedby="bairroHelp"
+              placeholder="Bairro"
+              v-model="bairro"
+            />
+          </input-container-component>
+        </div>
+
+        <div class="form-group">
+          <input-container-component
+            titulo=""
+            id="cidade"
+            id-help="cidadeHelp"
+            texto-ajuda=""
+          >
+            <!-- v-model: sincroniza com two-way-data binding -->
+            <input
+              type="text"
+              class="form-control"
+              id="cidade"
+              aria-describedby="cidadeHelp"
+              placeholder="Cidade"
+              v-model="cidade"
+            />
+          </input-container-component>
+        </div>
+
+        <div class="form-group">
+          <input-container-component
+            titulo=""
+            id="estado"
+            id-help="estadoHelp"
+            texto-ajuda=""
+          >
+            <!-- v-model: sincroniza com two-way-data binding -->
+            <input
+              type="text"
+              class="form-control"
+              id="estado"
+              aria-describedby="estadoHelp"
+              placeholder="Estado"
+              v-model="estado"
+            />
+          </input-container-component>
+        </div>
+
+        <div class="form-group">
+          <input-container-component
+            titulo=""
+            id="celular"
+            id-help="celularHelp"
+            texto-ajuda=""
+          >
+            <!-- v-model: sincroniza com two-way-data binding -->
+            <input
+              type="text"
+              class="form-control"
+              id="celular"
+              aria-describedby="celularHelp"
+              placeholder="Celular"
+              v-model="celular"
+            />
+          </input-container-component>
+        </div>
+
+        <div class="form-group">
+          <input-container-component
+            titulo=""
+            id="telefone"
+            id-help="telefoneHelp"
+            texto-ajuda=""
+          >
+            <!-- v-model: sincroniza com two-way-data binding -->
+            <input
+              type="text"
+              class="form-control"
+              id="telefone"
+              aria-describedby="telefoneHelp"
+              placeholder="Telefone"
+              v-model="telefone"
+            />
+          </input-container-component>
+        </div>
+
+        <div class="form-group">
+          <input-container-component
+            titulo=""
+            id="status"
+            id-help="statusHelp"
+            texto-ajuda=""
+          >
+            <!-- v-model: sincroniza com two-way-data binding -->
+            <input
+              type="text"
+              class="form-control"
+              id="status"
+              aria-describedby="statusHelp"
+              placeholder="Status"
+              v-model="status"
+            />
+          </input-container-component>
+        </div>
+
+        <div class="form-group">
+          <input-container-component
+            titulo=""
+            id="banda"
+            id-help="bandaHelp"
+            texto-ajuda=""
+          >
+            <!-- v-model: sincroniza com two-way-data binding -->
+            <input
+              type="text"
+              class="form-control"
+              id="banda"
+              aria-describedby="bandaHelp"
+              placeholder="Banda"
+              v-model="banda"
+            />
+          </input-container-component>
+        </div>
+
+        <div class="form-group">
+          <input-container-component titulo="" id="" id-help="Help" texto-ajuda="">
+            <!-- v-model: sincroniza com two-way-data binding -->
+            <input
+              type="text"
+              class="form-control"
+              id="instalador_id"
+              aria-describedby="Help"
+              placeholder="Instalador"
+              v-model="instalador_id"
+            />
+          </input-container-component>
+        </div>
+
+        <div class="form-group">
+          <input-container-component
+            titulo=""
+            id="distribuidor_id"
+            id-help="distribuidor_idHelp"
+            texto-ajuda=""
+          >
+            <!-- v-model: sincroniza com two-way-data binding -->
+            <input
+              type="text"
+              class="form-control"
+              id="distribuidor_id"
+              aria-describedby="distribuidor_idHelp"
+              placeholder="Distribuidor"
+              v-model="distribuidor_id"
+            />
+          </input-container-component>
+        </div>
+
+        <div class="form-group">
+          <input-container-component
+            titulo=""
+            id="plano_id"
+            id-help="plano_idHelp"
+            texto-ajuda=""
+          >
+            <!-- v-model: sincroniza com two-way-data binding -->
+            <input
+              type="text"
+              class="form-control"
+              id="plano_id"
+              aria-describedby="plano_idHelp"
+              placeholder="Plano"
+              v-model="plano_id"
+            />
+          </input-container-component>
+        </div>
+
+        <div class="form-group">
+          <input-container-component
+            titulo=""
+            id="dataInstalacao"
+            id-help="dataInstalacaoHelp"
+            texto-ajuda=""
+          >
+            <!-- v-model: sincroniza com two-way-data binding -->
+            <input
+              type="date"
+              class="form-control"
+              id="dataInstalacao"
+              aria-describedby="dataInstalacaoHelp"
+              placeholder="Data Instalação"
+              v-model="dataInstalacao"
+            />
+          </input-container-component>
+        </div>
+
+        <div class="form-group">
+          <input-container-component
+            titulo=""
+            id="observacao"
+            id-help="observacaoHelp"
+            texto-ajuda=""
+          >
+            <!-- v-model: sincroniza com two-way-data binding -->
+            <input
+              type="text"
+              class="form-control"
+              id="observacao"
+              aria-describedby="observacaoHelp"
+              placeholder="Observação"
+              v-model="observacao"
+            />
+          </input-container-component>
+        </div>
+
+        <div class="form-group">
+          <input-container-component
+            titulo=""
+            id="notaFiscal"
+            id-help="notaFiscalHelp"
+            texto-ajuda=""
+          >
+            <!-- v-model: sincroniza com two-way-data binding -->
+            <input
+              type="text"
+              class="form-control"
+              id="notaFiscal"
+              aria-describedby="notaFiscalHelp"
+              placeholder="Nota Fiscal"
+              v-model="notaFiscal"
+            />
+          </input-container-component>
+        </div>
+
+        <div class="form-group">
+          <input-container-component
+            titulo=""
+            id="dataDaNota"
+            id-help="dataDaNotaHelp"
+            texto-ajuda=""
+          >
+            <!-- v-model: sincroniza com two-way-data binding -->
+            <input
+              type="date"
+              class="form-control"
+              id="dataDaNota"
+              aria-describedby="dataDaNotaHelp"
+              placeholder="Data da Nota"
+              v-model="dataDaNota"
+            />
+          </input-container-component>
         </div>
 
         <div class="form-group">
@@ -177,12 +505,28 @@ export default {
 
   data() {
     return {
-      urlBase: "http://localhost:8000/api/v1/antenas",
-      nomeAntena: "",
+      urlBase: "http://localhost:8000/api/v1/instalacoes",
+      cliente_id: "",
+      rua: "",
+      numero: "",
+      bairro: "",
+      cidade: "",
+      estado: "",
+      celular: "",
+      telefone: "",
+      status: "",
+      banda: "",
+      instalador_id: "",
+      distribuidor_id: "",
+      plano_id: "",
+      dataInstalacao: "",
+      observacao: "",
+      notaFiscal: "",
+      dataDaNota: "",
       arquivoImagem: [],
       transacaoStatus: "",
       transacaoDetalhes: {},
-      antenas: [],
+      instalacaos: [],
     };
   },
 
@@ -208,28 +552,43 @@ export default {
       axios
         .get(this.urlBase, config)
         .then((response) => {
-          this.antenas = response.data;
+          this.instalacaos = response.data;
 
-          console.log(this.antenas)
+          console.log(this.instalacaos);
         })
         .catch((errors) => {
           console.log(errors);
         });
     },
 
-
-
     carregarImagem(e) {
       this.arquivoImagem = e.target.files;
     },
     salvar() {
-      console.log(this.nomeAntena, this.arquivoImagem[0]);
+      console.log(this.instalacao, this.arquivoImagem[0]);
 
       /* Objeto formData: Instanciando um formulário para definir seus atributos */
       let formData = new FormData();
       /* Agora atribuindo valores ao formulário */
-      formData.append("nome", this.nomeAntena);
+      formData.append("nome", this.nomeInstalacao);
       formData.append("imagem", this.arquivoImagem[0]);
+      formData.append("cliente_id", this.cliente_id);
+      formData.append("rua", this.rua);
+      formData.append("numero", this.numero);
+      formData.append("bairro", this.bairro);
+      formData.append("cidade", this.cidade);
+      formData.append("estado", this.estado);
+      formData.append("celular", this.celular);
+      formData.append("telefone", this.telefone);
+      formData.append("status", this.status);
+      formData.append("banda", this.banda);
+      formData.append("instalador_id", this.instalador_id);
+      formData.append("distribuidor_id", this.distribuidor_id);
+      formData.append("plano_id", this.plano_id);
+      formData.append("dataInstalacao", this.dataInstalacao);
+      formData.append("observacao", this.observacao);
+      formData.append("notaFiscal", this.notaFiscal);
+      formData.append("dataDaNota", this.dataDaNota);
 
       /* Recebendo um "objeto literal":
                Um objeto literal é composto por um par de chaves " { } ",
