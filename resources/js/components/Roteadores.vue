@@ -54,22 +54,26 @@
         <!-- Inicio do card de listagem de roteadores -->
         <card-component titulo="Relação de roteadores">
           <template v-slot:conteudo>
-
-
             <!-- Instanciando o componente Table.vue -->
             <table-component
               :dados="roteadores"
               :titulos="{
                 id: { titulo: 'Id', tipo: 'texto' },
-               //nome: { titulo: 'Nome', tipo: 'text' },
+                nome: { titulo: 'Nome', tipo: 'text' },
                 marca: { titulo: 'Marca', tipo: 'texto' },
+                banda: { titulo: 'Banda', tipo: 'texto' },
+                //datanota: { titulo: 'Data da nota', tipo: 'texto' },
+                //macaddress: { titulo: 'Endereço mac', tipo: 'texto' },
+                modelo: { titulo: 'Modelo', tipo: 'texto' },
+                //notafiscal: { titulo: 'Nota fiscal', tipo: 'texto' },
+                //serial: { titulo: 'Serial', tipo: 'texto' },
+                //situacao: { titulo: 'Situação', tipo: 'texto' },
+                //observacao: { titulo: 'Observação', tipo: 'texto' },
                 imagem: { titulo: 'Imagem', tipo: 'imagem' },
-                created_at: { titulo: 'Criação', tipo: 'data' },
+                //created_at: { titulo: 'Criação', tipo: 'data' },
                 //updated_at: { titulo: 'Data da atualização', tipo: 'data' },
               }"
             ></table-component>
-
-
           </template>
 
           <template v-slot:rodape>
@@ -83,6 +87,7 @@
             </button>
           </template>
         </card-component>
+
         <!-- Fim do card de listagem de roteadores -->
       </div>
     </div>
@@ -108,22 +113,173 @@
       <template v-slot:conteudo>
         <div class="form-group">
           <input-container-component
-            titulo="Marca do Roteador"
-            id="novoRoteador"
-            id-help="novoRoteadorHelp"
-            texto-ajuda=" Informe a marca do roteador"
+            titulo=""
+            id="marca"
+            id-help="marcaHelp"
+            texto-ajuda=""
           >
             <!-- v-model: sincroniza com two-way-data binding -->
             <input
               type="text"
               class="form-control"
-              id="novoRoteador"
-              aria-describedby="novoRoteadorHelp"
+              id="marca"
+              aria-describedby="marcaHelp"
               placeholder="Marca do roteador"
-              v-model="marcaRoteador"
+              v-model="marca"
             />
           </input-container-component>
-          {{ marcaRoteador }}
+        </div>
+
+        <div class="form-group">
+          <input-container-component
+            titulo=""
+            id="banda"
+            id-help="bandaHelp"
+            texto-ajuda=""
+          >
+            <!-- v-model: sincroniza com two-way-data binding -->
+            <input
+              type="text"
+              class="form-control"
+              id="banda"
+              aria-describedby="bandaHelp"
+              placeholder="Banda"
+              v-model="banda"
+            />
+          </input-container-component>
+        </div>
+
+        <div class="form-group">
+          <input-container-component
+            titulo=""
+            id="datanota"
+            id-help="datanotaHelp"
+            texto-ajuda=""
+          >
+            <!-- v-model: sincroniza com two-way-data binding -->
+            <input
+              type="date"
+              class="form-control"
+              id="datanota"
+              aria-describedby="datanotaHelp"
+              placeholder="Data da nota"
+              v-model="datanota"
+            />
+          </input-container-component>
+        </div>
+
+        <div class="form-group">
+          <input-container-component
+            titulo=""
+            id="macaddress"
+            id-help="macaddressHelp"
+            texto-ajuda=""
+          >
+            <!-- v-model: sincroniza com two-way-data binding -->
+            <input
+              type="text"
+              class="form-control"
+              id="macaddress"
+              aria-describedby="macaddressHelp"
+              placeholder="Endereço mac"
+              v-model="macaddress"
+            />
+          </input-container-component>
+        </div>
+
+        <div class="form-group">
+          <input-container-component
+            titulo=""
+            id="modelo"
+            id-help="modeloHelp"
+            texto-ajuda=""
+          >
+            <!-- v-model: sincroniza com two-way-data binding -->
+            <input
+              type="text"
+              class="form-control"
+              id="modelo"
+              aria-describedby="modeloHelp"
+              placeholder="Modelo"
+              v-model="modelo"
+            />
+          </input-container-component>
+        </div>
+
+        <div class="form-group">
+          <input-container-component
+            titulo=""
+            id="notafiscal"
+            id-help="notafiscalHelp"
+            texto-ajuda=""
+          >
+            <!-- v-model: sincroniza com two-way-data binding -->
+            <input
+              type="text"
+              class="form-control"
+              id="notafiscal"
+              aria-describedby="Help"
+              placeholder="Nota fiscal"
+              v-model="notafiscal"
+            />
+          </input-container-component>
+        </div>
+
+        <div class="form-group">
+          <input-container-component
+            titulo=""
+            id="serial"
+            id-help="serialHelp"
+            texto-ajuda=""
+          >
+            <!-- v-model: sincroniza com two-way-data binding -->
+            <input
+              type="text"
+              class="form-control"
+              id="serial"
+              aria-describedby="Help"
+              placeholder="Serial"
+              v-model="serial"
+            />
+          </input-container-component>
+        </div>
+
+        <div class="form-group">
+          <input-container-component
+            titulo=""
+            id="situacao"
+            id-help="situacaoHelp"
+            texto-ajuda=""
+          >
+            <!-- v-model: sincroniza com two-way-data binding -->
+            <input
+              type="text"
+              class="form-control"
+              id="situacao"
+              aria-describedby="situacaoHelp"
+              placeholder="Situacao"
+              v-model="situacao"
+            />
+          </input-container-component>
+        </div>
+
+        <div class="form-group">
+          <input-container-component
+            titulo=""
+            id="observacao"
+            id-help="observacaoHelp"
+            texto-ajuda=""
+          >
+            <!-- v-model: sincroniza com two-way-data binding -->
+            <input
+              type="text"
+              class="form-control"
+              id="observacao"
+              aria-describedby="observacaoHelp"
+              placeholder="Observação"
+              v-model="observacao"
+            />
+          </input-container-component>
         </div>
 
         <div class="form-group">
@@ -181,7 +337,15 @@ export default {
   data() {
     return {
       urlBase: "http://localhost:8000/api/v1/roteadores",
-      marcaRoteador: "",
+      marca: "",
+      banda: "",
+      datanota: "",
+      macaddress: "",
+      modelo: "",
+      notafiscal: "",
+      serial: "",
+      situacao: "",
+      observacao: "",
       arquivoImagem: [],
       transacaoStatus: "",
       transacaoDetalhes: [],
@@ -219,18 +383,25 @@ export default {
         });
     },
 
-
-
     carregarImagem(e) {
       this.arquivoImagem = e.target.files;
     },
     salvar() {
-      console.log(this.marcaRoteador, this.arquivoImagem[0]);
+      console.log(this.marca, this.arquivoImagem[0]);
 
       /* Objeto formData: Instanciando um formulário para definir seus atributos */
       let formData = new FormData();
       /* Agora atribuindo valores ao formulário */
-      formData.append("marca", this.marcaRoteador);
+      formData.append("marca", this.marca);
+      formData.append("banda", this.banda);
+      formData.append("datanota", this.datanota);
+      formData.append("macaddress", this.macaddress);
+      formData.append("modelo", this.modelo);
+      formData.append("notafiscal", this.notafiscal);
+      formData.append("serial", this.serial);
+      formData.append("situacao", this.situacao);
+      formData.append("observacao", this.observacao);
+
       formData.append("imagem", this.arquivoImagem[0]);
 
       /* Recebendo um "objeto literal":

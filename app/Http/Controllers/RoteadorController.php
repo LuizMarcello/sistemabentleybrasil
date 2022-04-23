@@ -52,7 +52,7 @@ class RoteadorController extends Controller
     }
 
 
-    
+
     /**
      * Show the form for creating a new resource.
      *
@@ -84,16 +84,16 @@ class RoteadorController extends Controller
         $roteador = $this->rrroteador->create([
             //'nome' => $request->nome,
             'imagem' => $imagem_urn,
-            //'banda' => $request->banda,
+            'banda' => $request->banda,
             'marca' => $request->marca,
             'antena_id' => $request->antena_id,
-            //'datanota' => $request->datanota,
-            //'macaddress' => $request->macaddress,
-            //'modelo' => $request->modelo,
-            //'notafiscal' => $request->notafiscal,
-            //'serial' => $request->serial,
-            //'situacao' => $request->situacao,
-            //'observacao' => $request->observacao
+            'datanota' => $request->datanota,
+            'macaddress' => $request->macaddress,
+            'modelo' => $request->modelo,
+            'notafiscal' => $request->notafiscal,
+            'serial' => $request->serial,
+            'situacao' => $request->situacao,
+            'observacao' => $request->observacao
 
         ]);
 
