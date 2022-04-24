@@ -34,6 +34,7 @@ Vue.component('clientes-component', require('./components/Clientes.vue').default
 Vue.component('instalacoes-component', require('./components/Instalacoes.vue').default);
 Vue.component('planos-component', require('./components/Planos.vue').default);
 Vue.component('instaladores-component', require('./components/Instaladores.vue').default);
+Vue.component('paginate-component', require('./components/Paginate.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 /* Para poder tipar o parâmetro, conforme o model */
+
 use Illuminate\Database\Eloquent\Model;
 
 abstract class AbstractRepository
@@ -44,5 +45,10 @@ abstract class AbstractRepository
     public function getResultado()
     {
         return $this->model->get();
+    }
+
+    public function getResultadoPaginado($numeroRegistroPorPagina)
+    {
+        return $this->model->paginate($numeroRegistroPorPagina);
     }
 }

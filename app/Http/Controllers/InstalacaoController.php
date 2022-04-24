@@ -30,7 +30,7 @@ class InstalacaoController extends Controller
     public function index(Request $request)
     {
         $instalacaoRepository = new InstalacaoRepository($this->iiinstalacao);
-       
+
         /* Verificando se um determinado parâmetro existe/está definido no request */
         if ($request->has('filtro')) {
             $instalacaoRepository->filtro($request->filtro);
@@ -41,7 +41,7 @@ class InstalacaoController extends Controller
             $instalacaoRepository->selectAtributos($request->atributos);
         }
 
-        return response()->json($instalacaoRepository->getResultado(), 200);
+        return response()->json($instalacaoRepository->getResultadoPaginado(3), 200);
     }
 
 

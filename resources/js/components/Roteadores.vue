@@ -56,7 +56,7 @@
           <template v-slot:conteudo>
             <!-- Instanciando o componente Table.vue -->
             <table-component
-              :dados="roteadores"
+              :dados="roteadores.data"
               :titulos="{
                 id: { titulo: 'Id', tipo: 'texto' },
                 nome: { titulo: 'Nome', tipo: 'text' },
@@ -77,14 +77,26 @@
           </template>
 
           <template v-slot:rodape>
-            <button
-              type="button"
-              class="btn btn-primary btn-sm float-right"
-              data-toggle="modal"
-              data-target="#modalRoteador"
-            >
-              Adicionar
-            </button>
+            <div class="row">
+              <div class="col-10">
+                <paginate-component>
+                  <li v-for="(l, key) in roteadores.links" :key="key" class="page-item">
+                    <!-- v-html: Para que todds os caracteres html sejam interpretados -->
+                    <a class="page-link" href="#" v-html="l.label"> </a>
+                  </li>
+                </paginate-component>
+              </div>
+              <div class="col">
+                <button
+                  type="button"
+                  class="btn btn-primary btn-sm float-right"
+                  data-toggle="modal"
+                  data-target="#modalRoteador"
+                >
+                  Adicionar
+                </button>
+              </div>
+            </div>
           </template>
         </card-component>
 
@@ -349,7 +361,7 @@ export default {
       arquivoImagem: [],
       transacaoStatus: "",
       transacaoDetalhes: [],
-      roteadores: [],
+      roteadores: { data: [] },
     };
   },
   methods: {

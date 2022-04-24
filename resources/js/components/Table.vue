@@ -33,6 +33,9 @@ export default {
     /* Proprieades computadas */
     computed: {
         dadosFiltrrados() {
+
+            console.log(this.dados)
+
             /* Recuperando todas as chaves deste objeto "titulos" */
             let campos = Object.keys(this.titulos)
             let dadosFiltradosss = []

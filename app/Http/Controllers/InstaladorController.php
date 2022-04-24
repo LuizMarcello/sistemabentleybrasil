@@ -47,7 +47,7 @@ class InstaladorController extends Controller
             $instaladorRepository->selectAtributos($request->atributos);
         }
 
-        return response()->json($instaladorRepository->getResultado(), 200);
+        return response()->json($instaladorRepository->getResultadoPaginado(3), 200);
     }
 
     /**

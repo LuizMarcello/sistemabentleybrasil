@@ -26,17 +26,17 @@
 
               <div class="col mb-3">
                 <input-container-component
-                  titulo="Nome da instalação"
-                  id="inputNome"
-                  id-help="nomeHelp"
-                  texto-ajuda=" Opcional. Informe o nome da instalacao"
+                  titulo="Cidade da instalação"
+                  id="inputCidade"
+                  id-help="cidadeHelp"
+                  texto-ajuda=" Opcional. Informe a cidade da instalacao"
                 >
                   <input
                     type="text"
                     class="form-control"
-                    id="inputNome"
-                    aria-describedby="nomeHelp"
-                    placeholder="Nome da instalação"
+                    id="inputCidade"
+                    aria-describedby="cidadeHelp"
+                    placeholder="Cidade da instalação"
                   />
                 </input-container-component>
               </div>
@@ -56,7 +56,7 @@
           <template v-slot:conteudo>
             <!-- Instanciando o componente Table.vue -->
             <table-component
-              :dados="instalacaos"
+              :dados="instalacaos.data"
               :titulos="{
                 //id: { titulo: 'Id', tipo: 'texto' },
                 imagem: { titulo: 'Imagem', tipo: 'imagem' },
@@ -84,14 +84,26 @@
           </template>
 
           <template v-slot:rodape>
-            <button
-              type="button"
-              class="btn btn-primary btn-sm float-right"
-              data-toggle="modal"
-              data-target="#modalInstalacao"
-            >
-              Adicionar
-            </button>
+            <div class="row">
+              <div class="col-10">
+                <paginate-component>
+                 <li v-for="(l, key) in instalacaos.links" :key="key" class="page-item">
+                    <!-- v-html: Para que todds os caracteres html sejam interpretados -->
+                    <a class="page-link" href="#" v-html="l.label"> </a>
+                  </li>
+                </paginate-component>
+              </div>
+              <div class="col">
+                <button
+                  type="button"
+                  class="btn btn-primary btn-sm float-right"
+                  data-toggle="modal"
+                  data-target="#modalInstalacao"
+                >
+                  Adicionar
+                </button>
+              </div>
+            </div>
           </template>
         </card-component>
         <!-- Fim do card de listagem de instalações -->
@@ -131,7 +143,7 @@
               id="Instalacao"
               aria-describedby="instalacaoHelp"
               placeholder="Nome da instalação"
-              v-model="instalacao"
+              v-model="instalacaos"
             />
           </input-container-component>
         </div>
@@ -526,7 +538,7 @@ export default {
       arquivoImagem: [],
       transacaoStatus: "",
       transacaoDetalhes: {},
-      instalacaos: [],
+      instalacaos: { data: [] },
     };
   },
 
@@ -565,7 +577,7 @@ export default {
       this.arquivoImagem = e.target.files;
     },
     salvar() {
-      console.log(this.instalacao, this.arquivoImagem[0]);
+      console.log(this.instalacaos, this.arquivoImagem[0]);
 
       /* Objeto formData: Instanciando um formulário para definir seus atributos */
       let formData = new FormData();

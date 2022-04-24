@@ -56,7 +56,7 @@
           <template v-slot:conteudo>
             <!-- Instanciando o componente Table.vue -->
             <table-component
-              :dados="clientes"
+              :dados="clientes.data"
               :titulos="{
                 //id: { titulo: 'Id', tipo: 'texto' },
                 nome_razaosocial: { titulo: 'Nome RazaoSocial', tipo: 'texto' },
@@ -85,14 +85,26 @@
           </template>
 
           <template v-slot:rodape>
-            <button
-              type="button"
-              class="btn btn-primary btn-sm float-right"
-              data-toggle="modal"
-              data-target="#modalCliente"
-            >
-              Adicionar
-            </button>
+            <div class="row">
+              <div class="col-10">
+                <paginate-component>
+                 <li v-for="(l, key) in clientes.links" :key="key" class="page-item">
+                    <!-- v-html: Para que todds os caracteres html sejam interpretados -->
+                    <a class="page-link" href="#" v-html="l.label"> </a>
+                  </li>
+                </paginate-component>
+              </div>
+              <div class="col">
+                <button
+                  type="button"
+                  class="btn btn-primary btn-sm float-right"
+                  data-toggle="modal"
+                  data-target="#modalCliente"
+                >
+                  Adicionar
+                </button>
+              </div>
+            </div>
           </template>
         </card-component>
         <!-- Fim do card de listagem de clientes -->
@@ -503,7 +515,7 @@ export default {
       arquivoImagem: [],
       transacaoStatus: "",
       transacaoDetalhes: {},
-      clientes: [],
+      clientes: { data: [] },
     };
   },
 

@@ -48,7 +48,7 @@ class AntenaController extends Controller
             $antenaRepository->selectAtributos($request->atributos);
         }
 
-        return response()->json($antenaRepository->getResultado(), 200);
+        return response()->json($antenaRepository->getResultadoPaginado(3), 200);
     }
 
 

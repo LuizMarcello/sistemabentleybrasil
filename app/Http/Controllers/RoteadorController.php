@@ -48,7 +48,7 @@ class RoteadorController extends Controller
             $roteadorRepository->selectAtributos($request->atributos);
         }
 
-        return response()->json($roteadorRepository->getResultado(), 200);
+        return response()->json($roteadorRepository->getResultadoPaginado(3), 200);
     }
 
 

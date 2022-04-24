@@ -48,7 +48,7 @@ class PlanoController extends Controller
             $planoRepository->selectAtributos($request->atributos);
         }
 
-        return response()->json($planoRepository->getResultado(), 200);
+        return response()->json($planoRepository->getResultadoPaginado(3), 200);
     }
 
     /**
