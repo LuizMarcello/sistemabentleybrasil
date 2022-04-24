@@ -85,9 +85,14 @@
             <div class="row">
               <div class="col-10">
                 <paginate-component>
-                 <li v-for="(l, key) in instaladores.links" :key="key" class="page-item">
+                  <li
+                    v-for="(l, key) in instaladores.links"
+                    :key="key"
+                    :class="l.active ? 'page-item active' : 'page-item'"
+                    @click="paginacao(l)"
+                  >
                     <!-- v-html: Para que todds os caracteres html sejam interpretados -->
-                    <a class="page-link" href="#" v-html="l.label"> </a>
+                    <a class="page-link" v-html="l.label"> </a>
                   </li>
                 </paginate-component>
               </div>
@@ -474,6 +479,14 @@ export default {
   },
 
   methods: {
+    paginacao(l) {
+      if (l.url) {
+        /* Ajustando a url de consulta com o parâmetro de página */
+        this.urlBase = l.url;
+        /* Requisitando novamente os dados para a API, baseando na url atualizada */
+        this.carregarLista();
+      }
+    },
     carregarLista() {
       /* Recebendo um "objeto literal":
                      Um objeto literal é composto por um par de chaves " { } ",
