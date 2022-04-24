@@ -20,6 +20,7 @@
                     id="inputId"
                     aria-describedby="idHelp"
                     placeholder="ID"
+                    v-model="busca.id"
                   />
                 </input-container-component>
               </div>
@@ -37,6 +38,7 @@
                     id="inputNome"
                     aria-describedby="nomeHelp"
                     placeholder="Nome da antena"
+                    v-model="busca.nome"
                   />
                 </input-container-component>
               </div>
@@ -44,7 +46,11 @@
           </template>
 
           <template v-slot:rodape>
-            <button type="Submit" class="btn btn-primary btn-sm float-right">
+            <button
+              type="Submit"
+              class="btn btn-primary btn-sm float-right"
+              @click="pesquisar()"
+            >
               Pesquisar
             </button>
           </template>
@@ -366,10 +372,27 @@ export default {
       transacaoStatus: "",
       transacaoDetalhes: {},
       antenas: { data: [] },
+      busca: { id: "", nome: "" },
     };
   },
 
   methods: {
+    pesquisar() {
+      //console.log(this.busca);
+
+      let filtro = "";
+
+      for (let chave in this.busca) {
+        if (this.busca[chave]) {
+          //console.log(chave, this.busca[chave]);
+          if (filtro != "") {
+            filtro += ";";
+          }
+          filtro += chave + ":like:" + this.busca[chave];
+        }
+      }
+      console.log(filtro);
+    },
     paginacao(l) {
       if (l.url) {
         /* Ajustando a url de consulta com o parâmetro de página */
