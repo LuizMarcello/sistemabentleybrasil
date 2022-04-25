@@ -46,8 +46,10 @@
           </template>
 
           <template v-slot:rodape>
-            <button type="Submit" class="btn btn-primary btn-sm float-right"
-            @click="pesquisar()"
+            <button
+              type="Submit"
+              class="btn btn-primary btn-sm float-right"
+              @click="pesquisar()"
             >
               Pesquisar
             </button>
@@ -358,6 +360,8 @@ export default {
   data() {
     return {
       urlBase: "http://localhost:8000/api/v1/roteadores",
+      urlPaginacao: "",
+      urlFiltro: "",
       marca: "",
       banda: "",
       datanota: "",
@@ -389,17 +393,30 @@ export default {
           filtro += chave + ":like:" + this.busca[chave];
         }
       }
-      console.log(filtro);
+      //console.log(filtro);
+      if (filtro != "") {
+        this.urlPaginacao = "page=1";
+        this.urlFiltro = "&filtro=" + filtro;
+      } else {
+        this.urlFiltro = "";
+      }
+      this.carregarLista();
     },
     paginacao(l) {
       if (l.url) {
         /* Ajustando a url de consulta com o parâmetro de página */
-        this.urlBase = l.url;
+        //this.urlBase = l.url;
+
+        this.urlPaginacao = l.url.split("?")[1];
+
         /* Requisitando novamente os dados para a API, baseando na url atualizada */
         this.carregarLista();
       }
     },
     carregarLista() {
+      let url = this.urlBase + "?" + this.urlPaginacao + this.urlFiltro;
+
+      console.log(url);
       /* Recebendo um "objeto literal":
                Um objeto literal é composto por um par de chaves " { } ",
                que envolve uma ou mais propriedades. Cada propriedade segue
@@ -418,7 +435,7 @@ export default {
                o que nos ajuda a ter um código realmente assíncrono.
                É um cliente http */
       axios
-        .get(this.urlBase, config)
+        .get(url, config)
         .then((response) => {
           this.roteadores = response.data;
 

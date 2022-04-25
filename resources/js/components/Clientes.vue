@@ -38,7 +38,7 @@
                     id="inputNome"
                     aria-describedby="nomeHelp"
                     placeholder="Nome do cliente"
-                    v-model="busca.nome"
+                    v-model="busca.nome_razaosocial"
                   />
                 </input-container-component>
               </div>
@@ -506,6 +506,8 @@ export default {
   data() {
     return {
       urlBase: "http://localhost:8000/api/v1/clientes",
+      urlPaginacao: "",
+      urlFiltro: "",
       nome_razaosocial: "",
       cpf: "",
       ie_rg: "",
@@ -527,7 +529,7 @@ export default {
       transacaoStatus: "",
       transacaoDetalhes: {},
       clientes: { data: [] },
-      busca: { id: "", nome: "" },
+      busca: { id: "", nome_razaosocial: "" },
     };
   },
 
@@ -546,17 +548,30 @@ export default {
           filtro += chave + ":like:" + this.busca[chave];
         }
       }
-      console.log(filtro);
+      //console.log(filtro);
+      if (filtro != "") {
+        this.urlPaginacao = "page=1";
+        this.urlFiltro = "&filtro=" + filtro;
+      } else {
+        this.urlFiltro = "";
+      }
+      this.carregarLista();
     },
     paginacao(l) {
       if (l.url) {
         /* Ajustando a url de consulta com o parâmetro de página */
-        this.urlBase = l.url;
+        //this.urlBase = l.url;
+
+        this.urlPaginacao = l.url.split("?")[1];
+
         /* Requisitando novamente os dados para a API, baseando na url atualizada */
         this.carregarLista();
       }
     },
     carregarLista() {
+      let url = this.urlBase + "?" + this.urlPaginacao + this.urlFiltro;
+
+      console.log(url);
       /* Recebendo um "objeto literal":
                Um objeto literal é composto por um par de chaves " { } ",
                que envolve uma ou mais propriedades. Cada propriedade segue
@@ -575,7 +590,7 @@ export default {
                o que nos ajuda a ter um código realmente assíncrono.
                É um cliente http */
       axios
-        .get(this.urlBase, config)
+        .get(url, config)
         .then((response) => {
           this.clientes = response.data;
 
@@ -590,7 +605,7 @@ export default {
       this.arquivoImagem = e.target.files;
     },
     salvar() {
-      console.log(this.nomeCliente, this.arquivoImagem[0]);
+      console.log(this.nome_razaosocial, this.arquivoImagem[0]);
 
       /* Objeto formData: Instanciando um formulário para definir seus atributos */
       let formData = new FormData();
