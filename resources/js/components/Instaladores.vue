@@ -63,12 +63,15 @@
             <!-- Instanciando o componente Table.vue -->
             <table-component
               :dados="instaladores.data"
+              :visualizar="true"
+              :atualizar="true"
+              :remover="true"
               :titulos="{
                 //id: { titulo: 'Id', tipo: 'texto' },
                 nome: { titulo: 'Nome', tipo: 'texto' },
-                imagem: { titulo: 'Imagem', tipo: 'imagem' },
+                //imagem: { titulo: 'Imagem', tipo: 'imagem' },
                 //bairro: { titulo: 'Bairro', tipo: 'texto' },
-                celular: { titulo: 'Celular', tipo: 'texto' },
+                //celular: { titulo: 'Celular', tipo: 'texto' },
                 //cep: { titulo: 'Cep', tipo: 'texto' },
                 cidade: { titulo: 'Cidade', tipo: 'texto' },
                 //cpf: { titulo: 'Cpf', tipo: 'texto' },
@@ -80,7 +83,7 @@
                 //rg: { titulo: 'RG', tipo: 'texto' },
                 //rua: { titulo: 'Rua', tipo: 'texto' },
                 situacao: { titulo: 'Situação', tipo: 'texto' },
-                telefone: { titulo: 'Telefone', tipo: 'texto' },
+                //telefone: { titulo: 'Telefone', tipo: 'texto' },
                 //created_at: { titulo: 'Criação', tipo: 'data' },
                 //updated_at: { titulo: 'Data da atualização', tipo: 'data' },
               }"

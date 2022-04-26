@@ -63,11 +63,14 @@
             <!-- Instanciando o componente Table.vue -->
             <table-component
               :dados="roteadores.data"
+              :visualizar="true"
+              :atualizar="true"
+              :remover="true"
               :titulos="{
-                id: { titulo: 'Id', tipo: 'texto' },
+                //id: { titulo: 'Id', tipo: 'texto' },
                 nome: { titulo: 'Nome', tipo: 'text' },
                 marca: { titulo: 'Marca', tipo: 'texto' },
-                banda: { titulo: 'Banda', tipo: 'texto' },
+                //banda: { titulo: 'Banda', tipo: 'texto' },
                 //datanota: { titulo: 'Data da nota', tipo: 'texto' },
                 //macaddress: { titulo: 'Endereço mac', tipo: 'texto' },
                 modelo: { titulo: 'Modelo', tipo: 'texto' },

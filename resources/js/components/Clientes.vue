@@ -63,15 +63,18 @@
             <!-- Instanciando o componente Table.vue -->
             <table-component
               :dados="clientes.data"
+              :visualizar="true"
+              :atualizar="true"
+              :remover="true"
               :titulos="{
                 //id: { titulo: 'Id', tipo: 'texto' },
                 nome_razaosocial: { titulo: 'Nome RazaoSocial', tipo: 'texto' },
-                imagem: { titulo: 'Imagem', tipo: 'imagem' },
+                //imagem: { titulo: 'Imagem', tipo: 'imagem' },
                 //cpf: { titulo: 'Cpf', tipo: 'texto' },
                 //ie_rg: { titulo: 'Ie ou Rg', tipo: 'texto' },
                 //nome_contato: { titulo: 'Nome do Contato', tipo: 'texto' },
-                celular: { titulo: 'Celular', tipo: 'texto' },
-                telefone: { titulo: 'Telefone', tipo: 'texto' },
+                //celular: { titulo: 'Celular', tipo: 'texto' },
+                //telefone: { titulo: 'Telefone', tipo: 'texto' },
                 //email: { titulo: 'Email', tipo: 'texto' },
                 //chave: { titulo: 'Chave', tipo: 'texto' },
                 //dataadesao: { titulo: 'Data Adesao', tipo: 'data' },

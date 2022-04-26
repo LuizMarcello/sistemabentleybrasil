@@ -63,8 +63,11 @@
             <!-- Instanciando o componente Table.vue -->
             <table-component
               :dados="planos.data"
+              :visualizar="true"
+              :atualizar="true"
+              :remover="true"
               :titulos="{
-                id: { titulo: 'Id', tipo: 'texto' },
+                //id: { titulo: 'Id', tipo: 'texto' },
                 nome: { titulo: 'Nome', tipo: 'texto' },
                 banda: { titulo: 'Banda', tipo: 'texto' },
                 //cir: { titulo: 'Cir', tipo: 'texto' },
@@ -74,9 +77,9 @@
                 //valordecusto: { titulo: 'Valor de custo', tipo: 'texto' },
                 //valormensal: { titulo: 'Valor mensal', tipo: 'texto' },
                 velocmaxdown: { titulo: 'Veloc máxina download', tipo: 'texto' },
-                velocmaxup: { titulo: 'Veloc máxina upload', tipo: 'texto' },
-                velocmindown: { titulo: 'Veloc mínima download', tipo: 'texto' },
-                velocminup: { titulo: 'Veloc mínima upload ', tipo: 'texto' },
+                //velocmaxup: { titulo: 'Veloc máxina upload', tipo: 'texto' },
+                //velocmindown: { titulo: 'Veloc mínima download', tipo: 'texto' },
+                //velocminup: { titulo: 'Veloc mínima upload ', tipo: 'texto' },
                 //created_at: { titulo: 'Criação', tipo: 'data' },
                 //updated_at: { titulo: 'Data da atualização', tipo: 'data' },
               }"

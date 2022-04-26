@@ -63,9 +63,12 @@
             <!-- Instanciando o componente Table.vue -->
             <table-component
               :dados="instalacaos.data"
+              :visualizar="true"
+              :atualizar="true"
+              :remover="true"
               :titulos="{
                 //id: { titulo: 'Id', tipo: 'texto' },
-                imagem: { titulo: 'Imagem', tipo: 'imagem' },
+                //imagem: { titulo: 'Imagem', tipo: 'imagem' },
                 //cliente_id: { titulo: 'Cliente', tipo: 'texto' },
                 //rua: { titulo: 'Rua', tipo: 'texto' },
                 //numero: { titulo: 'Número', tipo: 'texto' },

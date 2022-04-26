@@ -63,13 +63,16 @@
             <!-- Instanciando o componente Table.vue -->
             <table-component
               :dados="antenas.data"
+              :visualizar="true"
+              :atualizar="true"
+              :remover="true"
               :titulos="{
                 //id: { titulo: 'Id', tipo: 'texto' },
                 nome: { titulo: 'Nome', tipo: 'texto' },
                 banda: { titulo: 'Banda', tipo: 'texto' },
                 //datanota: { titulo: 'Data da nota', tipo: 'date' },
                 //diametro: { titulo: 'Diametro', tipo: 'texto' },
-                marca: { titulo: 'Marca', tipo: 'texto' },
+                //marca: { titulo: 'Marca', tipo: 'texto' },
                 modelo: { titulo: 'Modelo', tipo: 'texto' },
                 //notafiscal: { titulo: 'Nota fiscal', tipo: 'texto' },
                 //observacao: { titulo: 'Observações', tipo: 'texto' },
