@@ -44,7 +44,7 @@
                         }" :atualizar="true" :remover="{
     visivel: true, dataToggle: 'modal', dataTarget: '#modalAntenaRemover',
 }" :titulos="{
-    //id: { titulo: 'Id', tipo: 'texto' },
+    id: { titulo: 'Id', tipo: 'texto' },
     nome: { titulo: 'Nome', tipo: 'texto' },
     banda: { titulo: 'Banda', tipo: 'texto' },
     //datanota: { titulo: 'Data da nota', tipo: 'date' },
@@ -202,18 +202,21 @@
                     <input type="text" class="form-control" :value="$store.state.item.nome" disabled />
                 </input-container-component>
 
-                <input-container-component titulo="Marca">
+                <!--  <input-container-component titulo="Marca">
                     <input type="text" class="form-control" :value="$store.state.item.marca" disabled />
                 </input-container-component>
 
                 <input-container-component titulo="Modelo">
                     <input type="text" class="form-control" :value="$store.state.item.modelo" disabled />
-                </input-container-component>
+                </input-container-component> -->
             </template>
 
             <template v-slot:rodape>
                 <button type=" button" class="btn btn-secondary" data-dismiss="modal">
                     Fechar
+                </button>
+                <button type=" button" class="btn btn-danger" @click="remover()">
+                    Remover
                 </button>
             </template>
         </modal-component>
@@ -331,6 +334,39 @@ export default {
         };
     },
     methods: {
+        remover() {
+            /* Variável recebe o retorno do "confirm()", do próprio navegador */
+            let confirmacao = confirm('Deseja remover esse registro?')
+
+            if (!confirmacao) {
+                return false;
+            }
+
+            /* Objeto formData: Instanciando um formulário para definir seus atributos */
+            /* Um formulário HTML de modo programático */
+            let formData = new FormData();
+            formData.append('_method', 'delete')
+
+            let config = {
+                headers: {
+                    /*  "Content-Type": "multipart/form-data", */
+                    Accept: "application/json",
+                    Authorization: this.token,
+                },
+            };
+
+            let url = this.urlBase + '/' + this.$store.state.item.id
+            //console.log(url)
+
+            axios.post(url, formData, config)
+                .then(response => {
+                    console.log('Registro removido com sucesso', response)
+                    this.carregarLista()
+                })
+                .catch(errors => {
+                    console.log('Êrro na tentativa de remoção do registro', errors.response)
+                })
+        },
         pesquisar() {
             //console.log(this.busca);
             let filtro = "";
@@ -396,6 +432,7 @@ export default {
         salvar() {
             console.log(this.nomeAntena, this.arquivoImagem[0]);
             /* Objeto formData: Instanciando um formulário para definir seus atributos */
+            /* Um formulário HTML de modo programático */
             let formData = new FormData();
             /* Agora atribuindo valores ao formulário */
             formData.append("id", this.id);

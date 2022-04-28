@@ -203,7 +203,7 @@ class InstaladorController extends Controller
      * @param  \App\Models\Instalador  $instalador
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Instalador $instalador)
+    public function destroy($id)
     {
         $instalador = $this->iiinstalador->find($id);
 
