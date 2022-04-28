@@ -63,7 +63,11 @@
             <!-- Instanciando o componente Table.vue -->
             <table-component
               :dados="clientes.data"
-              :visualizar="true"
+              :visualizar="{
+                visivel: true,
+                dataToggle: 'modal',
+                dataTarget: '#modalClienteVisualizar',
+              }"
               :atualizar="true"
               :remover="true"
               :titulos="{
@@ -125,7 +129,8 @@
       </div>
     </div>
 
-    <!-- Aqui é feito a instância do componente/modal "Modal.vue" -->
+    <!-- Aqui é feito a instância do componente/modal "Modal.vue", para inclusão -->
+    <!-- Inicio do modal de "inclusão"  -->
     <modal-component id="modalCliente" titulo="Adicionar cliente">
       <template v-slot:alertas>
         <!-- v-if: renderização condicional -->
@@ -480,6 +485,209 @@
         <button type="button" class="btn btn-primary" @click="salvar()">Salvar</button>
       </template>
     </modal-component>
+    <!-- Fim do modal de inclusão -->
+
+    <!-- Aqui é feito a instância do componente/modal "Modal.vue", para visualização(detalhes) -->
+    <!-- Inicio do modal de visualização(detalhes) -->
+    <modal-component id="modalClienteVisualizar" titulo="Visualizar cliente">
+      <template v-slot:alertas> </template>
+
+      <template v-slot:conteudo>
+        <input-container-component titulo="ID">
+          <input
+            type="text"
+            class="form-control"
+            :value="$store.state.item.id"
+            disabled
+          />
+        </input-container-component>
+
+        <input-container-component titulo="Nome/Razão social">
+          <input
+            type="text"
+            class="form-control"
+            :value="$store.state.item.nome_razaosocial"
+            disabled
+          />
+        </input-container-component>
+
+        <input-container-component titulo="CPF">
+          <input
+            type="text"
+            class="form-control"
+            :value="$store.state.item.cpf"
+            disabled
+          />
+        </input-container-component>
+
+        <input-container-component titulo="RG">
+          <input
+            type="text"
+            class="form-control"
+            :value="$store.state.item.ie_rg"
+            disabled
+          />
+        </input-container-component>
+
+        <input-container-component titulo="Contato">
+          <input
+            type="text"
+            class="form-control"
+            :value="$store.state.item.nome_contato"
+            disabled
+          />
+        </input-container-component>
+
+        <input-container-component titulo="Celular">
+          <input
+            type="text"
+            class="form-control"
+            :value="$store.state.item.celular"
+            disabled
+          />
+        </input-container-component>
+
+        <input-container-component titulo="Telefone">
+          <input
+            type="text"
+            class="form-control"
+            :value="$store.state.item.telefone"
+            disabled
+          />
+        </input-container-component>
+
+        <input-container-component titulo="Email">
+          <input
+            type="text"
+            class="form-control"
+            :value="$store.state.item.email"
+            disabled
+          />
+        </input-container-component>
+
+        <input-container-component titulo="Chave">
+          <input
+            type="text"
+            class="form-control"
+            :value="$store.state.item.chave"
+            disabled
+          />
+        </input-container-component>
+
+        <input-container-component titulo="Data adesão">
+          <input
+            type="text"
+            class="form-control"
+            :value="$store.state.item.dataadesao"
+            disabled
+          />
+        </input-container-component>
+
+        <input-container-component titulo="Observação">
+          <input
+            type="text"
+            class="form-control"
+            :value="$store.state.item.observacao"
+            disabled
+          />
+        </input-container-component>
+
+        <input-container-component titulo="CEP">
+          <input
+            type="text"
+            class="form-control"
+            :value="$store.state.item.cep"
+            disabled
+          />
+        </input-container-component>
+
+        <input-container-component titulo="Rua">
+          <input
+            type="text"
+            class="form-control"
+            :value="$store.state.item.rua"
+            disabled
+          />
+        </input-container-component>
+
+        <input-container-component titulo="Número">
+          <input
+            type="text"
+            class="form-control"
+            :value="$store.state.item.numero"
+            disabled
+          />
+        </input-container-component>
+
+        <input-container-component titulo="Bairro">
+          <input
+            type="text"
+            class="form-control"
+            :value="$store.state.item.bairro"
+            disabled
+          />
+        </input-container-component>
+
+        <input-container-component titulo="Cidade">
+          <input
+            type="text"
+            class="form-control"
+            :value="$store.state.item.cidade"
+            disabled
+          />
+        </input-container-component>
+
+        <input-container-component titulo="Estado">
+          <input
+            type="text"
+            class="form-control"
+            :value="$store.state.item.estado"
+            disabled
+          />
+        </input-container-component>
+
+        <input-container-component titulo="Situação">
+          <input
+            type="text"
+            class="form-control"
+            :value="$store.state.item.situacao"
+            disabled
+          />
+        </input-container-component>
+
+        <input-container-component titulo="Imagem">
+          <img
+            :src="'storage/' + $store.state.item.imagem"
+            v-if="$store.state.item.imagem"
+          />
+        </input-container-component>
+
+        <input-container-component titulo="Data criação">
+          <input
+            type="text"
+            class="form-control"
+            :value="$store.state.item.created_at"
+            disabled
+          />
+        </input-container-component>
+
+        <input-container-component titulo="Data última alteração">
+          <input
+            type="text"
+            class="form-control"
+            :value="$store.state.item.updated_at"
+            disabled
+          />
+        </input-container-component>
+      </template>
+
+      <template v-slot:rodape>
+        <button type=" button" class="btn btn-secondary" data-dismiss="modal">
+          Fechar
+        </button>
+      </template>
+    </modal-component>
+    <!-- Fim do modal de visualização(detalhes) -->
 
     <!--  <button type="button" @click="carregarLista()">Teste</button> -->
   </div>
