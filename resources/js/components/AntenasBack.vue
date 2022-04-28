@@ -42,7 +42,7 @@
                             dataToggle: 'modal',
                             dataTarget: '#modalAntenaVisualizar',
                         }" :atualizar="true" :remover="{
-    visivel: true, dataToggle: 'modal', dataTarget: '#modalAntenaRemover',
+    visivel= true, dataToggle='modal', dataTarget='#modalAntenaRemover'
 }" :titulos="{
     //id: { titulo: 'Id', tipo: 'texto' },
     nome: { titulo: 'Nome', tipo: 'texto' },
@@ -188,37 +188,6 @@
         </modal-component>
         <!-- Fim do modal de inclusão -->
 
-        <!-- Aqui é feito a instância do componente/modal "Modal.vue", para remoção -->
-        <!-- Inicio do modal de remoção -->
-        <modal-component id="modalAntenaRemover" titulo="Remover antena">
-            <template v-slot:alertas> </template>
-
-            <template v-slot:conteudo>
-                <input-container-component titulo="ID">
-                    <input type="text" class="form-control" :value="$store.state.item.id" disabled />
-                </input-container-component>
-
-                <input-container-component titulo="Nome da antena">
-                    <input type="text" class="form-control" :value="$store.state.item.nome" disabled />
-                </input-container-component>
-
-                <input-container-component titulo="Marca">
-                    <input type="text" class="form-control" :value="$store.state.item.marca" disabled />
-                </input-container-component>
-
-                <input-container-component titulo="Modelo">
-                    <input type="text" class="form-control" :value="$store.state.item.modelo" disabled />
-                </input-container-component>
-            </template>
-
-            <template v-slot:rodape>
-                <button type=" button" class="btn btn-secondary" data-dismiss="modal">
-                    Fechar
-                </button>
-            </template>
-        </modal-component>
-        <!-- Fim do modal de remoção -->
-
         <!-- Aqui é feito a instância do componente/modal "Modal.vue", para visualização(detalhes) -->
         <!-- Inicio do modal de visualização(detalhes) -->
         <modal-component id="modalAntenaVisualizar" titulo="Visualizar antena">
@@ -285,6 +254,37 @@
             </template>
         </modal-component>
         <!-- Fim do modal de visualização(detalhes) -->
+
+        <!-- Aqui é feito a instância do componente/modal "Modal.vue", para remoção -->
+        <!-- Inicio do modal de remoção -->
+        <modal-component id="modalAntenaRemover" titulo="Remover antena">
+            <template v-slot:alertas> </template>
+
+            <template v-slot:conteudo>
+                <input-container-component titulo="ID">
+                    <input type="text" class="form-control" :value="$store.state.item.id" disabled />
+                </input-container-component>
+
+                <input-container-component titulo="Nome da antena">
+                    <input type="text" class="form-control" :value="$store.state.item.nome" disabled />
+                </input-container-component>
+
+                <input-container-component titulo="Marca">
+                    <input type="text" class="form-control" :value="$store.state.item.marca" disabled />
+                </input-container-component>
+
+                <input-container-component titulo="Modelo">
+                    <input type="text" class="form-control" :value="$store.state.item.modelo" disabled />
+                </input-container-component>
+            </template>
+
+            <template v-slot:rodape>
+                <button type=" button" class="btn btn-secondary" data-dismiss="modal">
+                    Fechar
+                </button>
+            </template>
+        </modal-component>
+        <!-- Fim do modal de remoção -->
 
         <!--  <button type="button" @click="carregarLista()">Teste</button> -->
     </div>
