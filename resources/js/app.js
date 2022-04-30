@@ -15,8 +15,16 @@ import Vuex from 'Vuex'
 Vue.use(Vuex)
 
 const store = new Vuex.Store({
+    /* Este "state" é do "store" do "vuex" */
     state: {
-        item: {}
+        /* Estes atributos do "state" ficarão globais para todos os
+           componentes, para toda a aplicação. */
+        item: {},
+        /* Recebendo um objeto */
+        transacao: {
+            status: '',
+            mensagem: ''
+        }
     }
 })
 
