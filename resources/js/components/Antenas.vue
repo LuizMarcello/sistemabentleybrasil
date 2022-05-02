@@ -68,7 +68,11 @@
                 dataToggle: 'modal',
                 dataTarget: '#modalAntenaVisualizar',
               }"
-              :atualizar="true"
+              :atualizar="{
+                visivel: true,
+                dataToggle: 'modal',
+                dataTarget: '#modalAntenaAtualizar',
+              }"
               :remover="{
                 visivel: true,
                 dataToggle: 'modal',
@@ -537,11 +541,221 @@
     </modal-component>
     <!-- Fim do modal de visualização(detalhes) -->
 
-    <!--  <button type="button" @click="carregarLista()">Teste</button> -->
+    <!-- Aqui é feito a instância do componente/modal "Modal.vue", para atualização -->
+    <!-- Inicio do modal de "atualização"  -->
+    <modal-component id="modalAntenaAtualizar" titulo="Atualizar antena">
+      <template v-slot:alertas> </template>
+
+      <template v-slot:conteudo>
+        <div class="form-group">
+          <input-container-component
+            titulo="Nome da antena"
+            id="atualizarNome"
+            id-help="atualizarNomeHelp"
+            texto-ajuda=""
+          >
+            <!-- v-model: sincroniza com two-way-data binding -->
+            <input
+              type="text"
+              class="form-control"
+              id="atualizarNome"
+              aria-describedby="atualizarNomeHelp"
+              placeholder="Nome da antena"
+              v-model="$store.state.item.nome"
+            />
+          </input-container-component>
+        </div>
+
+        <div class="form-group">
+          <input-container-component
+            titulo=""
+            id="banda"
+            id-help="bandaHelp"
+            texto-ajuda=""
+          >
+            <!-- v-model: sincroniza com two-way-data binding -->
+            <input
+              type="text"
+              class="form-control"
+              id="banda"
+              aria-describedby="bandaHelp"
+              placeholder="Banda"
+              v-model="banda"
+            />
+          </input-container-component>
+        </div>
+
+        <div class="form-group">
+          <input-container-component
+            titulo=""
+            id="notafiscal"
+            id-help="notafiscalHelp"
+            texto-ajuda=""
+          >
+            <!-- v-model: sincroniza com two-way-data binding -->
+            <input
+              type="text"
+              class="form-control"
+              id="notafiscal"
+              aria-describedby="notafiscalHelp"
+              placeholder="Nota fiscal"
+              v-model="notafiscal"
+            />
+          </input-container-component>
+        </div>
+
+        <div class="form-group">
+          <input-container-component
+            titulo=""
+            id="datanota"
+            id-help="datanotaHelp"
+            texto-ajuda=""
+          >
+            <!-- v-model: sincroniza com two-way-data binding -->
+            <input
+              type="date"
+              class="form-control"
+              id="datanota"
+              aria-describedby="datanotaHelp"
+              placeholder="Data da nota"
+              v-model="datanota"
+            />
+          </input-container-component>
+        </div>
+
+        <div class="form-group">
+          <input-container-component
+            titulo=""
+            id="marca"
+            id-help="marcaHelp"
+            texto-ajuda=""
+          >
+            <!-- v-model: sincroniza com two-way-data binding -->
+            <input
+              type="text"
+              class="form-control"
+              id="marca"
+              aria-describedby="marcaHelp"
+              placeholder="Marca"
+              v-model="marca"
+            />
+          </input-container-component>
+        </div>
+
+        <div class="form-group">
+          <input-container-component
+            titulo=""
+            id="modelo"
+            id-help="modeloHelp"
+            texto-ajuda=""
+          >
+            <!-- v-model: sincroniza com two-way-data binding -->
+            <input
+              type="text"
+              class="form-control"
+              id="modelo"
+              aria-describedby="modeloHelp"
+              placeholder="Modelo"
+              v-model="modelo"
+            />
+          </input-container-component>
+        </div>
+
+        <div class="form-group">
+          <input-container-component
+            titulo=""
+            id="situacao"
+            id-help="situacaoHelp"
+            texto-ajuda=""
+          >
+            <!-- v-model: sincroniza com two-way-data binding -->
+            <input
+              type="text"
+              class="form-control"
+              id="situacao"
+              aria-describedby="situacaoHelp"
+              placeholder="Situação"
+              v-model="situacao"
+            />
+          </input-container-component>
+        </div>
+
+        <div class="form-group">
+          <input-container-component
+            titulo=""
+            id="diametro"
+            id-help="diametroHelp"
+            texto-ajuda=""
+          >
+            <!-- v-model: sincroniza com two-way-data binding -->
+            <input
+              type="text"
+              class="form-control"
+              id="diametro"
+              aria-describedby="diametroHelp"
+              placeholder="Diâmetro"
+              v-model="diametro"
+            />
+          </input-container-component>
+        </div>
+
+        <div class="form-group">
+          <input-container-component
+            titulo=""
+            id="observacao"
+            id-help="observacaoHelp"
+            texto-ajuda=""
+          >
+            <!-- v-model: sincroniza com two-way-data binding -->
+            <input
+              type="text"
+              class="form-control"
+              id="observacao"
+              aria-describedby="observacaoHelp"
+              placeholder="observacao"
+              v-model="observacao"
+            />
+          </input-container-component>
+        </div>
+
+        <div class="form-group">
+          <input-container-component
+            titulo="Imagem"
+            id="atualizarImagem"
+            id-help="atualizarImagemHelp"
+            texto-ajuda=" Carregue uma imagem no formato PNG"
+          >
+            <!-- Diretiva v-on(@) para evento "change(alteração)" -->
+            <input
+              type="file"
+              class="form-control-file"
+              id="atualizarImagem"
+              aria-describedby="atualizarImagemHelp"
+              placeholder="Selecione uma imagem"
+              @change="carregarImagem($event)"
+            />
+          </input-container-component>
+        </div>
+
+        {{ $store.state.item }}
+      </template>
+
+      <template v-slot:rodape>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+          Fechar
+        </button>
+        <!-- Diretiva v-on(@) para evento "click(acionar)" -->
+        <button type="button" class="btn btn-primary" @click="atualizar()">
+          Atualizar
+        </button>
+      </template>
+    </modal-component>
+    <!-- Fim do modal de atualização -->
   </div>
 </template>
 
 <script>
+import axios from "axios";
 import Alert from "./Alert.vue";
 export default {
   /* Propriedades computadas */
@@ -600,11 +814,12 @@ export default {
           Authorization: this.token,
         },
       };
-       let url = this.urlBase + "/" + this.$store.state.item.id;
-     /*  let url = this.urlBase + "/1450"; */ /* url para testar.Excluindo um registro que não existe. */
-
-      //console.log(this.$store.state.transacao);
-      axios
+      let url =
+        this.urlBase +
+        "/" +
+        this.$store.state.item
+          .id; /* url para testar.Excluindo um registro que não existe. */ //console.log(this.$store.state.transacao);
+      /*  let url = this.urlBase + "/1450"; */ axios
         .post(url, formData, config)
         .then((response) => {
           this.$store.state.transacao.status = "sucesso";
@@ -733,7 +948,40 @@ export default {
           //errors.response.data.message
         });
     },
+    atualizar() {
+      /* Criando um formulário programático, para uma requisição http */
+      let formData = new FormData();
+      formData.append("_method", "patch");
+      formData.append("nome", this.$store.state.item.nome);
+      formData.append("imagem", this.arquivoImagem[0]);
+
+      let url = this.urlBase + "/" + this.$store.state.item.id;
+
+      let config = {
+        headers: {
+          "Content-Type": "multipart/form-data",
+          Accept: "application/json",
+          Authorization: this.token,
+        },
+      };
+
+      /* Axios: biblioteca javascript que já vem instalada quando iniciamos
+                                       projetos front-end no framework laravel.
+                                       Ela realiza as requisições baseando-se em promises,
+                                       o que nos ajuda a ter um código realmente assíncrono.
+                                       É um cliente http */
+      axios
+        .post(url, formData, config)
+        .then((response) => {
+          console.log("Atualizado", response);
+          this.carregarLista();
+        })
+        .catch((errors) => {
+          console.log("Erro de atualização", errors.response);
+        });
+    },
   },
+
   /* Ciclo de vida "mounted()", quando o componente estiver totalmente montado */
   mounted() {
     this.carregarLista();
