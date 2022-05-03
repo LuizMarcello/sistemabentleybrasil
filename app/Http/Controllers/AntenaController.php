@@ -173,7 +173,8 @@ class AntenaController extends Controller
             /* helper 'response()' do laravel */
             /* Através dele, podemos alterar os detalhes da resposta dada pelo laravel*/
             /* Como 2º parâmetro do método 'json()', podemos passar o status code http */
-            return response()->json(['erro' => 'Impossível realizar a atualização. O recurso não existe.'], 404);
+            return response()->json(['erro' => 'Impossível realizar a atualização. O recurso não existe.'],
+             404);
         }
 
         /* Método 'PATH' permite o envio parcial de parâmetros */
@@ -196,27 +197,41 @@ class AntenaController extends Controller
             $request->validate($antena->rules(), $antena->feedback());
         }
 
-        /* Remove a imagem antiga caso uma nova imagem tenha sido enviado no request do update */
+
+
+
+        /* Preenchendo o objeto $antena com "todos" os dados do request */
+        $antena->fill($request->all());
+
+        /* Se a imagem foi enviada na requisição */
         if ($request->file('imagem')) {
+            /* Remove a imagem antiga caso uma nova imagem tenha sido enviado no request do update */
             /* 'Storage' é um façade do laravel */
-            /* Remove a imagem */
             Storage::disk('public')->delete($antena->imagem);
+
+            $imagem = $request->file('imagem');
+            $imagem_urn = $imagem->store('imagens/antenas', 'public');
+            $antena->imagem = $imagem_urn;
         }
 
-        $imagem = $request->file('imagem');
+        $antena->save();
+
+        return response()->json($antena, 200);
+
+        //$imagem = $request->file('imagem');
 
         /* O método store() espera dois parâmetros */
         //$image->store( 'path', 'disco' );
-        $imagem_urn = $imagem->store('imagens/antenas', 'public');
+        //$imagem_urn = $imagem->store('imagens/antenas', 'public');
 
         /* Quando o update for PATCH, não atualizando todos os atributos, para não dar êrros,
         preenchendo o objeto $antena com todos os dados do request. Os atributos que não
         estiverem sendo alterados, serão repetidos dos dados anteriores, trazidos do banco
         de dados. */
-        $antena->fill($request->all());
-        $antena->imagem = $imagem_urn;
+        //$antena->fill($request->all());
+        //$antena->imagem = $imagem_urn;
         //dd( $antena->getAttributes() );
-        $antena->save();
+        //$antena->save();
 
         /*
         $antena->update( [
@@ -233,8 +248,11 @@ class AntenaController extends Controller
         /* ] );
             */
 
-        return response()->json($antena, 200);
+        //return response()->json($antena, 200);
     }
+
+
+    
 
     /**
      * Remove the specified resource from storage.

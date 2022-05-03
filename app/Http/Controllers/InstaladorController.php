@@ -172,30 +172,48 @@ class InstaladorController extends Controller
             $request->validate($instalador->rules(), $instalador->feedback());
         }
 
-        /* Remove a imagem antiga caso uma nova imagem tenha sido enviado no request do update */
+
+
+        /* Preenchendo o objeto $antena com "todos" os dados do request */
+        $instalador->fill($request->all());
+
+        /* Se a imagem foi enviada na requisição */
         if ($request->file('imagem')) {
+            /* Remove a imagem antiga caso uma nova imagem tenha sido enviado no request do update */
             /* 'Storage' é um façade do laravel */
-            /* Remove a imagem */
             Storage::disk('public')->delete($instalador->imagem);
+
+            $imagem = $request->file('imagem');
+            $imagem_urn = $imagem->store('imagens/instaladores', 'public');
+            $instalador->imagem = $imagem_urn;
         }
 
-        $imagem = $request->file('imagem');
-
-        /* O método store() espera dois parâmetros */
-        //$image->store( 'path', 'disco' );
-        $imagem_urn = $imagem->store('imagens/instaladores', 'public');
-
-        /* Quando o update for PATCH, não atualizando todos os atributos, para não dar êrros,
-          preenchendo o objeto $antena com todos os dados do request. Os atributos que não
-          estiverem sendo alterados, serão repetidos dos dados anteriores, trazidos do banco
-          de dados. */
-        $instalador->fill($request->all());
-        $instalador->imagem = $imagem_urn;
-        //dd( $antena->getAttributes() );
         $instalador->save();
 
         return response()->json($instalador, 200);
+
+        //$imagem = $request->file('imagem');
+
+        /* O método store() espera dois parâmetros */
+        //$image->store( 'path', 'disco' );
+        //$imagem_urn = $imagem->store('imagens/instaladores', 'public');
+
+        /* Quando o update for PATCH, não atualizando todos os atributos, para não dar êrros,
+       preenchendo o objeto $antena com todos os dados do request. Os atributos que não
+       estiverem sendo alterados, serão repetidos dos dados anteriores, trazidos do banco
+       de dados. */
+        //$instalador->fill($request->all());
+        //$instalador->imagem = $imagem_urn;
+        //dd( $instalador->getAttributes() );
+        //$instalador->save();
+
+        /*
+       $instalador->update( [ ] );
+       */
+
+        //return response()->json($instalador, 200);
     }
+
 
     /**
      * Remove the specified resource from storage.

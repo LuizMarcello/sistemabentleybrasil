@@ -151,16 +151,16 @@
         <div class="form-group">
           <input-container-component
             titulo=""
-            id="novaAntena"
-            id-help="novaAntenaHelp"
+            id="nome"
+            id-help="nomeHelp"
             texto-ajuda=""
           >
             <!-- v-model: sincroniza com two-way-data binding -->
             <input
               type="text"
               class="form-control"
-              id="novaAntena"
-              aria-describedby="novaAntenaHelp"
+              id="nome"
+              aria-describedby="nomeHelp"
               placeholder="Nome da antena"
               v-model="nomeAntena"
             />
@@ -548,18 +548,13 @@
 
       <template v-slot:conteudo>
         <div class="form-group">
-          <input-container-component
-            titulo="Nome da antena"
-            id="atualizarNome"
-            id-help="atualizarNomeHelp"
-            texto-ajuda=""
-          >
+          <input-container-component titulo="" id="nome" id-help="omeHelp" texto-ajuda="">
             <!-- v-model: sincroniza com two-way-data binding -->
             <input
               type="text"
               class="form-control"
-              id="atualizarNome"
-              aria-describedby="atualizarNomeHelp"
+              id="nome"
+              aria-describedby="omeHelp"
               placeholder="Nome da antena"
               v-model="$store.state.item.nome"
             />
@@ -580,7 +575,7 @@
               id="banda"
               aria-describedby="bandaHelp"
               placeholder="Banda"
-              v-model="banda"
+              v-model="$store.state.item.banda"
             />
           </input-container-component>
         </div>
@@ -797,6 +792,79 @@ export default {
     };
   },
   methods: {
+    atualizar() {
+      /* Criando um formulário programático, para uma requisição http */
+      let formData = new FormData();
+      formData.append("_method", "patch");
+      formData.append("nome", this.$store.state.item.nome);
+
+      /* if (this.banda) {
+        formData.append("banda", this.$store.state.item.banda);
+      } */
+
+      if (this.arquivoImagem[0]) {
+        formData.append("imagem", this.arquivoImagem[0]);
+      }
+
+      let url = this.urlBase + "/" + this.$store.state.item.id;
+
+      let config = {
+        headers: {
+          "Content-Type": "multipart/form-data",
+          Accept: "application/json",
+          Authorization: this.token,
+        },
+      };
+
+      /* Axios: biblioteca javascript que já vem instalada quando iniciamos
+                                       projetos front-end no framework laravel.
+                                       Ela realiza as requisições baseando-se em promises,
+                                       o que nos ajuda a ter um código realmente assíncrono.
+                                       É um cliente http */
+      axios
+        .post(url, formData, config)
+        .then((response) => {
+          console.log("Atualizado", response);
+          //limpar o campo de seleção de arquivos
+          atualizarImagem.value = "";
+          this.carregarLista();
+        })
+        .catch((errors) => {
+          console.log("Erro de atualização", errors.response);
+        });
+    },
+    carregarLista() {
+      let url = this.urlBase + "?" + this.urlPaginacao + this.urlFiltro;
+      console.log(url);
+      /* Recebendo um "objeto literal":
+                                       Um objeto literal é composto por um par de chaves " { } ",
+                                       que envolve uma ou mais propriedades. Cada propriedade segue
+                                       o formato " nome: valor " e devem ser separadas por vírgula. */
+      let config = {
+        headers: {
+          /* "Content-Type": "multipart/form-data", */
+          Accept: "application/json",
+          Authorization: this.token,
+        },
+      };
+      /* Axios: biblioteca javascript que já vem instalada quando iniciamos
+                                       projetos front-end no framework laravel.
+                                       Ela realiza as requisições baseando-se em promises,
+                                       o que nos ajuda a ter um código realmente assíncrono.
+                                       É um cliente http */
+      axios
+        .get(url, config)
+        .then((response) => {
+          this.antenas = response.data;
+          //console.log(this.antenas);
+        })
+        .catch((errors) => {
+          console.log(errors);
+        });
+    },
+    carregarImagem(e) {
+      this.arquivoImagem = e.target.files;
+    },
     remover() {
       /* Variável recebe o retorno do "confirm()", do próprio navegador */
       let confirmacao = confirm("Deseja remover esse registro?");
@@ -814,12 +882,9 @@ export default {
           Authorization: this.token,
         },
       };
-      let url =
-        this.urlBase +
-        "/" +
-        this.$store.state.item
-          .id; /* url para testar.Excluindo um registro que não existe. */ //console.log(this.$store.state.transacao);
-      /*  let url = this.urlBase + "/1450"; */ axios
+      let url = this.urlBase + "/" + this.$store.state.item.id;
+
+      axios
         .post(url, formData, config)
         .then((response) => {
           this.$store.state.transacao.status = "sucesso";
@@ -861,38 +926,7 @@ export default {
         this.carregarLista();
       }
     },
-    carregarLista() {
-      let url = this.urlBase + "?" + this.urlPaginacao + this.urlFiltro;
-      console.log(url);
-      /* Recebendo um "objeto literal":
-                                       Um objeto literal é composto por um par de chaves " { } ",
-                                       que envolve uma ou mais propriedades. Cada propriedade segue
-                                       o formato " nome: valor " e devem ser separadas por vírgula. */
-      let config = {
-        headers: {
-          /* "Content-Type": "multipart/form-data", */
-          Accept: "application/json",
-          Authorization: this.token,
-        },
-      };
-      /* Axios: biblioteca javascript que já vem instalada quando iniciamos
-                                       projetos front-end no framework laravel.
-                                       Ela realiza as requisições baseando-se em promises,
-                                       o que nos ajuda a ter um código realmente assíncrono.
-                                       É um cliente http */
-      axios
-        .get(url, config)
-        .then((response) => {
-          this.antenas = response.data;
-          //console.log(this.antenas);
-        })
-        .catch((errors) => {
-          console.log(errors);
-        });
-    },
-    carregarImagem(e) {
-      this.arquivoImagem = e.target.files;
-    },
+
     salvar() {
       console.log(this.nomeAntena, this.arquivoImagem[0]);
       /* Objeto formData: Instanciando um formulário para definir seus atributos */
@@ -946,38 +980,6 @@ export default {
             dados: errors.response.data.errors,
           };
           //errors.response.data.message
-        });
-    },
-    atualizar() {
-      /* Criando um formulário programático, para uma requisição http */
-      let formData = new FormData();
-      formData.append("_method", "patch");
-      formData.append("nome", this.$store.state.item.nome);
-      formData.append("imagem", this.arquivoImagem[0]);
-
-      let url = this.urlBase + "/" + this.$store.state.item.id;
-
-      let config = {
-        headers: {
-          "Content-Type": "multipart/form-data",
-          Accept: "application/json",
-          Authorization: this.token,
-        },
-      };
-
-      /* Axios: biblioteca javascript que já vem instalada quando iniciamos
-                                       projetos front-end no framework laravel.
-                                       Ela realiza as requisições baseando-se em promises,
-                                       o que nos ajuda a ter um código realmente assíncrono.
-                                       É um cliente http */
-      axios
-        .post(url, formData, config)
-        .then((response) => {
-          console.log("Atualizado", response);
-          this.carregarLista();
-        })
-        .catch((errors) => {
-          console.log("Erro de atualização", errors.response);
         });
     },
   },

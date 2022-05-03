@@ -78,7 +78,7 @@ class PlanoController extends Controller
             'cir' => $request->cir,
             'equipamento' => $request->equipamento,
             'nome' => $request->nome,
-           /*  'situacao' => $request->situacao, */
+            /*  'situacao' => $request->situacao, */
             'valor' => $request->valor,
             'valordecusto' => $request->valordecusto,
             'valormensal' => $request->valormensal,
@@ -164,15 +164,44 @@ class PlanoController extends Controller
             $request->validate($plano->rules(), $plano->feedback());
         }
 
-        /* Quando o update for PATCH, não atualizando todos os atributos, para não dar êrros,
-        preenchendo o objeto $antena com todos os dados do request. Os atributos que não
-        estiverem sendo alterados, serão repetidos dos dados anteriores, trazidos do banco
-        de dados. */
+        /* Preenchendo o objeto $antena com "todos" os dados do request */
         $plano->fill($request->all());
+
+        /* Se a imagem foi enviada na requisição */
+        if ($request->file('imagem')) {
+            /* Remove a imagem antiga caso uma nova imagem tenha sido enviado no request do update */
+            /* 'Storage' é um façade do laravel */
+            Storage::disk('public')->delete($plano->imagem);
+
+            $imagem = $request->file('imagem');
+            $imagem_urn = $imagem->store('imagens/planos', 'public');
+            $plano->imagem = $imagem_urn;
+        }
 
         $plano->save();
 
         return response()->json($plano, 200);
+
+        //$imagem = $request->file('imagem');
+
+        /* O método store() espera dois parâmetros */
+        //$image->store( 'path', 'disco' );
+        //$imagem_urn = $imagem->store('imagens/planos', 'public');
+
+        /* Quando o update for PATCH, não atualizando todos os atributos, para não dar êrros,
+        preenchendo o objeto $antena com todos os dados do request. Os atributos que não
+        estiverem sendo alterados, serão repetidos dos dados anteriores, trazidos do banco
+        de dados. */
+        //$plano->fill($request->all());
+        //$plano->imagem = $imagem_urn;
+        //dd( $plano->getAttributes() );
+        //$plano->save();
+
+        /*
+        $plano->update( [ ] );
+        */
+
+        //return response()->json($plano, 200);
     }
 
     /**
