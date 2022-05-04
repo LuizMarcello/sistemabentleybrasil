@@ -153,7 +153,8 @@ class ClienteController extends Controller
             /* helper 'response()' do laravel */
             /* Através dele, podemos alterar os detalhes da resposta dada pelo laravel*/
             /* Como 2º parâmetro do método 'json()', podemos passar o status code http */
-            return response()->json(['erro' => 'Impossível realizar a atualização. O recurso não existe.'], 404);
+            return response()->json(['erro' => 'Impossível realizar a atualização. O recurso não existe.'],
+             404);
         }
 
         /* Método 'PATH' permite o envio parcial de parâmetros */

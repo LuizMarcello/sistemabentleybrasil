@@ -962,16 +962,16 @@
         <div class="form-group">
           <input-container-component
             titulo="Imagem"
-            id="novaImagem"
-            id-help="novaImagemHelp"
+            id="atualizarImagem"
+            id-help="atualizarImagemHelp"
             texto-ajuda=" Carregue uma imagem no formato PNG"
           >
             <!-- Diretiva v-on(@) para evento "change(alteração)" -->
             <input
               type="file"
               class="form-control-file"
-              id="novaImagem"
-              aria-describedby="novaImagemHelp"
+              id="atualizarImagem"
+              aria-describedby="atualizarImagemHelp"
               placeholder="Selecione uma imagem"
               @change="carregarImagem($event)"
             />

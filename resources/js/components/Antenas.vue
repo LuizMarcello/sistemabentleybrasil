@@ -548,13 +548,13 @@
 
       <template v-slot:conteudo>
         <div class="form-group">
-          <input-container-component titulo="" id="nome" id-help="omeHelp" texto-ajuda="">
+          <input-container-component titulo="" id="nome" id-help="nomeHelp" texto-ajuda="">
             <!-- v-model: sincroniza com two-way-data binding -->
             <input
               type="text"
               class="form-control"
               id="nome"
-              aria-describedby="omeHelp"
+              aria-describedby="nomeHelp"
               placeholder="Nome da antena"
               v-model="$store.state.item.nome"
             />
