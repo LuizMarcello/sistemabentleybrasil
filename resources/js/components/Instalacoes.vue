@@ -494,7 +494,7 @@
               @change="carregarImagem($event)"
             />
           </input-container-component>
-          {{ arquivoImagem }}
+          <!-- {{ arquivoImagem }} -->
         </div>
       </template>
 
@@ -1387,6 +1387,7 @@ export default {
           };
           //errors.response.data.message
         });
+
     },
   },
   /* Ciclo de vida "mounted()", quando o componente estiver totalmente montado */

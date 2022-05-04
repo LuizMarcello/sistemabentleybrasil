@@ -37,7 +37,7 @@ class Cliente extends Model
     {
         return [
             //'imagem' => 'required|file|mimes:png,docx,xlsx,pdf,ppt,jpeg,mp3',
-            //'nome_razaosocial' => 'required',
+            'nome_razaosocial' => 'required',
             //'cpf' => 'required',
             //'ie_rg' => 'required',
             //'nome_contato' => 'required',
@@ -75,10 +75,10 @@ class Cliente extends Model
     public function feedback()
     {
         return  [
-            //'required' => 'O campo :attribute é obrigatório',
-            //'imagem.mimes' => 'Somente arquivos do tipo png,docx,xlsx,pdf,ppt,jpeg,mp3',
-            //'nome.unique' => 'O nome da antena já existe',
-            //'nome.min' => 'O nome deve ter pelo menos 3 caracteres'
+            'required' => 'O campo :attribute é obrigatório',
+            'imagem.mimes' => 'Somente arquivos do tipo png,docx,xlsx,pdf,ppt,jpeg,mp3',
+            'nome.unique' => 'O nome da antena já existe',
+            'nome.min' => 'O nome deve ter pelo menos 3 caracteres'
         ];
     }
 }

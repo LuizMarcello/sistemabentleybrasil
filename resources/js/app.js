@@ -23,7 +23,8 @@ const store = new Vuex.Store({
         /* Recebendo um objeto */
         transacao: {
             status: '',
-            mensagem: ''
+            mensagem: '',
+            dados: ''
         }
     }
 })

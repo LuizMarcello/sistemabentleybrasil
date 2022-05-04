@@ -197,9 +197,6 @@ class AntenaController extends Controller
             $request->validate($antena->rules(), $antena->feedback());
         }
 
-
-
-
         /* Preenchendo o objeto $antena com "todos" os dados do request */
         $antena->fill($request->all());
 
@@ -252,7 +249,7 @@ class AntenaController extends Controller
     }
 
 
-    
+
 
     /**
      * Remove the specified resource from storage.
