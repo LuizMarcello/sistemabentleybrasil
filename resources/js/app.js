@@ -64,6 +64,33 @@ Vue.component('paginate-component', require('./components/Paginate.vue').default
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+/* Filtro de data/hora aqui na instância do VueJS,
+   (app.js), para ficar global, para todos os componentes */
+Vue.filter('formataDataTempoGlobal', function (d) {
+    if (!d) return ''
+
+    /* Split quebra a string e retorna um
+       array. Filtrando pelo caracter "T",
+       que é o caracter que separa data do
+       tempo, na string */
+    d = d.split('T')
+
+    let data = d[0]
+    let tempo = d[1]
+
+    /* Formatando a data */
+    data = data.split('-')
+    data = data[2] + '/' + data[1] + '/' + data[0]
+
+    /* Formatando o tempo */
+    tempo = tempo.split('.')
+    tempo = tempo[0]
+
+    //console.log(data)
+
+    return data + ' ' + tempo
+})
+
 const app = new Vue({
     el: '#app',
     store

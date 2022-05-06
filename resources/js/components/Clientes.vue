@@ -578,21 +578,6 @@
 export default {
     /* Propriedades computadas */
     computed: {
-        token() {
-            /* O método "find()"" retorna uma posição do array, somente se a mesma retornar "true",
-                           ou seja, que comece com parâmetro do método "includes()"" */
-            let token = document.cookie.split(";").find((indice) => {
-                return indice.includes("token=");
-            });
-
-            /* Pegando a posição "1" do array, que é somente o token atribuindo */
-            token = token.split("=")[1];
-
-            /* Concatenando essa string com o próprio token em si */
-            token = "Bearer " + token;
-
-            return token;
-        },
     },
 
     data() {
@@ -645,16 +630,14 @@ export default {
             let config = {
                 headers: {
                     "Content-Type": "multipart/form-data",
-                    Accept: "application/json",
-                    Authorization: this.token,
                 },
             };
 
             /* Axios: biblioteca javascript que já vem instalada quando iniciamos
-                                             projetos front-end no framework laravel.
-                                             Ela realiza as requisições baseando-se em promises,
-                                             o que nos ajuda a ter um código realmente assíncrono.
-                                             É um cliente http */
+                projetos front-end no framework laravel.
+                Ela realiza as requisições baseando-se em promises,
+                o que nos ajuda a ter um código realmente assíncrono.
+                É o cliente http que estamos usando no front da aplicação */
             axios
                 .post(url, formData, config)
                 .then((response) => {
@@ -684,19 +667,11 @@ export default {
             let formData = new FormData();
             formData.append("_method", "delete");
 
-            let config = {
-                headers: {
-                    /*  "Content-Type": "multipart/form-data", */
-                    Accept: "application/json",
-                    Authorization: this.token,
-                },
-            };
-
             let url = this.urlBase + "/" + this.$store.state.item.id;
 
 
             axios
-                .post(url, formData, config)
+                .post(url, formData)
                 .then((response) => {
                     this.$store.state.transacao.status = "sucesso";
                     this.$store.state.transacao.mensagem = response.data.msg;
@@ -750,21 +725,15 @@ export default {
                            Um objeto literal é composto por um par de chaves " { } ",
                            que envolve uma ou mais propriedades. Cada propriedade segue
                            o formato " nome: valor " e devem ser separadas por vírgula. */
-            let config = {
-                headers: {
-                    /* "Content-Type": "multipart/form-data", */
-                    Accept: "application/json",
-                    Authorization: this.token,
-                },
-            };
+
 
             /* Axios: biblioteca javascript que já vem instalada quando iniciamos
-                           projetos front-end no framework laravel.
-                           Ela realiza as requisições baseando-se em promises,
-                           o que nos ajuda a ter um código realmente assíncrono.
-                           É um cliente http */
+                projetos front-end no framework laravel.
+                Ela realiza as requisições baseando-se em promises,
+                o que nos ajuda a ter um código realmente assíncrono.
+                É o cliente http que estamos usando no front da aplicação */
             axios
-                .get(url, config)
+                .get(url)
                 .then((response) => {
                     this.clientes = response.data;
 
@@ -810,17 +779,15 @@ export default {
             let config = {
                 headers: {
                     "Content-Type": "multipart/form-data",
-                    Accept: "application/json",
-                    Authorization: this.token,
                 },
             };
 
 
             /* Axios: biblioteca javascript que já vem instalada quando iniciamos
-                            projetos front-end no framework laravel.
-                            Ela realiza as requisições baseando-se em promises,
-                            o que nos ajuda a ter um código realmente assíncrono.
-                            É um cliente http */
+                projetos front-end no framework laravel.
+                Ela realiza as requisições baseando-se em promises,
+                o que nos ajuda a ter um código realmente assíncrono.
+                É o cliente http que estamos usando no front da aplicação */
             /* Este método (post()) espera 03 parâmetros: */
             axios
                 .post(this.urlBase, formData, config)
