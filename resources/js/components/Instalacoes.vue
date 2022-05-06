@@ -765,7 +765,20 @@
     <!-- Aqui é feito a instância do componente/modal "Modal.vue", para atualização -->
     <!-- Inicio do modal de "atualização"  -->
     <modal-component id="modalInstalacaoAtualizar" titulo="Atualizar instalação">
-      <template v-slot:alertas> </template>
+      <template v-slot:alertas
+        ><alert-component
+          tipo="success"
+          titulo="Transação com sucesso"
+          :detalhes="$store.state.transacao"
+          v-if="$store.state.transacao.status == 'sucesso'"
+        ></alert-component>
+        <alert-component
+          tipo="danger"
+          titulo="Erro na transação"
+          :detalhes="$store.state.transacao"
+          v-if="$store.state.transacao.status == 'erro'"
+        ></alert-component>
+      </template>
 
       <template v-slot:conteudo>
         <!-- <div class="form-group">
@@ -1108,7 +1121,7 @@
           </input-container-component>
           <!-- {{ arquivoImagem }} -->
         </div>
-        {{ $store.state.item }}
+        <!--  {{ $store.state.item }} -->
       </template>
 
       <template v-slot:rodape>
@@ -1184,6 +1197,7 @@ export default {
       let formData = new FormData();
       formData.append("_method", "patch");
       formData.append("cidade", this.$store.state.item.cidade);
+      formData.append("rua", this.$store.state.item.rua);
 
       /* if (this.banda) {
         formData.append("banda", this.$store.state.item.banda);
@@ -1211,13 +1225,18 @@ export default {
       axios
         .post(url, formData, config)
         .then((response) => {
-          console.log("Atualizado", response);
+          this.$store.state.transacao.status = "sucesso";
+          this.$store.state.transacao.mensagem =
+            "Registro da instalação atualizado com sucesso!";
+
           //limpar o campo de seleção de arquivos
           atualizarImagem.value = "";
           this.carregarLista();
         })
         .catch((errors) => {
-          console.log("Erro de atualização", errors.response);
+          this.$store.state.transacao.status = "erro";
+          this.$store.state.transacao.mensagem = errors.response.data.message;
+          this.$store.state.transacao.dados = errors.response.data.errors;
         });
     },
     remover() {
@@ -1387,7 +1406,6 @@ export default {
           };
           //errors.response.data.message
         });
-
     },
   },
   /* Ciclo de vida "mounted()", quando o componente estiver totalmente montado */
