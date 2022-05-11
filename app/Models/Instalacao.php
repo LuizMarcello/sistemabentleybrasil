@@ -37,7 +37,7 @@ class Instalacao extends Model
     {
         return [
             //'imagem' => 'required|file|mimes:png,docx,xlsx,pdf,ppt,jpeg,mp3',
-            //'cliente_id' => 'required',
+            'cliente_id' => 'required',
             //'rua' => 'required',
             //'numero' => 'required',
             //'bairro' => 'required',
