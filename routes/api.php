@@ -35,10 +35,9 @@ Route::get('/', function () {
 /* Quando a rota inicia com "apiresource", não precisa colocar o
    controller e o método(action), pois serve para todos os actions
    do controller. */
-Route::prefix('v1')->middleware('jwt.auth')->group(function () {
+    Route::prefix('v1')->middleware('jwt.auth')->group(function () {
     Route::post('me', 'AuthController@me');
     Route::post('logout', 'AuthController@logout');
-    Route::post('refresh', 'AuthController@refresh');
     Route::apiresource('antenas', 'AntenaController');
     //Route::apiresource('cabos', 'CaboController');
     //Route::apiresource('empresas', 'EmpresaController');
@@ -67,3 +66,4 @@ Route::prefix('v1')->middleware('jwt.auth')->group(function () {
 
 /* Rotas públicas: */
 Route::post('login', 'AuthController@login');
+Route::post('refresh', 'AuthController@refresh');

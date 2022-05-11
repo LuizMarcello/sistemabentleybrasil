@@ -38,7 +38,7 @@ Route::get('/antenas', function () {
    Somente autenticada, por sessão */
       Route::get('/clientes', function () {
     return view('app.clientes');
-})->name('clientes')->middleware('auth');
+  })->name('clientes')->middleware('auth');
 
 /* Rota protegida com o middleware auth.
    Somente autenticada, por sessão */

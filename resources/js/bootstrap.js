@@ -1,5 +1,19 @@
 //const { config } = require('dotenv');
 
+//const { log } = require('console');
+
+///const { response } = require('express');
+
+//const { log } = require('console');
+
+//const { then } = require('laravel-mix');
+
+//const { data } = require('browserslist');
+
+//const { response } = require('express');
+
+//const { response } = require('express');
+
 //const { use } = require('vue/types/umd');
 
 //const { response } = require('express');
@@ -67,7 +81,8 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /* O método use() espera dois métodos de callback. */
 
 /* Após esta implementação, todas as requisições feitas pelo "axios",
-   tanto request como response, serão interceptadas. */
+   tanto "request" como "response", serão interceptadas.
+   Então tem que cuidar com a recursividade(loop infinito) */
 
 /* Interceptar os "requests" da aplicação: */
 axios.interceptors.request.use(
@@ -88,7 +103,7 @@ axios.interceptors.request.use(
         token = token.split("=")[1];
         /* Concatenando essa string com o próprio token em si */
         token = "Bearer " + token;
-        
+
         /* Usando sintaxe de "objeto" para acesso aos atributos do cabeçário da requisição */
         config.headers.Authorization = token
 
@@ -109,8 +124,22 @@ axios.interceptors.response.use(
         return response
     },
     error => {
-        console.log('Erro na resposta: ', error)
+        console.log('Erro na resposta: ', error.response)
+
+        if (error.response.status == 401 && error.response.data.message == "Token has expired") {
+            console.log('Fazer uma nova requisição para a rota refresh')
+
+            axios.post('http://localhost:8000/api/refresh')
+                .then(response => {
+                    console.log('Refresh com sucesso: ', response)
+
+                    document.cookie = 'token=' + response.data.token + ';SameSite=Lax'
+                    console.log('Token atualizado: ', response.data.token)
+                    /* Para que o navegador refaça automaticamente a requisição anterior*/
+                    window.location.reload()
+                })
+        }
+
         return Promise.reject(error)
     }
 )
-
