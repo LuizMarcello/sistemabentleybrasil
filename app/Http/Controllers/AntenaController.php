@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Storage;
 use App\Models\Antena;
 use Illuminate\Http\Request;
 use App\Repositories\AntenaRepository;
+use Illuminate\Support\Facades\Cache;
 
 class AntenaController extends Controller
 {
